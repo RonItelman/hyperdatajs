@@ -1,0 +1,28 @@
+#tableW {
+  
+  
+  height:100%;
+  width:100%;
+  padding-left:50px;
+  padding-right:50px;
+  padding-top:30px;
+  padding-bottom:10vh;
+  #tableC {
+    
+    height:100%;
+    width:100%;
+    table {
+      width:100%;
+      // border:1px solid #333;
+      border-collapse: collapse;
+      tr, td, th {
+        border-collapse: collapse;
+        border:1px solid rgba(0,0,0,0.15);
+        padding:10px;
+      }
+      th {
+        background-color:#f5f5f5;
+      }
+    }
+  }
+}
