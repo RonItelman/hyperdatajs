@@ -2,14 +2,21 @@
   #rightPaneC 
     pre
       |  {
-      |    "meta": {
-      |     "name":"My First Table",
-      |     "description":"Hello World of HyperData.js"
-      |   },
       |   "rows":[
       |     {
       |       "pets": {
       |         "name":"Leo"
+      |         "@name":{
+      |           "id":2,
+      |           "type":"string"
+      |           "description":"The name the owner gave the pet",
+      |         }
+      |       },
+      |       "@pets": {
+      |           "id":1,
+      |           "type":"object"
+      |           "description":"Animals adopted by humans",
+      |         }
       |       }
       |     }
       |   ]
