@@ -1,23 +1,33 @@
 extends layout
 
-block content
+block content  
   #topnavW 
     img(src="/images/favicon.png")
     #logo 
       span.header HyperData.js
-      span.subHeader Turn JSON into a flat table  
+      span.subHeader Browser Database That Combines JSON Hierarchies With Flat Table Relationships
     #buttonsW 
       #buttonsC 
-        .button JSON
-        .button CODE
-  #tableW
-    #tableC 
-      #table
-        table 
-          thead 
-            tr 
-              th col1 
-          tbody 
-            tr 
-              td val1
+        .button#json 
+          i.fal.fa-brackets-curly
+          span JSON
+        a(target="_blank" href="https://github.com/RonItelman/hyperdatajs").button#code 
+          i.fal.fa-code 
+          span CODE
+  #contentW
+    include ./rightPane.pug
+    #metaW 
+      #metaC         
+        .name My First Table
+        .description Hello World of HyperData.js        
+    #tableW
+      #tableC 
+        #table
+          table 
+            thead 
+              tr 
+                th col1 
+            tbody 
+              tr 
+                td val1
 

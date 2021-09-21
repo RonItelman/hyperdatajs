@@ -1,0 +1,19 @@
+#rightPaneW {
+  width:450px;
+  height:calc(100vh - 70px);
+  position: fixed;
+  right:0px;
+  top:70px;
+  background-color: #353535;
+  z-index: 100;
+  #rightPaneC {
+    width:100%;
+    height:100%;
+    padding:10px;
+    color:white;
+    pre {
+      font-family: monospace;
+      font-size:16px;
+    }
+  }
+}

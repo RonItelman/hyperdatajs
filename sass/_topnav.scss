@@ -1,10 +1,11 @@
 #topnavW {
   display:inline-flex;
   align-items: center;
-  // position:fixed;
-  // top:10px;
-  // left:50px;
-  padding-top:0px;
+  z-index:1000;
+  position:fixed;
+  top:10px;
+  left:0px;
+  // padding-top:0px;
   padding-left:50px;
   background-color:white;
   width:100%;
@@ -17,7 +18,7 @@
   #logo {
     display:flex;
     flex-direction: column;
-    width:40vw;
+    width:60vw;
     padding-left:20px;
     span.header {
       font-size:20px;
@@ -58,7 +59,14 @@
       padding-right:20px;
       padding-top:10px;
       padding-bottom:10px;
+      text-decoration: none;
       border-radius:3px;
+      display:flex;
+      align-items: center;
+      i {
+        margin-right:8px;
+        font-size:16px;
+      }
       &:hover {
         cursor:pointer;
       }

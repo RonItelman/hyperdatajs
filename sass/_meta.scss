@@ -1,0 +1,19 @@
+#metaW {
+  height:64px;
+  width:100%;
+  padding-top:30px;
+  #metaC {
+    padding-left:50px;
+    padding-right:50px;
+    .name {
+      font-weight:600;
+      font-size:18px;
+      color:#222;
+    }
+    .description {
+      color:#333;
+      font-weight:400;
+      font-size:14px;
+    }
+  }
+}
