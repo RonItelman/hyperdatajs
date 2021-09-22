@@ -59,9 +59,13 @@
         display:flex;
         align-items: center;
         justify-content: flex-start;
-        span {
+        .field {
           font-size:16px;
           font-family: monospace;
+          color:white;
+          &:focus {
+            outline:0;
+          }
         }
         
         

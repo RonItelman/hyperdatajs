@@ -175,9 +175,12 @@ body {
         display: flex;
         align-items: center;
         justify-content: flex-start; }
-        #rightPaneW #rightPaneC #jsonEditor .line span {
+        #rightPaneW #rightPaneC #jsonEditor .line .field {
           font-size: 16px;
-          font-family: monospace; }
+          font-family: monospace;
+          color: white; }
+          #rightPaneW #rightPaneC #jsonEditor .line .field:focus {
+            outline: 0; }
 
 #contentW {
   position: fixed;
