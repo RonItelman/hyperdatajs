@@ -8,20 +8,29 @@ hyper.editor.initIndents = function(editor) {
 
 hyper.editor.STATES = {
   inFocus:true,
-  curLine:0
+  curLine:1,
+  lastLine:4
 };
 
 hyper.editor.initLinePointer = function(editor) {
+  let pointer = document.querySelector('#linePointer');
   window.addEventListener('keydown', function(event) {
     let key = event.key;
-    let curLine = hyper.editor.STATES.curLine;
+    
     if (key == "ArrowDown") {
-      ++hyper.editor.STATES.curLine;
-      console.log(hyper.editor.STATES.curLine);
+      if (hyper.editor.STATES.curLine < hyper.editor.STATES.lastLine) {
+        ++hyper.editor.STATES.curLine;      
+        console.log(hyper.editor.STATES.curLine);
+      }
     }
     else if (key == "ArrowUp") {
+      if (hyper.editor.STATES.curLine > 1) {
+        --hyper.editor.STATES.curLine;        
+        console.log(hyper.editor.STATES.curLine);
+      }
 
     }
+    gsap.to(pointer, { top: `${(hyper.editor.STATES.curLine-1) * 30}px`, duration: 0.05 });
   });
 };
 
