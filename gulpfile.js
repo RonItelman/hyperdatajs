@@ -16,15 +16,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./public/stylesheets/'));
     });
     
-gulp.task('scripts', function () {
-    console.log('scripts updates');
-    return gulp.src('./public/javascripts/perfectly/src/*.js')
-    .pipe(concat('perfectly.js'))
-    .pipe(gulp.dest('./public/javascripts/perfectly/dist/'))    
-    .pipe(uglify())
-    .pipe(rename('perfectly.min.js'))    
-    .pipe(gulp.dest('./public/javascripts/perfectly/dist/'));    
-});
+// gulp.task('scripts', function () {
+//     console.log('scripts updates');
+//     return gulp.src('./public/javascripts/perfectly/src/*.js')
+//     .pipe(concat('perfectly.js'))
+//     .pipe(gulp.dest('./public/javascripts/perfectly/dist/'))    
+//     .pipe(uglify())
+//     .pipe(rename('perfectly.min.js'))    
+//     .pipe(gulp.dest('./public/javascripts/perfectly/dist/'));    
+// });
 
 gulp.task('browserSync', function () {
     browserSync.init({
@@ -38,19 +38,11 @@ gulp.task('browserSync', function () {
 
 gulp.task('watch',  function () {
     console.log('watch');
-    gulp.watch('./sass/*.scss').on('change', gulp.series('sass', browserSync.reload));    
-    gulp.watch('./public/javascripts/*.js').on('change', gulp.series(browserSync.reload));
-    gulp.watch('./public/javascripts/perfectly/*.js').on('change', gulp.series(browserSync.reload));
-    gulp.watch('./public/javascripts/perfectly/**/*.js').on('change', gulp.series(browserSync.reload));
-    gulp.watch('./public/javascripts/perfectly/**/**/*.js').on('change', gulp.series(browserSync.reload));
-    gulp.watch('./public/javascripts/perfectly/**/**/**/*.js').on('change', gulp.series(browserSync.reload));
-    // gulp.watch('./public/javascripts/perfectly/*.js').on('change', gulp.series('scripts', gulp.series(browserSync.reload)));
-    // gulp.watch('./public/javascripts/perfectly/src/**/*.js').on('change', gulp.series('scripts', gulp.series(browserSync.reload)));
-    // gulp.watch('./public/javascripts/perfectly/src/**/**/*.js').on('change', gulp.series('scripts', gulp.series(browserSync.reload)));
-    // gulp.watch('./public/javascripts/perfectly/config/*.js').on('change', gulp.series(browserSync.reload));
+    gulp.watch('./sass/*.scss').on('change', gulp.series('sass', browserSync.reload));        
+    gulp.watch('./public/javascripts/hyperdata/*.js').on('change', gulp.series(browserSync.reload));        
     gulp.watch('./routes/*.js').on('change', gulp.series(browserSync.reload));
     gulp.watch('./views/*.pug').on('change', gulp.series(browserSync.reload));
     gulp.watch('./views/**/*.pug').on('change', gulp.series(browserSync.reload));
 });
 
-gulp.task('default', gulp.parallel('browserSync', 'watch', 'sass', 'scripts'));
+gulp.task('default', gulp.parallel('browserSync', 'watch', 'sass'));

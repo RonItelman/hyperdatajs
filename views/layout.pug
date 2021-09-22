@@ -5,6 +5,16 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/fa_all.css')     
-    script(src="/javascripts/gsap/gsap.min.js")
+    script(src="/javascripts/gsap/gsap.min.js")    
+    script.
+      let hyperdata = {
+        editor:{}
+      }
+      window.hyperdata = hyperdata;
+      let hyper = window.hyperdata;
+    
   body
     block content
+  script(src="/javascripts/hyperdata/editor.js")
+  script.
+    hyper.editor.initEditor("#jsonEditor");
