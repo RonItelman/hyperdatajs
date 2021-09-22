@@ -1,20 +1,24 @@
 #rightPaneW
   #rightPaneC 
-    #linePointer
     #lineIndex
       .line
         span 1
       .line
         span 2
       .line
-        span 3
-      .line
-        span 4
+        span 3      
     #jsonEditor
-      .line(data-indent="0")
-        .field(contenteditable="true") {
-      .line(data-indent="1")
-        .field(contenteditable="true") "col1":"val1"      
-      .line(data-indent="0")
-        .field(contenteditable="true") }
+      .lineW(data-selected="true" data-line_num="1")
+        .line(data-indent="0" )
+          .field(contenteditable="true" data-type="bracket") {          
+      .lineW(data-selected="false" data-line_num="2")
+        .line(data-indent="1")
+          .field(contenteditable="true" data-type="key") "col1"
+          .field(contenteditable="true" data-type="colon") :
+          .field(contenteditable="true" data-type="value") "val1"
+      .lineW(data-selected="false" data-line_num="3")
+        .line(data-indent="0")
+          .field(contenteditable="true" data-type="bracket") } 
+    #linePointer
+          
 

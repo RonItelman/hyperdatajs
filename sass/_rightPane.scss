@@ -10,17 +10,7 @@
     height:100%;    
     position:relative;
     display:flex;
-    #linePointer {
-      margin-top:0px;
-      z-index:1000;
-      width:100%;
-      background-color:rgba(255,255,255, 0.25);
-      height:30px;
-      
-      position:absolute;
-      top:0;
-      left:0;
-    }
+    
     #lineIndex {
       padding-top:0px;
       height:100%;
@@ -44,27 +34,62 @@
     }    
     #jsonEditor {
       padding-top:0px;
-      padding-left:10px;
-      padding-right:30px;
+      // padding-left:10px;
+      // padding-right:30px;
       
       background-color: #353535;
       color:white;
       height:100%;
       width:100%;
-      .line {
-        
-        
+      .lineW {
+        width:100%;
         height:30px;
+        transition: 0.1s;
+        // border:1px solid transparent;
+        
+      }
+      .lineW[data-selected="true"] {
+        background-color:rgba(211, 212, 255, 0.3);
+        // border-color:#888;
+      }
+      .line {
+        z-index:100000;
+        position:relative;
+        
+        height:100%;
         width:100%;
         display:flex;
         align-items: center;
         justify-content: flex-start;
+        .field[data-type="key"] {
+          &:focus {
+            background-color:rgb(255, 255, 205);            
+          }
+        }
+        .field[data-type="value"] {
+          &:focus {
+            background-color:rgb(205, 249, 255);            
+          }
+        }
+        .field[data-type="colon"] {
+          &:focus {
+            background-color:rgb(255, 205, 205);            
+          }
+        }
+        .field[data-type="bracket"] {
+          &:focus {
+            background-color:rgb(205, 255, 213);            
+          }
+        }        
         .field {
+          transition:0.35s;
           font-size:16px;
           font-family: monospace;
           color:white;
+          border-radius:2px;
           &:focus {
             outline:0;
+            color:black;
           }
         }
         
