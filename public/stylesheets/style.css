@@ -172,14 +172,16 @@ body {
         display: flex;
         align-items: center;
         justify-content: flex-start; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="key"]:focus {
+        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="key"][data-focused="true"] {
           background-color: #ffffcd; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="value"]:focus {
+        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="value"][data-focused="true"] {
           background-color: #cdf9ff; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="colon"]:focus {
-          background-color: #ffcdcd; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="bracket"]:focus {
+        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="colon"][data-focused="true"] {
+          background-color: #f5cdff; }
+        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="bracket"][data-focused="true"] {
           background-color: #cdffd5; }
+        #rightPaneW #rightPaneC #jsonEditor .line .field[data-focused="true"] {
+          color: black; }
         #rightPaneW #rightPaneC #jsonEditor .line .field {
           transition: 0.35s;
           font-size: 16px;
@@ -187,8 +189,7 @@ body {
           color: white;
           border-radius: 2px; }
           #rightPaneW #rightPaneC #jsonEditor .line .field:focus {
-            outline: 0;
-            color: black; }
+            outline: 0; }
 
 #contentW {
   position: fixed;

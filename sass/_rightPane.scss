@@ -61,26 +61,23 @@
         display:flex;
         align-items: center;
         justify-content: flex-start;
-        .field[data-type="key"] {
-          &:focus {
-            background-color:rgb(255, 255, 205);            
-          }
+        .field[data-type="key"][data-focused="true"] {
+          background-color:rgb(255, 255, 205);            
         }
-        .field[data-type="value"] {
-          &:focus {
-            background-color:rgb(205, 249, 255);            
-          }
+        .field[data-type="value"][data-focused="true"] {
+          background-color:rgb(205, 249, 255);            
+          
         }
-        .field[data-type="colon"] {
-          &:focus {
-            background-color:rgb(255, 205, 205);            
-          }
+        .field[data-type="colon"][data-focused="true"] {
+          background-color:rgb(245, 205, 255);            
+          
         }
-        .field[data-type="bracket"] {
-          &:focus {
-            background-color:rgb(205, 255, 213);            
-          }
-        }        
+        .field[data-type="bracket"][data-focused="true"] {
+          background-color:rgb(205, 255, 213);                      
+        }   
+        .field[data-focused="true"]      {
+          color:black;
+        }
         .field {
           transition:0.35s;
           font-size:16px;
@@ -89,7 +86,7 @@
           border-radius:2px;
           &:focus {
             outline:0;
-            color:black;
+            
           }
         }
         

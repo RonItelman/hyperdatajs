@@ -10,15 +10,15 @@
     #jsonEditor
       .lineW(data-selected="true" data-line_num="1")
         .line(data-indent="0" )
-          .field(contenteditable="true" data-type="bracket") {          
+          .field(contenteditable="true" data-type="bracket" data-focused="true"  data-field_num="0") {          
       .lineW(data-selected="false" data-line_num="2")
         .line(data-indent="1")
-          .field(contenteditable="true" data-type="key") "col1"
-          .field(contenteditable="true" data-type="colon") :
-          .field(contenteditable="true" data-type="value") "val1"
+          .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "col1"
+          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
+          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "val1"
       .lineW(data-selected="false" data-line_num="3")
         .line(data-indent="0")
-          .field(contenteditable="true" data-type="bracket") } 
+          .field(contenteditable="true" data-type="bracket" data-focused="false"  data-field_num="0") } 
     #linePointer
           
 
