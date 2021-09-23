@@ -2,18 +2,38 @@
   height:64px;
   width:100%;
   padding-top:30px;
+  margin-bottom:20px;
   #metaC {
     padding-left:50px;
     padding-right:50px;
-    .name {
-      font-weight:600;
-      font-size:18px;
-      color:#222;
+    #meta {
+  transition: 0.3s;
+  padding:10px;
+  width:calc(100vw - 450px - 100px);
+  
+  .name {
+    input {
+      outline:0;
+      border:none;
+      font-size:20px;
+      width:100%;
+      background-color:transparent;
     }
-    .description {
-      color:#333;
-      font-weight:400;
+  }
+  .description {
+    input {
+      outline:0;
+      border:none;
       font-size:14px;
+      width:100%;
+      background-color:transparent;
     }
+  }
+}
+
+#meta[data-focused="true"] {
+  background-color:rgb(205, 255, 213);                      
+}
+
   }
 }

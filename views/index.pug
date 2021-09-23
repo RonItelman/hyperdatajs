@@ -17,17 +17,24 @@ block content
   #contentW
     include ./rightPane.pug
     #metaW 
-      #metaC         
-        .name Pets
-        .description Animals adopted by humans
+      #metaC
+        #meta(data-focused="true")
+          .name 
+            input(placeholder="Table name (ex: Pets)")
+          .description 
+            input(placeholder="Table name (ex: Animals adopted by humans)")
     #tableW
       #tableC 
         #table
           table 
             thead 
               tr 
-                th col1 
+                th(data-line_num="2" data-field_num="0" data-focused="false") col1 
+                th(data-line_num="3" data-field_num="0" data-focused="false") col2 
+                th(data-line_num="4" data-field_num="0" data-focused="false") col3
             tbody 
               tr 
-                td val1
+                td(data-focused="false" data-line_num="2", data-field_num="2") val1
+                td(data-focused="false" data-line_num="3", data-field_num="2") val2
+                td(data-focused="false" data-line_num="4", data-field_num="2") val2
 

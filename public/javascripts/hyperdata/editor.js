@@ -1,3 +1,10 @@
+hyper.editor.STATES = {
+  inFocus: true,
+  curLine: 1,
+  lastLine: 5,
+  curField: 0
+};
+
 hyper.editor.initIndents = function(editor) {
   let lines = editor.querySelectorAll('.line');
   lines.forEach(function (line) {
@@ -6,13 +13,7 @@ hyper.editor.initIndents = function(editor) {
   });
 };
 
-hyper.editor.STATES = {
-  inFocus:true,
-  curLine:1,
-  lastLine:3,
-  curField:0
-  
-};
+
 
 hyper.editor.getCurrentLine = function() {
   let line_num = hyper.editor.STATES.curLine;
@@ -59,8 +60,7 @@ hyper.editor.getNextFieldNum = function() {
  * @returns the next field num if there is one, null if not
  */
 hyper.editor.getPrevFieldNum = function() {
-  console.log('hyper.editor.getPrevFieldNum');
-  console.log('hyper.editor.STATES.curField', hyper.editor.STATES.curField);
+  
   let field_num = hyper.editor.STATES.curField-1;  
   if (field_num > -1) {
     return field_num;
@@ -113,11 +113,11 @@ hyper.editor.goToPrevLine = function(params = {}) {
     let line_elem = hyper.editor.getPrevLine();
     console.log(field_num);
     if (!field_num) {
-      console.log("IF");
+      
       hyper.editor.setSelectedField({ line_elem });
     }
     else {
-      console.log('NONE');
+      
       let field = hyper.editor.getLastFieldOfLine({curLine});
       let field_num = field.getAttribute('data-field_num');
       hyper.editor.setSelectedField({ curLine, field_num });
@@ -128,7 +128,7 @@ hyper.editor.goToPrevLine = function(params = {}) {
 
 
 hyper.editor.selectFieldInCurrentLine = function(params = {}) {
-  console.log('hyper.editor.selectFieldInCurrentLine');
+  
   let {field_num} = params;
   let line_elem = hyper.editor.getCurrentLine();
   let field_elem = line_elem.querySelector(`.field[data-field_num="${field_num}"]`);
@@ -139,7 +139,7 @@ hyper.editor.selectFieldInCurrentLine = function(params = {}) {
 };
 
 hyper.editor.selectFirstFieldInLine = function(params = {}) {
-  console.log('hyper.editor.selectFirstFieldInLine');
+  
   let { line_elem} = params;
   field_num = 0;
   let field_elem = line_elem.querySelector(`.field[data-field_num="${field_num}"]`);
@@ -150,9 +150,9 @@ hyper.editor.selectFirstFieldInLine = function(params = {}) {
 };
 
 hyper.editor.selectLastFieldInPrevLine = function() {
-  console.log('hyper.editor.selectLastFieldInPrevLine');
+  
   line_elem = hyper.editor.getPrevLine();
-  console.log(line_elem);
+  
   field_elem = hyper.editor.getLastFieldOfLine({ line_elem });
   field_elem.setAttribute('data-focused', 'true');
   hyper.editor.STATES.curField = field_elem.getAttribute('data-field_num');
@@ -160,9 +160,7 @@ hyper.editor.selectLastFieldInPrevLine = function() {
 };
 
 hyper.editor.setSelectedField = function (params) {
-  let { line_elem, field_num } = params;
-  console.log(line_elem);
-  console.log(field_num);
+  let { line_elem, field_num } = params;  
   if (!line_elem && field_num != undefined) {
     hyper.editor.clearFocusedField();
     return hyper.editor.selectFieldInCurrentLine({field_num});    
@@ -182,24 +180,41 @@ hyper.editor.setSelectedField = function (params) {
     }
     
   }
-  // else if (!curLine && field_num) {
-  //   //current line, set field
-    
-  // }
-  // else if (!field_num && curLine) {
-  //   //current line, first field
-  //   let firstField = curLine.querySelector('.field');
-  //   firstField.setAttribute('data-focused', 'true');
-  //   hyper.editor.STATES.curField = 0;
-  //   return firstField;
-  // }
-  // else {
-  //   // hyper.editor.STATES.curField = field_num;
-  //   // let nextField = curLine.querySelector(`.field[data-field_num="${field_num}"]`);
+  
+};
 
-  //   // nextField.setAttribute('data-focused', 'true');
-  //   // return nextField;
-  // }
+hyper.editor.clearSelectedTableColumn = function() {
+  let elem = document.querySelector(`#table th[data-focused="true"]`);
+  if(elem) {
+    elem.setAttribute('data-focused', 'false');
+  }
+};
+
+hyper.editor.setSelectedTableColumn = function(params={}) {
+  let {line_num, field_num} = params;
+  
+  hyper.editor.clearSelectedTableColumn();
+  let col_elem = document.querySelector(`#table th[data-line_num="${line_num}"][data-field_num="${field_num}"]`);
+  if (col_elem) {
+    col_elem.setAttribute('data-focused', 'true');
+  }
+};
+
+hyper.editor.clearSelectedTableCell = function() {
+  let elem = document.querySelector(`#table tr td[data-focused="true"]`);
+  if(elem) {
+    elem.setAttribute('data-focused', 'false');
+  }
+};
+
+hyper.editor.setSelectedTableCell = function(params={}) {
+  let {line_num, field_num} = params;
+  
+  hyper.editor.clearSelectedTableCell();
+  let col_elem = document.querySelector(`#table tr td[data-line_num="${line_num}"][data-field_num="${field_num}"]`);
+  if (col_elem) {
+    col_elem.setAttribute('data-focused', 'true');
+  }
 };
 
 hyper.editor.initLinePointer = function(editor) {
@@ -217,7 +232,7 @@ hyper.editor.initLinePointer = function(editor) {
       
       let field_num = hyper.editor.getNextFieldNum();      
       if (field_num) {
-        console.log(field_num);
+        
         hyper.editor.setSelectedField({field_num});        
       }
       else {
@@ -225,40 +240,33 @@ hyper.editor.initLinePointer = function(editor) {
       }      
     }
     else if (key == "ArrowLeft") {
-      let field_num = hyper.editor.getPrevFieldNum();
-      console.log(field_num);
-      hyper.editor.setSelectedField({field_num});
-      // if (field_num > -1) {
-      //   let line_num = hyper.editor.STATES.curLine;
-      //   let field = document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
-      //   if (field) {
-      //     return field_num;
-      //   }
-      //   else {
-      //     return null;
-      //   }
-      // }
-      // else {
-      //   let line_num = hyper.editor.STATES.curLine - 1;
-      //   let line = hyper.editor.getLine({ line_num });
-      //   let last = line.lastChild;
-      //   console.log("GO TO PREV LINE", last);
-      // }
-      // console.log(`GET PREVIOUS FIELD NUM: ${field_num}`);
-      // if (field_num != undefined || field_num != null) {
-      //   console.log("there IS a previous field num");
-      //   hyper.editor.setSelectedField({field_num});        
-      // }
-      // else {
-      //   console.log("there IS NOT a previous field num");
-      //   hyper.editor.goToPrevLine();        
-      // }      
-      
-            
+      let field_num = hyper.editor.getPrevFieldNum();      
+      hyper.editor.setSelectedField({field_num});                  
     }
+    let field_num = hyper.editor.STATES.curField;
+    let line_num = hyper.editor.STATES.curLine;
+    if (field_num == 0 && line_num == 1) {
+      hyper.editor.setSelectedTableMeta();
+    }
+    else {
+      hyper.editor.clearSelectedTableMeta();
+
+    }
+    hyper.editor.setSelectedTableColumn({field_num, line_num});
+    hyper.editor.setSelectedTableCell({ field_num: hyper.editor.STATES.curField, line_num: hyper.editor.STATES.curLine});
   });
 };
 
+hyper.editor.clearSelectedTableMeta = function() {
+  let meta = document.querySelector("#meta");
+  meta.setAttribute('data-focused', 'false');
+
+};
+
+hyper.editor.setSelectedTableMeta = function() {
+  let meta = document.querySelector("#meta");
+  meta.setAttribute('data-focused', 'true');
+};
 
 
 hyper.editor.initEditor = function(elemId) {
