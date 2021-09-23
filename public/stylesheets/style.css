@@ -107,14 +107,18 @@ body {
         padding: 10px; }
       #tableW #tableC table th, #tableW #tableC table td {
         transition: 0.3s; }
+        #tableW #tableC table th:hover, #tableW #tableC table td:hover {
+          cursor: pointer; }
       #tableW #tableC table th[data-focused="false"] {
         background-color: #f5f5f5; }
       #tableW #tableC table th[data-focused="true"] {
-        background-color: #ffffcd; }
+        background-color: #ffffcd;
+        filter: drop-shadow(0px 4px 3px rgba(0, 0, 0, 0.25)); }
       #tableW #tableC table td[data-focused="false"] {
         background-color: #fff; }
       #tableW #tableC table td[data-focused="true"] {
-        background-color: #cdf9ff; }
+        background-color: #cdf9ff;
+        filter: drop-shadow(0px 4px 3px rgba(0, 0, 0, 0.25)); }
 
 #metaW {
   height: 64px;
@@ -164,7 +168,8 @@ body {
       display: flex;
       flex-direction: column; }
       #rightPaneW #rightPaneC #lineIndex .line {
-        height: 30px;
+        padding-top: 2px;
+        padding-bottom: 2px;
         display: flex;
         align-items: center;
         justify-content: center; }

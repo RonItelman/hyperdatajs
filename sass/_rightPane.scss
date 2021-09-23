@@ -20,7 +20,8 @@
       display:flex;
       flex-direction: column;
       .line {
-        height:30px;
+        padding-top:2px;
+        padding-bottom:2px;
         display:flex;
         align-items: center;
         justify-content: center;

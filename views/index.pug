@@ -14,27 +14,4 @@ block content
         a(target="_blank" href="https://github.com/RonItelman/hyperdatajs").button#code 
           i.fab.fa-github
           span GET
-  #contentW
-    include ./rightPane.pug
-    #metaW 
-      #metaC
-        #meta(data-focused="true")
-          .name 
-            input(placeholder="Table name (ex: Pets)")
-          .description 
-            input(placeholder="Table name (ex: Animals adopted by humans)")
-    #tableW
-      #tableC 
-        #table
-          table 
-            thead 
-              tr 
-                th(data-line_num="2" data-field_num="0" data-focused="false") col1 
-                th(data-line_num="3" data-field_num="0" data-focused="false") col2 
-                th(data-line_num="4" data-field_num="0" data-focused="false") col3
-            tbody 
-              tr 
-                td(data-focused="false" data-line_num="2", data-field_num="2") val1
-                td(data-focused="false" data-line_num="3", data-field_num="2") val2
-                td(data-focused="false" data-line_num="4", data-field_num="2") val2
-
+  include ./content.pug

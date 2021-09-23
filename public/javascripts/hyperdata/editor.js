@@ -45,7 +45,8 @@ hyper.editor.getNextField = function() {
  */
 hyper.editor.getNextFieldNum = function() {
   let line_num = hyper.editor.STATES.curLine;
-  let field_num = hyper.editor.STATES.curField+1;
+  let field_num = parseInt(hyper.editor.STATES.curField)+1;
+
   let field =  document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
   if (field) {
     return field_num;
@@ -76,12 +77,14 @@ hyper.editor.setSelectedLine = function(params) {
   let selected = document.querySelector(`#jsonEditor .lineW[data-selected="true"]`);
   selected.setAttribute('data-selected', 'false');
   line_elem.setAttribute('data-selected', 'true');
+  hyper.editor.STATES.curLine = line_num;
   return line_elem;
 };
 
 hyper.editor.clearFocusedField = function() {
-  let focused = document.querySelector('#jsonEditor .field[data-focused="true"]');
-  focused.setAttribute('data-focused', 'false');
+
+  let focused = document.querySelector('#jsonEditor .field[data-focused="true"]');  
+  focused.setAttribute('data-focused', 'false');  
 };
 
 
@@ -111,7 +114,7 @@ hyper.editor.goToPrevLine = function(params = {}) {
   let {field_num} = params;
   if (hyper.editor.STATES.curLine > 1) {
     let line_elem = hyper.editor.getPrevLine();
-    console.log(field_num);
+
     if (!field_num) {
       
       hyper.editor.setSelectedField({ line_elem });
@@ -124,6 +127,17 @@ hyper.editor.goToPrevLine = function(params = {}) {
 
     }
   }
+};
+
+
+hyper.editor.selectFieldInLine = function(params = {}) {  
+  let {field_num, line_elem, line_num} = params;  
+  let field_elem = line_elem.querySelector(`.field[data-field_num="${field_num}"]`);
+  field_elem.setAttribute('data-focused', true);
+  hyper.editor.STATES.curField = field_num;
+  hyper.editor.STATES.curLine = line_num;
+  return {line_elem, field_elem};
+
 };
 
 
@@ -160,57 +174,46 @@ hyper.editor.selectLastFieldInPrevLine = function() {
 };
 
 hyper.editor.setSelectedField = function (params) {
-  let { line_elem, field_num } = params;  
+  let { line_elem, field_num, line_num } = params;  
+
   if (!line_elem && field_num != undefined) {
     hyper.editor.clearFocusedField();
     return hyper.editor.selectFieldInCurrentLine({field_num});    
   }
-  else if (line_elem && field_num == undefined) {
-    //select first field
+  if (line_elem && field_num != undefined) {
     hyper.editor.clearFocusedField();
-    return hyper.editor.selectFirstFieldInLine({line_elem});
-    
-    // hyper.editor.setSelectedField({field_num:0});
+    return hyper.editor.selectFieldInLine({field_num, line_elem, line_num});    
   }
-  if (!line_elem && field_num == undefined) {
-    //go to previous line, set last field
+  else if (line_elem && field_num == undefined) {    
+    hyper.editor.clearFocusedField();
+    return hyper.editor.selectFirstFieldInLine({line_elem});        
+  }
+  if (!line_elem && field_num == undefined) {    
     if (hyper.editor.STATES.curLine > 1) {
       hyper.editor.clearFocusedField();
       return hyper.editor.selectLastFieldInPrevLine();
-    }
-    
-  }
-  
+    }    
+  }  
 };
 
-hyper.editor.clearSelectedTableColumn = function() {
-  let elem = document.querySelector(`#table th[data-focused="true"]`);
-  if(elem) {
-    elem.setAttribute('data-focused', 'false');
-  }
-};
+
 
 hyper.editor.setSelectedTableColumn = function(params={}) {
   let {line_num, field_num} = params;
   
-  hyper.editor.clearSelectedTableColumn();
+
+  hyper.table.clearSelectedHeader();
   let col_elem = document.querySelector(`#table th[data-line_num="${line_num}"][data-field_num="${field_num}"]`);
   if (col_elem) {
     col_elem.setAttribute('data-focused', 'true');
   }
 };
 
-hyper.editor.clearSelectedTableCell = function() {
-  let elem = document.querySelector(`#table tr td[data-focused="true"]`);
-  if(elem) {
-    elem.setAttribute('data-focused', 'false');
-  }
-};
 
 hyper.editor.setSelectedTableCell = function(params={}) {
   let {line_num, field_num} = params;
   
-  hyper.editor.clearSelectedTableCell();
+  hyper.table.clearSelectedCell();
   let col_elem = document.querySelector(`#table tr td[data-line_num="${line_num}"][data-field_num="${field_num}"]`);
   if (col_elem) {
     col_elem.setAttribute('data-focused', 'true');
@@ -230,6 +233,7 @@ hyper.editor.initLinePointer = function(editor) {
     }
     else if (key == "ArrowRight") {            
       
+
       let field_num = hyper.editor.getNextFieldNum();      
       if (field_num) {
         
@@ -245,7 +249,7 @@ hyper.editor.initLinePointer = function(editor) {
     }
     let field_num = hyper.editor.STATES.curField;
     let line_num = hyper.editor.STATES.curLine;
-    if (field_num == 0 && line_num == 1) {
+    if ((field_num == 0 && line_num == 1) || (line_num == hyper.editor.STATES.lastLine && field_num==0)) {
       hyper.editor.setSelectedTableMeta();
     }
     else {

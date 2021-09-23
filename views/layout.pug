@@ -8,13 +8,17 @@ html
     script(src="/javascripts/gsap/gsap.min.js")    
     script.
       let hyperdata = {
-        editor:{}
+        editor:{},
+        table:{}
       }
       window.hyperdata = hyperdata;
       let hyper = window.hyperdata;
     
   body
     block content
+
   script(src="/javascripts/hyperdata/editor.js")
+  script(src="/javascripts/hyperdata/table.js")
   script.
     hyper.editor.initEditor("#jsonEditor");
+    hyper.table.initTable({parent_elem_id: "#tableW"});
