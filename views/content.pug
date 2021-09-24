@@ -1,8 +1,19 @@
 #contentW
   include ./rightPane.pug
+  #tableFunctionsW 
+    #tableFunctionsC 
+      .tableFunction(data-state="active")
+        i.fal.fa-table
+        span Table
+      .tableFunction(data-state="disabled") 
+        i.fal.fa-list
+        span List
+      .tableFunction(data-state="disabled")  
+        i.fal.fa-list-alt
+        span Form
   #metaW 
     #metaC
-      #meta(data-focused="true")
+      #meta(data-focused="false")
         .name 
           input(placeholder="Table name (ex: Pets)")
         .description 
@@ -13,10 +24,10 @@
         table 
           thead 
             tr 
-              th(data-line_num="1" data-field_num="0" data-focused="false" data-type="array")#rowCol &nbsp; 
-              th(data-line_num="3" data-field_num="0" data-focused="false" data-type="key") col1 
-              th(data-line_num="4" data-field_num="0" data-focused="false" data-type="key") col2 
-              th(data-line_num="5" data-field_num="0" data-focused="false" data-type="key") col3
+              th(data-line_num="1" data-field_num="0" data-focused="false" data-type="array" data-col_id="0")#allCells &nbsp; 
+              th(data-line_num="3" data-field_num="0" data-focused="false" data-type="key" data-col_id="1").columnNum col1 
+              th(data-line_num="4" data-field_num="0" data-focused="false" data-type="key" data-col_id="2").columnNum col2 
+              th(data-line_num="5" data-field_num="0" data-focused="false" data-type="key" data-col_id="3").columnNum col3
           tbody 
             tr 
               td(data-focused="false" data-line_num="2", data-field_num="0" data-type="object").rowNum 1
@@ -25,7 +36,7 @@
               td(data-focused="false" data-line_num="5", data-field_num="2" data-type="value") val3
             tr 
               td(data-focused="false" data-line_num="7", data-field_num="0" data-type="object").rowNum 2
-              td(data-focused="false" data-line_num="3", data-field_num="2" data-type="value") val4
-              td(data-focused="false" data-line_num="4", data-field_num="2" data-type="value") val5
-              td(data-focused="false" data-line_num="5", data-field_num="2" data-type="value") val6
+              td(data-focused="false" data-line_num="8", data-field_num="2" data-type="value") val4
+              td(data-focused="false" data-line_num="9", data-field_num="2" data-type="value") val5
+              td(data-focused="false" data-line_num="10", data-field_num="2" data-type="value") val6
 

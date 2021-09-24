@@ -5,13 +5,61 @@
   right:0px;
   top:80px;
   z-index: 100;
+  #rightPaneMenuW {
+    border-bottom:1px solid #777;
+    position:relative;
+    left:-30px;
+    top:0px;
+    width:calc(100% + 40px);
+    height:40px;
+    display:flex;
+    align-items: center;
+    // justify-content: flex-end;
+    padding-right:30px;
+    background-color:#5a5a5a;      
+    
+    #rightPaneMenuC {
+      padding-left:10px;
+      .menu {
+        width:100%;
+        display:flex;
+        .button {
+          letter-spacing: 0.5px;
+        }
+        .button[data-state="disabled"] {
+          background-color:rgba(255,255,255,0);
+          color:#888;
+          border-color:#888;
+
+        }
+        .button[data-state="selected"] {
+          color:White;
+          // border-color:rgba(100,100,200, 0.35);
+          background-color:rgb(92, 114, 146);
+          border-color:rgba(255,255,255,0.5);
+
+        }
+        .button {
+          border:1px solid transparent;
+          transition: 0.35s;
+          margin-left:20px;
+          font-size:12px;
+          padding-top:4px;
+          padding-bottom:4px;
+          padding-left:14px;
+          padding-right:14px;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
   #rightPaneC {
     width:100%;
     height:100%;    
     position:relative;
     display:flex;
     #lineNumBack {
-      height:calc(100vh - 80px);
+      height:calc(100vh - 90px);
       position:absolute;
       left:-30px;            
       background-color:#5a5a5a;      
@@ -19,28 +67,28 @@
       top:0px;
       // z-index:10;
     }
-    #lineIndex {
-      padding-top:0px;
-      height:100%;
-      background-color: #666;
-      color:white;
-      width:40px;
-      display:flex;
-      flex-direction: column;
-      .line {
-        padding-top:2px;
-        padding-bottom:2px;
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        span {
-          font-size:16px;
-          font-family: monospace;
-        }
+    // #lineIndex {
+    //   padding-top:0px;
+    //   height:100%;
+    //   // background-color: #666;
+    //   color:white;
+    //   width:40px;
+    //   display:flex;
+    //   flex-direction: column;
+      // .line {
+      //   padding-top:2px;
+      //   padding-bottom:2px;
+      //   display:flex;
+      //   align-items: center;
+      //   justify-content: center;
+      //   span {
+      //     font-size:16px;
+      //     font-family: monospace;
+      //   }
         
         
-      }
-    }    
+      // }
+    // }    
     #jsonEditor {
       padding-top:0px;
       // padding-left:10px;
@@ -96,6 +144,15 @@
         // green
         .field[data-type="value"][data-focused="true"] {
           background-color:rgb(205, 249, 255);            
+          
+        }
+        .field[data-type="comment"][data-focused="true"] {
+          color:rgb(7, 120, 135);            
+          background-color: rgb(205, 249, 255);            
+          
+        }
+        .field[data-type="comment"][data-focused="false"] {
+          color:rgb(205, 249, 255);            
           
         }
         .field[data-type="colon"][data-focused="true"] {

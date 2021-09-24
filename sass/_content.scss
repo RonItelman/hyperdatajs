@@ -1,3 +1,55 @@
+#tableFunctionsW {
+  width:calc(100vw - 500px);
+  display:flex;
+  justify-content: flex-end;
+  margin-top:8px;
+      // position:absolute;
+      
+      // right:00px;
+      // top:-15px;
+      #tableFunctionsC {
+        display:flex;
+        .tableFunction[data-state="disabled"] {
+          border-color:white;
+          i, span {
+            color:#ccc;
+          }
+          &:hover {
+            cursor:not-allowed;
+          }
+        }
+        .tableFunction[data-state="active"] {
+          // background-color:#555;
+          border-color:#555;
+          padding-top:5px;
+          padding-bottom:5px;
+          padding-left:15px;
+          padding-right:15px;
+          
+          i, span {
+            color:#333;
+          }
+          &:hover {
+            cursor:pointer;
+          }
+        }
+        .tableFunction {
+          border-bottom:1px solid #ccc;
+          background-color:white;
+          transition:0.35s;
+          padding-top:5px;
+          padding-bottom:5px;
+          padding-left:15px;
+          padding-right:15px;
+          border-radius:0px;
+          margin-left:30px;
+          i {
+            padding-right:5px;
+          }
+        }
+      }
+    }
+
 #contentW {
   position:fixed;
   top:80px;

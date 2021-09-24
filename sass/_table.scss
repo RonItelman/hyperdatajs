@@ -17,11 +17,14 @@
       // border:1px solid #333;
       border-collapse: collapse;
       #rowCol {
-        background-color:#f5f5f5 !important;
+        background-color:#f5f5f5;
       }
       .rowNum {
         text-align: center;
-        background-color:#f5f5f5 !important;
+      }
+      .rowNum[data-focused="false"] {
+        
+        background-color:#f5f5f5;
       }
       tr, td, th {
         border-collapse: collapse;
@@ -29,7 +32,7 @@
         padding:10px;
       }
       th, td {
-        transition: 0.3s;
+        transition: 0.35s;
         &:hover {
           cursor: pointer;
         }
@@ -41,6 +44,23 @@
         background-color:rgb(255, 255, 205); 
         filter:drop-shadow(0px 4px 3px rgba(0,0,0,0.25));
       }
+      th[data-focused="true"][data-type="array"] {
+        background-color:rgb(238, 205, 255);
+        filter:drop-shadow(0px 4px 3px rgba(0,0,0,0.25));
+      }
+      td.rowSelected.rowNum {
+        background-color:rgb(205, 255, 213) !important;
+      }
+      td.rowSelected {
+        background-color:rgba(205, 255, 213, 0.35) !important;
+      }
+      td.columnSelected {
+        background-color:rgba(255, 255, 205, 0.35) !important;
+      }
+      .cellsSelected {
+        background-color:rgba(238, 205, 255, 0.35) !important;
+      }
+
       td[data-focused="false"] {
         background-color:#fff;
       }
@@ -48,12 +68,8 @@
         background-color:rgb(205, 249, 255);            
         filter:drop-shadow(0px 4px 3px rgba(0,0,0,0.25));
       }
-      td.rowNum[data-focused="true"][data-type="object"] {
+      td[data-focused="true"][data-type="object"] {
         background-color:rgb(205, 255, 213);
-        filter:drop-shadow(0px 4px 3px rgba(0,0,0,0.25));
-      }
-      td.rowNum[data-focused="true"][data-type="array"] {
-        background-color:rgb(238, 205, 255);
         filter:drop-shadow(0px 4px 3px rgba(0,0,0,0.25));
       }
     }

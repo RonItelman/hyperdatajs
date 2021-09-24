@@ -93,6 +93,93 @@ hyper.table.STATE = {
   table_parent_elem:null
 };
 
+hyper.table.clearSelectedRows = function() {
+  
+  let cells = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr td`);
+  cells.forEach(function(cell) {
+    cell.classList.remove('rowSelected');
+  });
+};
+
+hyper.table.clearSelectedColumns = function() {
+  
+  let cells = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr td`);
+  cells.forEach(function(cell) {
+    cell.classList.remove('columnSelected');
+  });
+};
+
+hyper.table.clearSelectedCells = function() {
+  
+  let cells = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr td`);
+  cells.forEach(function(cell) {
+    cell.classList.remove('cellsSelected');
+  });
+  let cols = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr th`);
+  cols.forEach(function(col) {
+    col.classList.remove('cellsSelected');
+  });
+};
+
+hyper.table.clearSelections = function() {
+  hyper.table.clearSelectedRows();
+  hyper.table.clearSelectedColumns();
+  hyper.table.clearSelectedCells();
+};
+
+hyper.table.addRowSelectListeners = function() {
+  let rows = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr .rowNum`);
+  rows.forEach(function(row) {
+    
+    row.addEventListener('click', function() {
+      hyper.table.clearSelections();
+      let parent = row.closest('tr');      
+      let tds = parent.querySelectorAll('td');      
+      tds.forEach(function(td) {        
+        td.classList.add('rowSelected');
+      });
+    });
+  }); 
+};
+
+hyper.table.addColumnSelectListeners = function() {
+  let cols = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr th.columnNum`);
+  cols.forEach(function(col) {
+    
+    col.addEventListener('click', function() {
+      console.log('click');
+      hyper.table.clearSelections();
+      let col_id = parseInt(col.getAttribute('data-col_id'));      
+      let rows = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr`);
+      rows.forEach(function (row) {
+        let tds = row.querySelectorAll('td') ;
+        let td = tds[col_id];        
+        if (td) {
+          td.classList.add('columnSelected');
+        }
+        
+      });
+    });
+  }); 
+};
+
+hyper.table.addAllCellsSelectListener = function() {
+  let all = document.querySelector(`${hyper.table.STATE.table_parent_id} #allCells`);
+  all.addEventListener('click', function() {
+    hyper.table.clearSelections();
+    let cells = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr td`);
+    cells.forEach(function(cell) {
+      cell.classList.add('cellsSelected');
+    });
+    let cols = document.querySelectorAll(`${hyper.table.STATE.table_parent_id} tr th`);
+    cols.forEach(function(col) {
+      if (col.id != "allCells") {
+        col.classList.add('cellsSelected');
+      }
+    });
+  });
+};
+
 hyper.table.initTable = function(params = {}) {
   let {parent_elem_id} = params;
   hyper.table.STATE.table_parent_id = parent_elem_id;
@@ -105,4 +192,8 @@ hyper.table.initTable = function(params = {}) {
   
   let cells = hyper.table.getTableCells({parent_elem});
   hyper.table.addCellListener(cells);
+
+  hyper.table.addRowSelectListeners();
+  hyper.table.addColumnSelectListeners();
+  hyper.table.addAllCellsSelectListener();
 };

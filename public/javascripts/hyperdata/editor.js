@@ -1,6 +1,6 @@
 hyper.editor.STATES = {
   inFocus: true,
-  curLine: 1,
+  curLine: 0,
   lastLine: 12,
   curField: 0
 };
@@ -75,18 +75,27 @@ hyper.editor.setSelectedLine = function(params) {
   let {line_num} = params;
   let line_elem = document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"]`);
   let selected = document.querySelector(`#jsonEditor .lineW[data-selected="true"]`);
-  selected.setAttribute('data-selected', 'false');
-  line_elem.setAttribute('data-selected', 'true');
-  hyper.editor.STATES.curLine = line_num;
+  if(selected) {
+    selected.setAttribute('data-selected', 'false');
+    line_elem.setAttribute('data-selected', 'true');
+    hyper.editor.STATES.curLine = line_num;
+  }
   return line_elem;
 };
 
 hyper.editor.clearFocusedField = function() {
 
   let focused = document.querySelector('#jsonEditor .field[data-focused="true"]');  
-  focused.setAttribute('data-focused', 'false');  
+  if(focused) {
+    focused.setAttribute('data-focused', 'false');  
+
+  }
 };
 
+hyper.editor.clearLine = function() {
+  let line_num = hyper.editor.STATES.curLine = 0;
+  hyper.editor.setSelectedLine({ line_num });
+};
 
 hyper.editor.goToNextLine = function() {
   if (hyper.editor.STATES.curLine < hyper.editor.STATES.lastLine) {
@@ -210,6 +219,7 @@ hyper.editor.setSelectedTableColumn = function(params={}) {
 };
 
 
+
 hyper.editor.setSelectedTableCell = function(params={}) {
   let {line_num, field_num} = params;
   
@@ -218,6 +228,12 @@ hyper.editor.setSelectedTableCell = function(params={}) {
   if (col_elem) {
     col_elem.setAttribute('data-focused', 'true');
   }
+};
+
+hyper.editor.reset = function() {
+  hyper.editor.setSelectedTableMeta();
+  hyper.editor.clearFocusedField();
+  hyper.editor.clearLine();
 };
 
 hyper.editor.initLinePointer = function(editor) {
@@ -247,15 +263,17 @@ hyper.editor.initLinePointer = function(editor) {
       let field_num = hyper.editor.getPrevFieldNum();      
       hyper.editor.setSelectedField({field_num});                  
     }
+    else if (key == "Escape") {
+      hyper.editor.reset();
+    }
     let field_num = hyper.editor.STATES.curField;
     let line_num = hyper.editor.STATES.curLine;
-    if ((field_num == 0 && line_num == 1) || (line_num == hyper.editor.STATES.lastLine && field_num==0)) {
-      hyper.editor.setSelectedTableMeta();
-    }
-    else {
-      hyper.editor.clearSelectedTableMeta();
+    // if ((field_num == 0 && line_num == 0)) {
+    // }
+    // else {
+    //   hyper.editor.clearSelectedTableMeta();
 
-    }
+    // }
     hyper.editor.setSelectedTableColumn({field_num, line_num});
     hyper.editor.setSelectedTableCell({ field_num: hyper.editor.STATES.curField, line_num: hyper.editor.STATES.curLine});
   });
