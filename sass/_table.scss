@@ -16,6 +16,13 @@
       width:100%;
       // border:1px solid #333;
       border-collapse: collapse;
+      #rowCol {
+        background-color:#f5f5f5 !important;
+      }
+      .rowNum {
+        text-align: center;
+        background-color:#f5f5f5 !important;
+      }
       tr, td, th {
         border-collapse: collapse;
         border:1px solid rgba(0,0,0,0.15);

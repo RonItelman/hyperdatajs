@@ -44,12 +44,29 @@
       width:100%;
       .lineW {
         width:100%;
+        position:relative;
         // height:30px;
         padding-top:2px;
         padding-bottom:2px;
         transition: 0.1s;
         // border:1px solid transparent;
         
+      }
+      .lineIndex {
+        position:absolute;
+        left:-30px;
+        font-family: monospace;
+        height:100%;
+        color:#ccc;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        background-color:#5a5a5a;
+        font-weight:bold;
+        width:30px;
+        top:0px;
+        padding-top:2px;
+        padding-bottom:2px;
       }
       .lineW[data-selected="true"] {
         background-color:rgba(211, 212, 255, 0.3);
@@ -75,8 +92,11 @@
           background-color:rgb(245, 205, 255);            
           
         }
-        .field[data-type="bracket"][data-focused="true"] {
+        .field[data-type="object"][data-focused="true"] {
           background-color:rgb(205, 255, 213);                      
+        }   
+        .field[data-type="array"][data-focused="true"] {
+          background-color:rgb(238, 205, 255);                      
         }   
         .field[data-type="comma"][data-focused="true"] {
           background-color:rgb(205, 211, 255);                      

@@ -13,12 +13,19 @@
         table 
           thead 
             tr 
-              th(data-line_num="2" data-field_num="0" data-focused="false") col1 
-              th(data-line_num="3" data-field_num="0" data-focused="false") col2 
-              th(data-line_num="4" data-field_num="0" data-focused="false") col3
+              th(data-line_num="1" data-field_num="0" data-focused="false")#rowCol &nbsp; 
+              th(data-line_num="3" data-field_num="0" data-focused="false") col1 
+              th(data-line_num="4" data-field_num="0" data-focused="false") col2 
+              th(data-line_num="5" data-field_num="0" data-focused="false") col3
           tbody 
             tr 
-              td(data-focused="false" data-line_num="2", data-field_num="2") val1
-              td(data-focused="false" data-line_num="3", data-field_num="2") val2
+              td(data-focused="false" data-line_num="1", data-field_num="0").rowNum 1
+              td(data-focused="false" data-line_num="3", data-field_num="2") val1
               td(data-focused="false" data-line_num="4", data-field_num="2") val2
+              td(data-focused="false" data-line_num="5", data-field_num="2") val3
+            tr 
+              td(data-focused="false" data-line_num="1", data-field_num="0").rowNum 2
+              td(data-focused="false" data-line_num="3", data-field_num="2") val4
+              td(data-focused="false" data-line_num="4", data-field_num="2") val5
+              td(data-focused="false" data-line_num="5", data-field_num="2") val6
 
