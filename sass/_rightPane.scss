@@ -10,7 +10,15 @@
     height:100%;    
     position:relative;
     display:flex;
-    
+    #lineNumBack {
+      height:calc(100vh - 80px);
+      position:absolute;
+      left:-30px;            
+      background-color:#5a5a5a;      
+      width:30px;
+      top:0px;
+      // z-index:10;
+    }
     #lineIndex {
       padding-top:0px;
       height:100%;
@@ -53,6 +61,7 @@
         
       }
       .lineIndex {
+        // z-index:100;
         position:absolute;
         left:-30px;
         font-family: monospace;
@@ -84,6 +93,7 @@
         .field[data-type="key"][data-focused="true"] {
           background-color:rgb(255, 255, 205);            
         }
+        // green
         .field[data-type="value"][data-focused="true"] {
           background-color:rgb(205, 249, 255);            
           
