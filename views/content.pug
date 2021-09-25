@@ -4,20 +4,23 @@
     #tableFunctionsC 
       .tableFunction(data-state="active")
         i.fal.fa-table
-        span Table
+        span TABLE
       .tableFunction(data-state="disabled") 
         i.fal.fa-list
-        span List
+        span LIST
       .tableFunction(data-state="disabled")  
         i.fal.fa-list-alt
-        span Form
+        span FORM
+      .tableFunction(data-state="disabled")  
+        i.fal.fa-sparkles
+        span EVENTS
   #metaW 
     #metaC
       #meta(data-focused="false")
         .name 
-          input(placeholder="Table name (ex: Pets)")
+          input(placeholder="Table name (ex: Pets)" value="Pets")
         .description 
-          input(placeholder="Table name (ex: Animals adopted by humans)")
+          input(placeholder="Table name (ex: Animals adopted by humans)" value="Animals adopted by humans")
   #tableW
     #tableC 
       #table

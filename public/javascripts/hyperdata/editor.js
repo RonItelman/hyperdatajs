@@ -9,7 +9,7 @@ hyper.editor.initIndents = function(editor) {
   let lines = editor.querySelectorAll('.line');
   lines.forEach(function (line) {
     let indent = line.getAttribute('data-indent');
-    line.style.marginLeft = `${indent * 20}px`;
+    line.style.marginLeft = `${indent * 18}px`;
   });
 };
 
@@ -121,7 +121,7 @@ hyper.editor.getPrevLine = function() {
 hyper.editor.goToPrevLine = function(params = {}) {
   
   let {field_num} = params;
-  if (hyper.editor.STATES.curLine > 1) {
+  if (hyper.editor.STATES.curLine > 0) {
     let line_elem = hyper.editor.getPrevLine();
 
     if (!field_num) {

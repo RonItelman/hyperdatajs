@@ -64,6 +64,7 @@
       left:-30px;            
       background-color:#5a5a5a;      
       width:30px;
+      
       top:0px;
       // z-index:10;
     }
@@ -120,6 +121,7 @@
         justify-content: center;
         background-color:#5a5a5a;
         font-weight:bold;
+        font-size:14px;
         width:30px;
         top:0px;
         padding-top:2px;
@@ -173,7 +175,7 @@
         }
         .field {
           transition:0.35s;
-          font-size:16px;
+          font-size:14px;
           font-family: monospace;
           color:white;
           border-radius:2px;

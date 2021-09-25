@@ -247,6 +247,7 @@ body {
         justify-content: center;
         background-color: #5a5a5a;
         font-weight: bold;
+        font-size: 14px;
         width: 30px;
         top: 0px;
         padding-top: 2px;
@@ -283,7 +284,7 @@ body {
           color: black; }
         #rightPaneW #rightPaneC #jsonEditor .line .field {
           transition: 0.35s;
-          font-size: 16px;
+          font-size: 14px;
           font-family: monospace;
           color: white;
           border-radius: 2px; }
@@ -322,9 +323,10 @@ body {
       padding-left: 15px;
       padding-right: 15px;
       border-radius: 0px;
-      margin-left: 30px; }
+      margin-left: 30px;
+      font-size: 13px; }
       #tableFunctionsW #tableFunctionsC .tableFunction i {
-        padding-right: 5px; }
+        padding-right: 8px; }
 
 #contentW {
   position: fixed;

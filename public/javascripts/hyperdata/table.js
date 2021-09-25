@@ -52,6 +52,7 @@ hyper.table.addHeaderListener = function(headers) {
         
         
         let line_num = header.getAttribute('data-line_num');
+        hyper.editor.setSelectedLine({ line_num });
         let field_num = header.getAttribute('data-field_num');
         
         let line_elem = hyper.editor.getLine({line_num});
@@ -75,9 +76,9 @@ hyper.table.addCellListener = function(cells) {
         
         
         let line_num = cell.getAttribute('data-line_num');
+        hyper.editor.setSelectedLine({line_num});
         let field_num = cell.getAttribute('data-field_num');
       
-        hyper.editor.setSelectedLine({line_num});
         let line_elem = hyper.editor.getLine({line_num});
         hyper.editor.setSelectedField({line_elem, field_num, line_num});
 

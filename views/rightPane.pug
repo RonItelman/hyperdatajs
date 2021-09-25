@@ -2,85 +2,71 @@
   #rightPaneMenuW
     #rightPaneMenuC 
       .menu
-        .button(data-state="selected") JSON 
-        .button(data-state="disabled") JSON-HD 
-        .button(data-state="disabled") Query 
-        .button(data-state="disabled") API
-        .button(data-state="disabled") f(x)
+        .button(data-state="selected") JSON
+        .button(data-state="disabled") SCHEMA
+        .button(data-state="disabled") FORM
+        .button(data-state="disabled") OBSERVABLE
+        
   #rightPaneC  
     #lineNumBack   
     #jsonEditor
-      .lineW(data-selected="true" data-line_num="0").none
+      .lineW(data-selected="true" data-line_num="0")
         .lineIndex 0
         .line(data-indent="0" )
-          .field(contenteditable="true" data-type="array" data-focused="true"  data-field_num="0") // Table name      
+          .field(contenteditable="true" data-type="object" data-focused="true"  data-field_num="0") {      
       .lineW(data-selected="false" data-line_num="1")
         .lineIndex 1
-        .line(data-indent="0" )
-          .field(contenteditable="true" data-type="array" data-focused="false"  data-field_num="0") [
+        .line(data-indent="1")
+          .field(contenteditable="true" data-type="key" data-focused="false"  data-field_num="0") "@table"   
+          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
+          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="2") {
       .lineW(data-selected="false" data-line_num="2")
         .lineIndex 2
-        .line(data-indent="1" )
-          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="0") {          
+        .line(data-indent="2")
+          .field(contenteditable="true" data-type="key" data-focused="false"  data-field_num="0") "type"   
+          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
+          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "table"
+          .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="3") ,
+      .lineW(data-selected="false" data-line_num="2")
+        .lineIndex 2
+        .line(data-indent="2")
+          .field(contenteditable="true" data-type="key" data-focused="false"  data-field_num="0") "label"   
+          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
+          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "Pets"
+          .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="3") ,
       .lineW(data-selected="false" data-line_num="3")
         .lineIndex 3
         .line(data-indent="2")
+          .field(contenteditable="true" data-type="key" data-focused="false"  data-field_num="0") "description"   
+          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
+          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "Animals adopted by humans"
+      .lineW(data-selected="false" data-line_num="4")
+        .lineIndex 4
+        .line(data-indent="1")
+          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="0") }
+          .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="1") ,
+      .lineW(data-selected="false" data-line_num="5")
+        .lineIndex 5
+        .line(data-indent="1")
+          .field(contenteditable="true" data-type="key" data-focused="false"  data-field_num="0") "table"
+          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
+          .field(contenteditable="true" data-type="array" data-focused="false"  data-field_num="2") [       
+      .lineW(data-selected="false" data-line_num="6")
+        .lineIndex 6
+        .line(data-indent="2")
+          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="0") {          
+      .lineW(data-selected="false" data-line_num="7")
+        .lineIndex 7
+        .line(data-indent="3")
           .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "col1"
           .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
           .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "val1"
           .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="3") ,
-      .lineW(data-selected="false" data-line_num="4")
-        .lineIndex 4
-        .line(data-indent="2")
-          .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "col2"
-          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
-          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "val2"
-          .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="3") ,
-      .lineW(data-selected="false" data-line_num="5")
-        .lineIndex 5
-        .line(data-indent="2")
-          .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "col3"
-          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
-          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "val3"
-          
-      .lineW(data-selected="false" data-line_num="6")
-        .lineIndex 6
-        .line(data-indent="1")
-          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="0") } 
-          .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="1") ,
-      .lineW(data-selected="false" data-line_num="7")
-        .lineIndex 7
-        .line(data-indent="1" )
-          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="0") {          
+
       .lineW(data-selected="false" data-line_num="8")
         .lineIndex 8
-        .line(data-indent="2")
-          .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "col1"
+        .line(data-indent="3")
+          .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "@col1"
           .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
-          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "val4"
-          .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="3") ,
-      .lineW(data-selected="false" data-line_num="9")
-        .lineIndex 9
-        .line(data-indent="2")
-          .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "col2"
-          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
-          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "val5"
-          .field(contenteditable="true" data-type="comma" data-focused="false"  data-field_num="3") ,
-      .lineW(data-selected="false" data-line_num="10")
-        .lineIndex 10
-        .line(data-indent="2")
-          .field(contenteditable="true" data-type="key" data-focused="false" data-field_num="0") "col3"
-          .field(contenteditable="true" data-type="colon" data-focused="false"  data-field_num="1") :
-          .field(contenteditable="true" data-type="value" data-focused="false"  data-field_num="2") "val6"
+          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="2") {
           
-      .lineW(data-selected="false" data-line_num="11")
-        .lineIndex 11
-        .line(data-indent="1")
-          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="0") }           
-      .lineW(data-selected="false" data-line_num="12")
-        .lineIndex 12
-        .line(data-indent="0" )
-          .field(contenteditable="true" data-type="array" data-focused="false"  data-field_num="0") [
-    
-          
-
