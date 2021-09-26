@@ -126,6 +126,16 @@ hyper.table.clearSelections = function() {
   hyper.table.clearSelectedRows();
   hyper.table.clearSelectedColumns();
   hyper.table.clearSelectedCells();
+  
+};
+
+hyper.table.rowClicked = function(row) {
+  hyper.table.clearSelections();
+  let parent = row.closest('tr');
+  let tds = parent.querySelectorAll('td');
+  tds.forEach(function (td) {
+    td.classList.add('rowSelected');
+  });
 };
 
 hyper.table.addRowSelectListeners = function() {
@@ -133,12 +143,7 @@ hyper.table.addRowSelectListeners = function() {
   rows.forEach(function(row) {
     
     row.addEventListener('click', function() {
-      hyper.table.clearSelections();
-      let parent = row.closest('tr');      
-      let tds = parent.querySelectorAll('td');      
-      tds.forEach(function(td) {        
-        td.classList.add('rowSelected');
-      });
+      hyper.table.rowClicked(row);
     });
   }); 
 };
@@ -181,20 +186,34 @@ hyper.table.addAllCellsSelectListener = function() {
   });
 };
 
+hyper.table.addClearListener = function() {
+  window.addEventListener('click', function(event) {
+    if (event.target.matches('td') || event.target.matches('th')) {
+
+    }
+    else {
+      hyper.table.clearSelections();
+      let focused = document.querySelector('#table *[data-focused="true"]');
+      focused.setAttribute('data-focused', "false");
+    }
+  });
+};
+
 hyper.table.initTable = function(params = {}) {
   let {parent_elem_id} = params;
   hyper.table.STATE.table_parent_id = parent_elem_id;
 
   let parent_elem = document.querySelector(parent_elem_id);
   hyper.table.STATE.table_parent_elem = parent_elem;
-
+  
   let headers = hyper.table.getTableHeaders({parent_elem});
   hyper.table.addHeaderListener(headers);
   
   let cells = hyper.table.getTableCells({parent_elem});
   hyper.table.addCellListener(cells);
-
+  
   hyper.table.addRowSelectListeners();
   hyper.table.addColumnSelectListeners();
   hyper.table.addAllCellsSelectListener();
+  hyper.table.addClearListener();
 };
