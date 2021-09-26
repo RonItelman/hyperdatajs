@@ -1,7 +1,7 @@
 hyper.editor.STATES = {
   inFocus: true,
-  curLine: 0,
-  lastLine: 12,
+  curLine: 1,
+  lastLine: 28,
   curField: 0
 };
 
@@ -98,6 +98,7 @@ hyper.editor.clearLine = function() {
 };
 
 hyper.editor.goToNextLine = function() {
+  
   if (hyper.editor.STATES.curLine < hyper.editor.STATES.lastLine) {
     let line_num = ++hyper.editor.STATES.curLine;
     let line_elem = hyper.editor.setSelectedLine({ line_num });
@@ -116,9 +117,10 @@ hyper.editor.getPrevLine = function() {
   let line_num = --hyper.editor.STATES.curLine;
   let curLine = hyper.editor.setSelectedLine({ line_num });
   return curLine;
-}
+};
 
 hyper.editor.goToPrevLine = function(params = {}) {
+  
   
   let {field_num} = params;
   if (hyper.editor.STATES.curLine > 0) {
