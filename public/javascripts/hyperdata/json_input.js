@@ -10,7 +10,7 @@ hyper.json_input.init = function() {
   input.addEventListener('keyup', function() {    
     meta.value = input.value;    
     if (meta.value) {
-      console.log(meta.value);
+      
       try {
         let obj = JSON.parse(meta.value);
         gsap.to(input, { backgroundColor:"rgb(196, 255, 215)", borderColor:"green", duration:0.3});

@@ -83,7 +83,11 @@ body {
       border-radius: 3px;
       display: flex;
       align-items: center; }
+      #buttonsW #buttonsC .button span {
+        color: #555; }
       #buttonsW #buttonsC .button i {
+        margin-right: 8px;
+        color: #555;
         font-size: 20px; }
       #buttonsW #buttonsC .button:hover {
         cursor: pointer; }
