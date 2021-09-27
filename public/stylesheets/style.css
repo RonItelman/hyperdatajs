@@ -317,13 +317,13 @@ body {
       #tableFunctionsW #tableFunctionsC .tableFunction[data-state="disabled"]:hover {
         cursor: not-allowed; }
     #tableFunctionsW #tableFunctionsC .tableFunction[data-state="active"] {
-      border-color: #555;
+      background-color: #555;
       padding-top: 5px;
       padding-bottom: 5px;
       padding-left: 15px;
       padding-right: 15px; }
       #tableFunctionsW #tableFunctionsC .tableFunction[data-state="active"] i, #tableFunctionsW #tableFunctionsC .tableFunction[data-state="active"] span {
-        color: #333; }
+        color: white; }
       #tableFunctionsW #tableFunctionsC .tableFunction[data-state="active"]:hover {
         cursor: pointer; }
     #tableFunctionsW #tableFunctionsC .tableFunction[data-state="enabled"] {
@@ -339,7 +339,6 @@ body {
     #tableFunctionsW #tableFunctionsC .tableFunction {
       display: flex;
       align-items: center;
-      border-bottom: 2px solid #ccc;
       background-color: transparent;
       transition: 0.35s;
       padding-top: 5px;
@@ -350,7 +349,8 @@ body {
       margin-left: 20px;
       margin-right: 20px;
       font-size: 13px;
-      height: 40px; }
+      height: 26px;
+      border-radius: 2px; }
       #tableFunctionsW #tableFunctionsC .tableFunction i {
         padding-right: 8px; }
 
