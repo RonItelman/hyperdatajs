@@ -1,14 +1,19 @@
 #tableFunctionsW {
-  width:calc(100vw - 500px);
+  width:calc(100vw - 480px);
   display:flex;
   justify-content: flex-end;
-  margin-top:8px;
+  height:40px;
+  align-items: center;
+  background-color:#f5f5f5;
       // position:absolute;
       
       // right:00px;
       // top:-15px;
       #tableFunctionsC {
         display:flex;
+        padding-right:30px;
+        justify-content: center;
+        width:100%;
         .tableFunction[data-state="disabled"] {
           border-color:white;
           i, span {
@@ -33,17 +38,36 @@
             cursor:pointer;
           }
         }
+        .tableFunction[data-state="enabled"] {
+          // background-color:#555;
+          border-color:transparent;
+          padding-top:5px;
+          padding-bottom:5px;
+          padding-left:15px;
+          padding-right:15px;
+          
+          i, span {
+            color:#333;
+          }
+          &:hover {
+            cursor:pointer;
+          }
+        }
         .tableFunction {
-          border-bottom:1px solid #ccc;
-          background-color:white;
+          display:flex;
+          align-items: center;
+          border-bottom:2px solid #ccc;
+          background-color:transparent;
           transition:0.35s;
           padding-top:5px;
           padding-bottom:5px;
           padding-left:15px;
           padding-right:15px;
           border-radius:0px;
-          margin-left:30px;
+          margin-left:20px;
+          margin-right:20px;
           font-size:13px;
+          height:40px;
           i {
             padding-right:8px;
           }
@@ -53,8 +77,8 @@
 
 #contentW {
   position:fixed;
-  top:80px;
+  top:50px;
   width:100%;
-  height:calc(100vh - 80px);
+  height:calc(100vh - 50px);
   
 }

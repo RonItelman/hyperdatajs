@@ -193,8 +193,10 @@ hyper.table.addClearListener = function() {
     }
     else {
       hyper.table.clearSelections();
-      let focused = document.querySelector('#table *[data-focused="true"]');
-      focused.setAttribute('data-focused', "false");
+      let focused = document.querySelector(`${hyper.table.STATE.table_parent_id} #table *[data-focused="true"]`);
+      if(focused) {
+        focused.setAttribute('data-focused', "false");
+      }
     }
   });
 };

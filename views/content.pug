@@ -1,40 +1,8 @@
 #contentW
-  include ./rightPane.pug
-  #tableFunctionsW 
-    #tableFunctionsC 
-      .tableFunction(data-state="active")
-        i.fal.fa-table
-        span TABLE
-      .tableFunction(data-state="disabled") 
-        i.fal.fa-list
-        span LIST
-      .tableFunction(data-state="disabled")  
-        i.fal.fa-list-alt
-        span FORM
-      .tableFunction(data-state="disabled")  
-        i.fal.fa-sparkles
-        span EVENTS
-  #metaW 
-    #metaC
-      #meta(data-focused="false")
-        .name 
-          input(placeholder="Table name (ex: Pets)" value="Pets")
-        .description 
-          input(placeholder="Table name (ex: Animals adopted by humans)" value="Animals adopted by humans")
-  #tableW
-    #tableC 
-      #table
-        table 
-          thead 
-            tr 
-              th(data-line_num="6" data-field_num="0" data-focused="false" data-type="array" data-col_id="0")#allCells &nbsp; 
-              th(data-line_num="10" data-field_num="2" data-focused="false" data-type="key" data-col_id="1").columnNum Species 
-              th(data-line_num="18" data-field_num="2" data-focused="false" data-type="key" data-col_id="2").columnNum Barks
-              
-          tbody 
-            tr 
-              td(data-focused="false" data-line_num="7", data-field_num="0" data-type="object").rowNum 1
-              td(data-focused="false" data-line_num="11", data-field_num="2" data-type="value") Dog
-              td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") true
-            
-            
+  .viewW#tableView(data-state="hidden")
+    include ./table/rightPane.pug                       
+    include ./table/content.pug                       
+  .viewW#jsonView(data-state="visible")
+    include ./json/rightPane.pug
+    include ./json/content.pug
+    
