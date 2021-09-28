@@ -24,14 +24,50 @@ hyper.json_input.updateMetaVal = function(params = {}) {
   return meta.value;
 };
 
+
+
+
+
 hyper.json_input.convertJSONToArray = function(params = {}) {
   let {meta} = params;
   let json = meta.value;
-  console.log(json);
-  let rex = /{/;
-  let out = rex.exec(json);
-  console.log(out);
+  jsonObj = JSON.parse(json);
+  const parseJSONToArray = obj => {
+    var res = [];
+    if (Array.isArray(obj)) {
+      res.push('[');
+      for (entry of obj) {
+        var parsed = parseJSONToArray(entry);
+        //while (Array.isArray(parsed)) parsed = parseJSONToArray(entry);
+        res.push(parsed, ',');
+      }
+      res.splice(-1);
+      res = [...res, ']', ','];
+    }
+    else if (obj && typeof obj === 'object') {
+      obj = Object.entries(obj);
+      res.push("{");
+      for (entry of obj) {
+        res = [...res, entry[0], ":", ...parseJSONToArray(entry[1]), ','];
+      }
+      res.splice(-1);
+      res.push("}");
+    } else {
+      res = typeof obj === 'string' ? [obj] : obj;
+    }
+    return Array.isArray(res) ? res.flat() : res;
+  };
+  let arr = parseJSONToArray(jsonObj);
+  let editor = document.querySelector("#jsonEditor .line .field");
+  
+  editor.textContent = JSON.stringify(arr, null, 4);
+  
 
+};
+
+hyper.json_input.error = function() {
+  let editor = document.querySelector("#jsonEditor .line .field");
+  editor.textContent = `//ERROR IN JSON`;
 };
 
 hyper.json_input.addFocusListener = function(params = {}) {
@@ -78,7 +114,12 @@ hyper.json_input.addKeyListener = function(params={}) {
     if (meta_val != "") {
       
       let valid = hyper.json_input.checkIfValidJson({input, val:meta.val});
-      
+      if(valid) {
+        hyper.json_input.convertJSONToArray({meta});
+      }
+      else {
+        hyper.json_input.error();
+      }
       hyper.json_input.setInputColors({input, valid});
       
     }    
