@@ -4,6 +4,7 @@ hyper.json_input.init = function() {
   hyper.json_input.addFocusListener({ input, meta});
   hyper.json_input.addBlurListener({ input, meta });
   hyper.json_input.addKeyListener({ input, meta });
+  hyper.json_input.convertJSONToArray({meta});
 };
 
 hyper.json_input.getElems = function() {
@@ -23,13 +24,21 @@ hyper.json_input.updateMetaVal = function(params = {}) {
   return meta.value;
 };
 
+hyper.json_input.convertJSONToArray = function(params = {}) {
+  let {meta} = params;
+  let json = meta.value;
+  console.log(json);
+  let rex = /{/;
+  let out = rex.exec(json);
+  console.log(out);
+
+};
+
 hyper.json_input.addFocusListener = function(params = {}) {
   let {input, meta} = params;
   input.addEventListener('focus', function () {
     if (meta.value != undefined && meta.value != null && meta.value != "") {
-      console.log(meta.value);
-      console.log(meta.value == undefined);
-      console.log(typeof meta.value);
+
       let valid = hyper.json_input.checkIfValidJson({input, meta});
       hyper.json_input.setInputColors({valid, input});
     }
@@ -49,11 +58,11 @@ hyper.json_input.addBlurListener = function(params = {}) {
   input.addEventListener('blur', function () {
     let valid = hyper.json_input.checkIfValidJson({input, meta});
     if (valid) {
-      console.log('valid');
+
       hyper.json_input.resetInputColors({input});
     }
     else {
-      console.log('invalid');
+
       hyper.json_input.setInputColors({valid, input});
     }
 
@@ -67,9 +76,9 @@ hyper.json_input.addKeyListener = function(params={}) {
   input.addEventListener('keyup', function () {
     let meta_val = hyper.json_input.updateMetaVal({meta, input});
     if (meta_val != "") {
-      console.log('has input', meta_val);
+      
       let valid = hyper.json_input.checkIfValidJson({input, val:meta.val});
-      console.log(valid);
+      
       hyper.json_input.setInputColors({input, valid});
       
     }    

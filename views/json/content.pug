@@ -6,7 +6,15 @@
       .inspector 
         span BLOCK 1
   #jsonInput 
-    textarea(placeholder="Input JSON") { 
-      |   "hello":"world",
-      |   "\"foo\"":"bar"
+    textarea(placeholder="Input JSON") 
+      | { 
+      |     "hello":"world",
+      |     "\"foo\"":"bar",
+      |     "my_object":{
+      |         "my_array": [
+      |             1,
+      |             null,
+      |             {"my_key":"my_value"}
+      |         ]
+      |     }
       | }
