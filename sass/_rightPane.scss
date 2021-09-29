@@ -1,3 +1,9 @@
+.paneW[data-selected="false"] {
+  opacity:0;
+  display:none;
+}
+
+
 #rightPaneW {
   width:450px;
   height:calc(100vh - 50px);
@@ -31,13 +37,13 @@
           border-color:#888;
 
         }
-        .button[data-state="enabled"] {
+        .button[data-selected="false"] {
           
           color:white;
           
 
         }
-        .button[data-state="selected"] {
+        .button[data-selected="true"] {
           color:White;          
           background-color:rgb(92, 114, 146);
           border-color:rgba(255,255,255,0.5);

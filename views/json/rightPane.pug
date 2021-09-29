@@ -2,15 +2,12 @@
   #rightPaneMenuW
     #rightPaneMenuC 
       .menu        
-        .button(data-state="selected" data-view="array") ARRAY
-        .button(data-state="enabled" data-view="object") OBJECT
-        .button(data-state="enabled" data-view="object") JSON-HD
+        //- .button(data-selected="true" data-view="array") ARRAY
+        //- .button(data-selected="false" data-view="object") OBJECT
+        //- .button(data-selected="false" data-view="object") JSON-HD
+        //- .button(data-selected="false" data-view="object") QUERY
   #rightPaneC  
     .rightPane(data-view="input")
     #lineNumBack   
     #jsonEditor
-      .lineW(data-selected="true" data-line_num="1")
-        .lineIndex 1
-        .line(data-indent="0" )
-          .field(contenteditable="true" data-type="object" data-focused="false"  data-field_num="0") &nbsp;     
-      
+      include ./rightPane/array.pug

@@ -8,8 +8,15 @@ html
     script(src="/javascripts/gsap/gsap.min.js")    
     script.
       let hyperdata = {
-        editor:{},
-        json_input:{},
+        views: {
+          json:{
+            array:{}, //handles the array tab in the JSON-HD editor
+            elems:{}, //handles pointers to HTML elems
+            init:{}, //initializes the libraries in order
+            input:{} //handles the json input,            
+          }
+        },
+        editor:{},        
         table:{}
       }
       window.hyperdata = hyperdata;
@@ -18,10 +25,14 @@ html
   body
     block content
 
-  script(src="/javascripts/hyperdata/editor.js")
-  script(src="/javascripts/hyperdata/table.js")
-  script(src="/javascripts/hyperdata/json_input.js")
+  script(src="/javascripts/hyperdata/views/json/init.js")
+  script(src="/javascripts/hyperdata/views/json/elems.js")
+  script(src="/javascripts/hyperdata/views/json/input.js")
+  script(src="/javascripts/hyperdata/views/json/array.js")
+  //- script(src="/javascripts/hyperdata/editor.js")
+  //- script(src="/javascripts/hyperdata/views/json/editor.js")
+  //- script(src="/javascripts/hyperdata/table.js")
   script.
+    hyper.views.json.init();
     //- hyper.editor.initEditor("#jsonEditor");
     //- hyper.table.initTable({parent_elem_id: "#tableView #tableW"});
-    hyper.json_input.init();

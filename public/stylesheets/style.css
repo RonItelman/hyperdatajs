@@ -173,6 +173,10 @@ body {
     #metaW #metaC #meta[data-focused="true"] {
       background-color: #f5f5f5; }
 
+.paneW[data-selected="false"] {
+  opacity: 0;
+  display: none; }
+
 #rightPaneW {
   width: 450px;
   height: calc(100vh - 50px);
@@ -202,9 +206,9 @@ body {
           background-color: rgba(255, 255, 255, 0);
           color: #888;
           border-color: #888; }
-        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button[data-state="enabled"] {
+        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button[data-selected="false"] {
           color: white; }
-        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button[data-state="selected"] {
+        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button[data-selected="true"] {
           color: White;
           background-color: #5c7292;
           border-color: rgba(255, 255, 255, 0.5); }

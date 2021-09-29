@@ -3,26 +3,26 @@
     #tableFunctionsC 
       .tableFunction(data-state="active") 
         i.fal.fa-brackets-curly
-        span JSON-HD
+        span JSON
       .tableFunction(data-state="enabled")
         i.fal.fa-table
-        span TABLE-HD
+        span TABLE
       .tableFunction(data-state="enabled")  
         i.fal.fa-list-alt
-        span FORM-HD
+        span FORM
       .tableFunction(data-state="enabled")  
         i.fal.fa-sparkles
-        span OBSERVABLE-HD
+        span OBSERVABLE
       .tableFunction(data-state="enabled")  
         i.fal.fa-chart-bar
-        span VISUALIZE-HD
+        span VISUALIZE
       .tableFunction(data-state="enabled")  
         i.fal.fa-chart-bar
-        span API-HD
-  //- .viewW#tableView(data-state="hidden")
-  //-   include ./table/rightPane.pug                       
-  //-   include ./table/content.pug                       
-  .viewW#jsonView(data-state="visible")
+        span API
+  .viewW#tableView(data-state="hidden")
+    include ./table/rightPane.pug                       
+    include ./table/content.pug                       
+  .viewW#jsonView(data-state="selected")
     include ./json/rightPane.pug
     include ./json/content.pug
     
