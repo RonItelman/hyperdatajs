@@ -236,19 +236,19 @@ body {
       background-color: #5a5a5a;
       width: 30px;
       top: 0px; }
-    #rightPaneW #rightPaneC #jsonEditor {
+    #rightPaneW #rightPaneC .jsonEditor {
       padding-top: 0px;
       background-color: #353535;
       color: white;
       height: 100%;
       width: 100%; }
-      #rightPaneW #rightPaneC #jsonEditor .lineW {
+      #rightPaneW #rightPaneC .jsonEditor .lineW {
         width: 100%;
         position: relative;
         padding-top: 2px;
         padding-bottom: 2px;
         transition: 0.1s; }
-      #rightPaneW #rightPaneC #jsonEditor .lineIndex {
+      #rightPaneW #rightPaneC .jsonEditor .lineIndex {
         position: absolute;
         left: -30px;
         font-family: monospace;
@@ -264,9 +264,9 @@ body {
         top: 0px;
         padding-top: 2px;
         padding-bottom: 2px; }
-      #rightPaneW #rightPaneC #jsonEditor .lineW[data-selected="true"] {
+      #rightPaneW #rightPaneC .jsonEditor .lineW[data-selected="true"] {
         background-color: rgba(211, 212, 255, 0.3); }
-      #rightPaneW #rightPaneC #jsonEditor .line {
+      #rightPaneW #rightPaneC .jsonEditor .line {
         z-index: 100000;
         position: relative;
         padding-left: 5px;
@@ -277,33 +277,33 @@ body {
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="key"][data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="key"][data-focused="true"] {
           background-color: #ffffcd; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="value"][data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="value"][data-focused="true"] {
           background-color: #cdf9ff; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="comment"][data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="true"] {
           color: #077887;
           background-color: #cdf9ff; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="comment"][data-focused="false"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="false"] {
           color: #cdf9ff; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="colon"][data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="colon"][data-focused="true"] {
           background-color: #f5cdff; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="object"][data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="object"][data-focused="true"] {
           background-color: #cdffd5; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="array"][data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="array"][data-focused="true"] {
           background-color: #eecdff; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-type="comma"][data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="comma"][data-focused="true"] {
           background-color: #cdd3ff; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field[data-focused="true"] {
+        #rightPaneW #rightPaneC .jsonEditor .line .field[data-focused="true"] {
           color: black; }
-        #rightPaneW #rightPaneC #jsonEditor .line .field {
+        #rightPaneW #rightPaneC .jsonEditor .line .field {
           transition: 0.35s;
           font-size: 14px;
           word-break: break-all;
           font-family: monospace;
           color: white;
           border-radius: 2px; }
-          #rightPaneW #rightPaneC #jsonEditor .line .field:focus {
+          #rightPaneW #rightPaneC .jsonEditor .line .field:focus {
             outline: 0; }
 
 #tableFunctionsW {
@@ -394,3 +394,25 @@ body {
     font-size: 16px;
     resize: none;
     background-color: white; }
+
+.inspectorW {
+  margin-top: 30px; }
+
+.blockW {
+  width: calc(100vw - 780px);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px; }
+  .blockW .block {
+    width: calc(100% - 100px); }
+    .blockW .block .header {
+      font-size: 24px;
+      font-weight: 300;
+      background-color: #f5f5f5;
+      width: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 30px;
+      padding-right: 30px; }
+    .blockW .block .details {
+      padding-left: 30px; }

@@ -5,8 +5,12 @@ hyper.views.json.array.init = function() {
 
 hyper.views.json.array.setMeta = function(array) {
   let elem = hyper.views.json.elems.GET.meta_array;
-  elem.value = JSON.stringify(array, null, 4);
-  console.log(elem.value);  
+  elem.value = JSON.stringify(array, null, 4);  
+};
+
+hyper.views.json.array.getMeta = function() {
+  let elem = hyper.views.json.elems.GET.meta_array;
+  return elem.value;
 };
 
 
@@ -42,5 +46,6 @@ hyper.views.json.array.convertJSON = function (params = {}) {
   };
   let arr = parseJSONToArray(jsonObj);
   hyper.views.json.array.setMeta(arr);
+  
 
 };

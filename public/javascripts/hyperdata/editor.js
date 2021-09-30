@@ -17,26 +17,26 @@ hyper.editor.initIndents = function(editor) {
 
 hyper.editor.getCurrentLine = function() {
   let line_num = hyper.editor.STATES.curLine;
-  return document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"]`);
+  return document.querySelector(`.jsonEditor .lineW[data-line_num="${line_num}"]`);
 };
 
 hyper.editor.getLine = function(params = {}) {
   let {line_num} = params;  
-  return document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"]`);
+  return document.querySelector(`.jsonEditor .lineW[data-line_num="${line_num}"]`);
 };
 
 hyper.editor.getCurrentField = function() {
   let line_num = hyper.editor.STATES.curLine;
   let field_num = hyper.editor.STATES.curField;
 
-  return document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
+  return document.querySelector(`.jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
 };
 
 hyper.editor.getNextField = function() {
   let line_num = hyper.editor.STATES.curLine;
   let field_num = hyper.editor.STATES.curField+1;
 
-  return document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
+  return document.querySelector(`.jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
 };
 
 /**
@@ -47,7 +47,7 @@ hyper.editor.getNextFieldNum = function() {
   let line_num = hyper.editor.STATES.curLine;
   let field_num = parseInt(hyper.editor.STATES.curField)+1;
 
-  let field =  document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
+  let field =  document.querySelector(`.jsonEditor .lineW[data-line_num="${line_num}"] .field[data-field_num="${field_num}"]`);
   if (field) {
     return field_num;
   }
@@ -73,8 +73,8 @@ hyper.editor.getPrevFieldNum = function() {
 
 hyper.editor.setSelectedLine = function(params) {
   let {line_num} = params;
-  let line_elem = document.querySelector(`#jsonEditor .lineW[data-line_num="${line_num}"]`);
-  let selected = document.querySelector(`#jsonEditor .lineW[data-selected="true"]`);
+  let line_elem = document.querySelector(`.jsonEditor .lineW[data-line_num="${line_num}"]`);
+  let selected = document.querySelector(`.jsonEditor .lineW[data-selected="true"]`);
   if(selected) {
     selected.setAttribute('data-selected', 'false');
     line_elem.setAttribute('data-selected', 'true');
@@ -85,7 +85,7 @@ hyper.editor.setSelectedLine = function(params) {
 
 hyper.editor.clearFocusedField = function() {
 
-  let focused = document.querySelector('#jsonEditor .field[data-focused="true"]');  
+  let focused = document.querySelector('.jsonEditor .field[data-focused="true"]');  
   if(focused) {
     focused.setAttribute('data-focused', 'false');  
 

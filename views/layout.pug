@@ -13,7 +13,10 @@ html
             array:{}, //handles the array tab in the JSON-HD editor
             elems:{}, //handles pointers to HTML elems
             init:{}, //initializes the libraries in order
+            object:{},
+            inspector:{},
             input:{} //handles the json input,            
+
           }
         },
         editor:{},        
@@ -27,12 +30,14 @@ html
 
   script(src="/javascripts/hyperdata/views/json/init.js")
   script(src="/javascripts/hyperdata/views/json/elems.js")
+  script(src="/javascripts/hyperdata/views/json/object.js")
   script(src="/javascripts/hyperdata/views/json/input.js")
   script(src="/javascripts/hyperdata/views/json/array.js")
+  script(src="/javascripts/hyperdata/views/json/inspector.js")
   //- script(src="/javascripts/hyperdata/editor.js")
   //- script(src="/javascripts/hyperdata/views/json/editor.js")
   //- script(src="/javascripts/hyperdata/table.js")
   script.
     hyper.views.json.init();
-    //- hyper.editor.initEditor("#jsonEditor");
+    //- hyper.editor.initEditor(".jsonEditor");
     //- hyper.table.initTable({parent_elem_id: "#tableView #tableW"});
