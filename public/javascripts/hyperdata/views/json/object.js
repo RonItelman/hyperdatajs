@@ -78,16 +78,19 @@ hyper.views.json.object.setIndents = function(params = {}) {
   let {obj, elem} = params;
   
   if (elem == "{") {
-    obj.indent = ++hyper.views.json.object.STATE.indents;
+    obj.indent = hyper.views.json.object.STATE.indents++;
   }
   else if (elem == "[") {
-    obj.indent = ++hyper.views.json.object.STATE.indents;    
+    obj.indent = hyper.views.json.object.STATE.indents++;
   }
   else if (elem == "}") {
-    obj.indent = --hyper.views.json.object.STATE.indents;
+    obj.indent = hyper.views.json.object.STATE.indents--;
   }
   else if (elem == "]") {
-    obj.indent = --hyper.views.json.object.STATE.indents;    
+    obj.indent = hyper.views.json.object.STATE.indents--;
+  }
+  else {
+    obj.indent = hyper.views.json.object.STATE.indents;
   }
 };
 
@@ -103,14 +106,23 @@ hyper.views.json.object.configureBlock = function(elem) {
   return obj;
 };
 
+hyper.views.json.object.resetBlocks = function() {
+  hyper.views.json.object.STATE.blocks = [];
+  hyper.views.json.object.STATE.ids = 1;
+  hyper.views.json.object.STATE.lines = 1;
+  hyper.views.json.object.STATE.indents = 0;
+};
+
 hyper.views.json.object.generate = function() {
   let array_meta = hyper.views.json.array.getMeta();
   let array = JSON.parse(array_meta);
+  hyper.views.json.object.resetBlocks();
   let blocks = hyper.views.json.object.STATE.blocks;
   array.forEach(function (elem) {
     let obj = hyper.views.json.object.configureBlock(elem);
     blocks.push(obj);
   });
+  
 };
 
 hyper.views.json.object.init = function() {

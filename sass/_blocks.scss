@@ -20,7 +20,16 @@
       padding-right:30px;
     }
     .details {
+      padding-top:10px;
       padding-left:30px;
+      .elem_wrapper {
+        padding-bottom:5px;
+        display:flex;
+      }
+      .elem_label {
+        width:80px;
+        color:#777;
+      }
     }
   }
 }

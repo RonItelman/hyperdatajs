@@ -86,7 +86,8 @@ hyper.views.json.input.addKeyListener = function(params={}) {
       let valid = hyper.views.json.input.checkIfValidJson({input, val:meta.val});
       if(valid) {
         hyper.views.json.array.convertJSON({meta});
-        hyper.views.json.object.generate();
+        hyper.views.json.object.generate();        
+        hyper.views.json.inspector.init();
         
       }
       else {

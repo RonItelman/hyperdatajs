@@ -380,16 +380,28 @@ body {
 #jsonInput {
   width: 300px;
   position: absolute;
-  right: 0px;
+  right: 20px;
   top: 0px;
-  height: calc(100vh - 90px); }
+  height: calc(50vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  #jsonInput .header {
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    display: flex;
+    font-size: 14px;
+    color: white;
+    background-color: #555;
+    width: 95%; }
   #jsonInput textarea {
-    outline: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-left: 1px solid #ccc;
     padding: 14px;
+    outline: 0;
+    width: 95%;
+    height: 100%;
+    border: 1px solid #ccc;
     line-height: 20px;
     font-size: 16px;
     resize: none;
@@ -415,4 +427,11 @@ body {
       padding-left: 30px;
       padding-right: 30px; }
     .blockW .block .details {
+      padding-top: 10px;
       padding-left: 30px; }
+      .blockW .block .details .elem_wrapper {
+        padding-bottom: 5px;
+        display: flex; }
+      .blockW .block .details .elem_label {
+        width: 80px;
+        color: #777; }

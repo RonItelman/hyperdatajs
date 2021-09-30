@@ -13,6 +13,39 @@ hyper.views.json.elems.init = function() {
   hyper.views.json.elems.initArray();   
 };
 
+hyper.views.json.elems.getStringWrapper = function(block) {
+  // let string_wrapper = document.createElement('div');
+  // string_wrapper.classList.add('elem_wrapper');
+  // let string = document.createElement('div');
+  // string.classList.add('string');
+  // let string_label = document.createElement('div');
+  // string_label.classList.add('elem_label');
+  // string_label.textContent = "String:";
+  // string_wrapper.appendChild(string_label);
+  // string_wrapper.appendChild(string);  
+  // return string_wrapper;
+};
+
+hyper.views.json.elems.getDetailRow = function(params ={}) {
+  let {text, type} = params;
+  let wrapper = document.createElement('div');
+  wrapper.classList.add('elem_wrapper');
+  let label = document.createElement('div');
+  label.classList.add('elem_label');
+  label.textContent = text;
+  let value = document.createElement('div');
+  value.classList.add('elem_value');
+  value.setAttribute('data-type', type);
+  wrapper.appendChild(label);
+  wrapper.appendChild(value);
+  return wrapper;
+};
+
+hyper.views.json.elems.getLineWrapper = function(block) {
+  let wrapper = hyper.views.json.elems.getDetailRow("Line: ");
+  return wrapper;
+};
+
 hyper.views.json.elems.getBlockW = function() {
   let blockW = document.createElement('div');
   blockW.classList.add('blockW');
@@ -30,16 +63,13 @@ hyper.views.json.elems.getBlockW = function() {
   direction.classList.add('direction');
   let id = document.createElement('div');
   id.classList.add('id');
-  let string = document.createElement('div');
-  string.classList.add('string');
   let indent = document.createElement('div');
-  indent.classList.add('indent');
-  details.appendChild(line);
-  details.appendChild(type);
-  details.appendChild(direction);
-  details.appendChild(id);
-  details.appendChild(string);
-  details.appendChild(indent);
+  indent.classList.add('indent');  
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Id: ", type:"id"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"String: ", type:"string"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Line: ", type:"line"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Direction: ", type:"direction"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Indent: ", type:"indent"}));
   block.appendChild(header);
   block.appendChild(details);
   blockW.appendChild(block);
