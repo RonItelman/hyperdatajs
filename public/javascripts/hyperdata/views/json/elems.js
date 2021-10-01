@@ -1,5 +1,8 @@
 hyper.views.json.elems.GET = {
   editor:{},
+  input: {
+    header:null
+  },
   inspector:{},
   rightMenu:{
     buttons: {
@@ -85,4 +88,5 @@ hyper.views.json.elems.initArray = function() {
   hyper.views.json.elems.GET.rightMenu.buttons.wrapper = document.querySelector('#jsonView #rightPaneMenuC .menu');
   hyper.views.json.elems.GET.editor.wrapper = document.querySelector('#jsonView .jsonEditor');
   hyper.views.json.elems.GET.inspector.wrapper = document.querySelector("#jsonView .inspectorW .inspector");
+  hyper.views.json.elems.GET.input.header = document.querySelector('#jsonInput .header');
 };

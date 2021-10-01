@@ -31,17 +31,19 @@ hyper.views.json.input.updateMetaVal = function(params = {}) {
 
 
 hyper.views.json.input.clearError = function() {
-  let editor = hyper.views.json.elems.GET.first_line;
+  
+  let editor = hyper.views.json.elems.GET.input.header;
   let err = editor.getAttribute('data-error');
   if (err == "true") {
-    editor.textContent = ``;
+    editor.textContent = `Convert JSON To JSON-HD`;
+    editor.setAttribute('data-error', 'false');
   }
 };
 
 hyper.views.json.input.error = function() {
-  let editor = hyper.views.json.elems.GET.first_line;
+  let editor = hyper.views.json.elems.GET.input.header;
   editor.setAttribute('data-error', 'true');
-  editor.textContent = `//ERROR IN JSON`;
+  editor.textContent = `ERROR: JSON NOT VALID`;
 };
 
 hyper.views.json.input.addFocusListener = function(params = {}) {
