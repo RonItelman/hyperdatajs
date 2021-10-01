@@ -30,13 +30,17 @@ hyper.views.json.input.updateMetaVal = function(params = {}) {
 };
 
 
-
-
-
-
+hyper.views.json.input.clearError = function() {
+  let editor = hyper.views.json.elems.GET.first_line;
+  let err = editor.getAttribute('data-error');
+  if (err == "true") {
+    editor.textContent = ``;
+  }
+};
 
 hyper.views.json.input.error = function() {
   let editor = hyper.views.json.elems.GET.first_line;
+  editor.setAttribute('data-error', 'true');
   editor.textContent = `//ERROR IN JSON`;
 };
 
@@ -88,7 +92,8 @@ hyper.views.json.input.addKeyListener = function(params={}) {
         hyper.views.json.array.convertJSON({meta});
         hyper.views.json.object.generate();        
         hyper.views.json.inspector.init();
-        
+        hyper.views.json.input.clearError();
+        hyper.views.json.editor.init();
       }
       else {
         hyper.views.json.input.error();
