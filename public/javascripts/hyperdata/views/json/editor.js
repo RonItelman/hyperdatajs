@@ -2,6 +2,12 @@ hyper.views.json.editor.STATE = {
   curLine:0
 };
 
+hyper.views.json.editor.reset = function() {
+  let pane = hyper.views.json.elems.GET.editor.pane;
+  pane.innerHTML = '';
+  hyper.views.json.editor.STATE.curLine = 0;
+};
+
 hyper.views.json.editor.update = function(blocks) {
   blocks.forEach(block => {
     // console.log(block);
@@ -56,19 +62,31 @@ hyper.views.json.editor.getField = function(block) {
   return elem;
 };
 
+hyper.views.json.editor.addLineToPane = function(params = {}) {
+  let {block} = params;
+  let lineW = hyper.views.json.editor.getLineW({ curLine: hyper.views.json.editor.STATE.curLine, block });
+  hyper.views.json.elems.GET.editor.pane.appendChild(lineW);
+};
+
 hyper.views.json.editor.getBlockElem = function(block) {
   let elemW = document.createElement('div');
   // console.log(block);
   if (hyper.views.json.editor.STATE.curLine < block.line) {
     hyper.views.json.editor.STATE.curLine++;    
-    let lineW = hyper.views.json.editor.getLineW({curLine: hyper.views.json.editor.STATE.curLine, block});
-    hyper.views.json.elems.GET.editor.pane.appendChild(lineW);
+    hyper.views.json.editor.addLineToPane({block});
   }
   else {
     //append to current line
     let curLine = document.querySelector(`#jsonView .jsonEditor .lineW[data-line_num="${hyper.views.json.editor.STATE.curLine}"]`);
-    let field = hyper.views.json.editor.getField(block);
-    curLine.appendChild(field);
+    if(curLine) {
+      let field = hyper.views.json.editor.getField(block);
+      curLine.appendChild(field);
+    }
+    else {
+      //reset
+      hyper.views.json.editor.reset();
+      hyper.views.json.editor.addLineToPane({block});
+    }
   }
   return elemW;
 };

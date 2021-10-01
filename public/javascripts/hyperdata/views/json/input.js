@@ -1,8 +1,17 @@
+hyper.views.json.input.update = function () {
+  hyper.views.json.editor.reset();
+  hyper.views.json.object.generate();
+  hyper.views.json.inspector.init();
+  hyper.views.json.input.clearError();
+  hyper.views.json.editor.init();
+};
+
 hyper.views.json.input.init = function() {
   let {input, meta} = hyper.views.json.input.getElems();
   hyper.views.json.input.updateMetaVal({meta, input});  
   hyper.views.json.addListeners({meta, input});
   hyper.views.json.array.convertJSON({meta});
+  hyper.views.json.input.update();
 };
 
 hyper.views.json.addListeners = function(params = {}) {
@@ -46,6 +55,7 @@ hyper.views.json.input.error = function() {
   editor.setAttribute('data-error', 'true');
   gsap.to(editor, {backgroundColor:"rgba(200,50,50,1)", duration:0.3});
   editor.textContent = `ERROR: JSON NOT VALID`;
+  hyper.views.json.editor.reset();
 };
 
 hyper.views.json.input.addFocusListener = function(params = {}) {
@@ -84,6 +94,8 @@ hyper.views.json.input.addBlurListener = function(params = {}) {
 
 };
 
+
+
 hyper.views.json.input.addKeyListener = function(params={}) {
   let {input, meta} = params;
   
@@ -94,10 +106,7 @@ hyper.views.json.input.addKeyListener = function(params={}) {
       let valid = hyper.views.json.input.checkIfValidJson({input, val:meta.val});
       if(valid) {
         hyper.views.json.array.convertJSON({meta});
-        hyper.views.json.object.generate();        
-        hyper.views.json.inspector.init();
-        hyper.views.json.input.clearError();
-        hyper.views.json.editor.init();
+        hyper.views.json.input.update();
       }
       else {
         hyper.views.json.input.error();
