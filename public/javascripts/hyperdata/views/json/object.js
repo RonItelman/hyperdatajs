@@ -32,8 +32,12 @@ hyper.views.json.object.setDirection = function(params = {}) {
 
 hyper.views.json.object.setLine = function(params = {}) {
   let { obj, elem } = params;
-  if (elem == "{" || elem == "[" || elem == "," || elem == "}" || elem == "]") {
+  if (elem == "{" || elem == "[" || elem == ",") {
     obj.line = hyper.views.json.object.STATE.lines++;
+  }
+  else if (elem == "}" || elem == "]") {
+    obj.line = ++hyper.views.json.object.STATE.lines;
+    
   }
   else {
     obj.line = hyper.views.json.object.STATE.lines;
@@ -84,13 +88,39 @@ hyper.views.json.object.setIndents = function(params = {}) {
     obj.indent = hyper.views.json.object.STATE.indents++;
   }
   else if (elem == "}") {
-    obj.indent = hyper.views.json.object.STATE.indents--;
+    obj.indent = --hyper.views.json.object.STATE.indents;
   }
   else if (elem == "]") {
-    obj.indent = hyper.views.json.object.STATE.indents--;
+    obj.indent = --hyper.views.json.object.STATE.indents;
   }
   else {
     obj.indent = hyper.views.json.object.STATE.indents;
+  }
+};
+
+hyper.views.json.object.setMatchingBraces = function(params = {}) {
+  let {obj, elem} = params;
+  let arr = hyper.views.json.object.STATE.blocks;
+  if (elem == "}") {
+    //find matching { by looping through X that doesn't already have a match set
+    //start with current line and subtract by 1 until find a match
+      obj.match = "unknown";
+      hyper.views.json.object.STATE.blocks.forEach(function(block) {
+        if(block.type == "curly brackets" && block.direction=="open") {
+
+          for (let i = 0; i < arr.length; ++i) {
+            let b = arr[i];
+            if (b.type=="curly brackets" && b.direction == "close") {
+              console.log(b);
+            }
+          }
+        }
+      });
+    }
+    else if (elem == "]") {
+      //find first matching [
+      obj.match = "unknown";
+      
   }
 };
 
@@ -102,6 +132,7 @@ hyper.views.json.object.configureBlock = function(elem) {
   hyper.views.json.object.setId({obj, elem});          
   hyper.views.json.object.setType({obj, elem});          
   hyper.views.json.object.setIndents({obj, elem});
+  hyper.views.json.object.setMatchingBraces({obj, elem});
   
   return obj;
 };

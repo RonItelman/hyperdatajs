@@ -47,6 +47,8 @@ hyper.views.json.editor.getField = function(block) {
   elem.setAttribute('data-type', block.type);
   elem.setAttribute('data-focused', false);
   elem.setAttribute('data-field_num', block.id);
+  elem.setAttribute('data-match', block.match);
+  
   if (!block.string) {
     block.string = "null";
   }
@@ -56,7 +58,7 @@ hyper.views.json.editor.getField = function(block) {
 
 hyper.views.json.editor.getBlockElem = function(block) {
   let elemW = document.createElement('div');
-  console.log(block);
+  // console.log(block);
   if (hyper.views.json.editor.STATE.curLine < block.line) {
     hyper.views.json.editor.STATE.curLine++;    
     let lineW = hyper.views.json.editor.getLineW({curLine: hyper.views.json.editor.STATE.curLine, block});
