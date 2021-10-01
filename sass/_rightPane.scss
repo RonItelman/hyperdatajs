@@ -4,26 +4,23 @@
 }
 
 
-#rightPaneW {
-  width:450px;
+.rightPaneW {
+  width:480px;
   height:calc(100vh - 50px);
   position: fixed;
   right:0px;
   top:50px;
   z-index: 100;
-  #rightPaneMenuW {
-    border-bottom:1px solid #777;
-    position:relative;
-    left:-30px;
-    top:0px;
-    width:calc(100% + 40px);
+  .rightPaneMenuW {
+    border-bottom:1px solid #777;    
+    width:100%;
     height:40px;
     display:flex;
     align-items: center;    
     padding-right:30px;
     background-color:#5a5a5a;      
     
-    #rightPaneMenuC {
+    .rightPaneMenuC {
       padding-left:10px;
       .menu {
         width:100%;
@@ -66,12 +63,12 @@
       }
     }
   }
-  #rightPaneC {
+  .rightPaneC {
     width:100%;
     height:100%;    
     position:relative;
     display:flex;
-    #lineNumBack {
+    .lineNumBack {
       height:calc(100vh - 90px);
       position:absolute;
       left:-30px;            
@@ -88,14 +85,19 @@
       width:100%;
       .lineW {
         width:100%;
+        min-height:30px;
+        height:30px;
         position:relative;        
-        padding-top:2px;
-        padding-bottom:2px;
+        // padding-top:2px;
+        // padding-bottom:2px;
         transition: 0.1s;        
+        display:flex;
+        align-items: center;
       }
       .lineIndex {        
-        position:absolute;
-        left:-30px;
+        // position:absolute;
+        // left:-30px;
+        // border:1px solid red;
         font-family: monospace;
         height:100%;
         color:#ccc;
@@ -107,8 +109,8 @@
         font-size:14px;
         width:30px;
         top:0px;
-        padding-top:2px;
-        padding-bottom:2px;
+        padding-top:5px;
+        // padding-bottom:2px;
       }
       .lineW[data-selected="true"] {
         background-color:rgba(211, 212, 255, 0.3);        

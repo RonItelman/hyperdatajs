@@ -1,5 +1,7 @@
 hyper.views.json.elems.GET = {
-  editor:{},
+  editor:{
+    pane:null
+  },
   input: {
     header:null
   },
@@ -84,9 +86,10 @@ hyper.views.json.elems.initArray = function() {
   hyper.views.json.elems.GET.meta_array = document.querySelector(`#jsonView #jsonMetaArray`);
   hyper.views.json.elems.GET.meta_input = document.querySelector('#jsonView #jsonMetaInput');
   hyper.views.json.elems.GET.textarea = document.querySelector(`#jsonView #jsonInput textarea`);
-  hyper.views.json.elems.GET.rightMenu.buttons.all = document.querySelectorAll('#jsonView #rightPaneMenuC .menu .button');
-  hyper.views.json.elems.GET.rightMenu.buttons.wrapper = document.querySelector('#jsonView #rightPaneMenuC .menu');
+  hyper.views.json.elems.GET.rightMenu.buttons.all = document.querySelectorAll('#jsonView .rightPaneMenuC .menu .button');
+  hyper.views.json.elems.GET.rightMenu.buttons.wrapper = document.querySelector('#jsonView .rightPaneMenuC .menu');
   hyper.views.json.elems.GET.editor.wrapper = document.querySelector('#jsonView .jsonEditor');
   hyper.views.json.elems.GET.inspector.wrapper = document.querySelector("#jsonView .inspectorW .inspector");
   hyper.views.json.elems.GET.input.header = document.querySelector('#jsonInput .header');
+  hyper.views.json.elems.GET.editor.pane = document.querySelector('#jsonView .jsonEditor .paneW .pane');
 };

@@ -36,6 +36,7 @@ hyper.views.json.input.clearError = function() {
   let err = editor.getAttribute('data-error');
   if (err == "true") {
     editor.textContent = `Convert JSON To JSON-HD`;
+    gsap.to(editor, {backgroundColor:"#555", duration:0.3});
     editor.setAttribute('data-error', 'false');
   }
 };
@@ -43,6 +44,7 @@ hyper.views.json.input.clearError = function() {
 hyper.views.json.input.error = function() {
   let editor = hyper.views.json.elems.GET.input.header;
   editor.setAttribute('data-error', 'true');
+  gsap.to(editor, {backgroundColor:"rgba(200,50,50,1)", duration:0.3});
   editor.textContent = `ERROR: JSON NOT VALID`;
 };
 

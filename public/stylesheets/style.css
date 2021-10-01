@@ -177,42 +177,39 @@ body {
   opacity: 0;
   display: none; }
 
-#rightPaneW {
-  width: 450px;
+.rightPaneW {
+  width: 480px;
   height: calc(100vh - 50px);
   position: fixed;
   right: 0px;
   top: 50px;
   z-index: 100; }
-  #rightPaneW #rightPaneMenuW {
+  .rightPaneW .rightPaneMenuW {
     border-bottom: 1px solid #777;
-    position: relative;
-    left: -30px;
-    top: 0px;
-    width: calc(100% + 40px);
+    width: 100%;
     height: 40px;
     display: flex;
     align-items: center;
     padding-right: 30px;
     background-color: #5a5a5a; }
-    #rightPaneW #rightPaneMenuW #rightPaneMenuC {
+    .rightPaneW .rightPaneMenuW .rightPaneMenuC {
       padding-left: 10px; }
-      #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu {
+      .rightPaneW .rightPaneMenuW .rightPaneMenuC .menu {
         width: 100%;
         display: flex; }
-        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button {
+        .rightPaneW .rightPaneMenuW .rightPaneMenuC .menu .button {
           letter-spacing: 0.5px; }
-        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button[data-state="disabled"] {
+        .rightPaneW .rightPaneMenuW .rightPaneMenuC .menu .button[data-state="disabled"] {
           background-color: rgba(255, 255, 255, 0);
           color: #888;
           border-color: #888; }
-        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button[data-selected="false"] {
+        .rightPaneW .rightPaneMenuW .rightPaneMenuC .menu .button[data-selected="false"] {
           color: white; }
-        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button[data-selected="true"] {
+        .rightPaneW .rightPaneMenuW .rightPaneMenuC .menu .button[data-selected="true"] {
           color: White;
           background-color: #5c7292;
           border-color: rgba(255, 255, 255, 0.5); }
-        #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button {
+        .rightPaneW .rightPaneMenuW .rightPaneMenuC .menu .button {
           border: 1px solid transparent;
           transition: 0.35s;
           margin-left: 20px;
@@ -222,35 +219,35 @@ body {
           padding-left: 14px;
           padding-right: 14px;
           border-radius: 2px; }
-          #rightPaneW #rightPaneMenuW #rightPaneMenuC .menu .button:hover {
+          .rightPaneW .rightPaneMenuW .rightPaneMenuC .menu .button:hover {
             cursor: pointer; }
-  #rightPaneW #rightPaneC {
+  .rightPaneW .rightPaneC {
     width: 100%;
     height: 100%;
     position: relative;
     display: flex; }
-    #rightPaneW #rightPaneC #lineNumBack {
+    .rightPaneW .rightPaneC .lineNumBack {
       height: calc(100vh - 90px);
       position: absolute;
       left: -30px;
       background-color: #5a5a5a;
       width: 30px;
       top: 0px; }
-    #rightPaneW #rightPaneC .jsonEditor {
+    .rightPaneW .rightPaneC .jsonEditor {
       padding-top: 0px;
       background-color: #353535;
       color: white;
       height: 100%;
       width: 100%; }
-      #rightPaneW #rightPaneC .jsonEditor .lineW {
+      .rightPaneW .rightPaneC .jsonEditor .lineW {
         width: 100%;
+        min-height: 30px;
+        height: 30px;
         position: relative;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        transition: 0.1s; }
-      #rightPaneW #rightPaneC .jsonEditor .lineIndex {
-        position: absolute;
-        left: -30px;
+        transition: 0.1s;
+        display: flex;
+        align-items: center; }
+      .rightPaneW .rightPaneC .jsonEditor .lineIndex {
         font-family: monospace;
         height: 100%;
         color: #ccc;
@@ -262,11 +259,10 @@ body {
         font-size: 14px;
         width: 30px;
         top: 0px;
-        padding-top: 2px;
-        padding-bottom: 2px; }
-      #rightPaneW #rightPaneC .jsonEditor .lineW[data-selected="true"] {
+        padding-top: 5px; }
+      .rightPaneW .rightPaneC .jsonEditor .lineW[data-selected="true"] {
         background-color: rgba(211, 212, 255, 0.3); }
-      #rightPaneW #rightPaneC .jsonEditor .line {
+      .rightPaneW .rightPaneC .jsonEditor .line {
         z-index: 100000;
         position: relative;
         padding-left: 5px;
@@ -277,33 +273,33 @@ body {
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="key"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="key"][data-focused="true"] {
           background-color: #ffffcd; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="value"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="value"][data-focused="true"] {
           background-color: #cdf9ff; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="true"] {
           color: #077887;
           background-color: #cdf9ff; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="false"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="false"] {
           color: #cdf9ff; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="colon"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="colon"][data-focused="true"] {
           background-color: #f5cdff; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="object"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="object"][data-focused="true"] {
           background-color: #cdffd5; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="array"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="array"][data-focused="true"] {
           background-color: #eecdff; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-type="comma"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comma"][data-focused="true"] {
           background-color: #cdd3ff; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field[data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-focused="true"] {
           color: black; }
-        #rightPaneW #rightPaneC .jsonEditor .line .field {
+        .rightPaneW .rightPaneC .jsonEditor .line .field {
           transition: 0.35s;
           font-size: 14px;
           word-break: break-all;
           font-family: monospace;
           color: white;
           border-radius: 2px; }
-          #rightPaneW #rightPaneC .jsonEditor .line .field:focus {
+          .rightPaneW .rightPaneC .jsonEditor .line .field:focus {
             outline: 0; }
 
 #tableFunctionsW {
