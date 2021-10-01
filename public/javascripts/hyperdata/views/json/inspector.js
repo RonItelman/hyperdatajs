@@ -23,4 +23,6 @@ hyper.views.json.inspector.configureBlock = function(params={}) {
   direction.textContent = block.direction;
   let indent = elem.querySelector('.elem_value[data-type="indent"]');
   indent.textContent = block.indent;
+  let match = elem.querySelector('.elem_value[data-type="match"]');
+  match.textContent = block.match;
 };

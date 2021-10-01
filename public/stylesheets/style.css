@@ -371,7 +371,9 @@ body {
 #jsonContentW {
   display: flex;
   position: relative;
-  width: calc(100% - 480px); }
+  width: calc(100% - 480px);
+  height: calc(100vh - 90px);
+  overflow: overlay; }
 
 #jsonInput {
   width: 300px;

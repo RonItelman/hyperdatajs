@@ -58,6 +58,8 @@ hyper.views.json.elems.getBlockW = function() {
   block.classList.add('block');
   let details = document.createElement('div');
   details.classList.add('details');
+  let match = document.createElement('div');
+  match.classList.add('match');
   let header = document.createElement('div');
   header.classList.add('header');
   let line = document.createElement('div');
@@ -75,6 +77,7 @@ hyper.views.json.elems.getBlockW = function() {
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Line: ", type:"line"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Direction: ", type:"direction"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Indent: ", type:"indent"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Match: ", type:"match"}));
   block.appendChild(header);
   block.appendChild(details);
   blockW.appendChild(block);
