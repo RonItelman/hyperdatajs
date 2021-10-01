@@ -77,7 +77,9 @@ hyper.views.json.elems.getBlockW = function() {
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Line: ", type:"line"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Direction: ", type:"direction"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Indent: ", type:"indent"}));
-  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Match: ", type:"match"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Open Match: ", type:"open_match"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Match Line: ", type:"match_line"}));
+  details.appendChild(hyper.views.json.elems.getDetailRow({text:"Close Match: ", type:"close_match"}));
   block.appendChild(header);
   block.appendChild(details);
   blockW.appendChild(block);

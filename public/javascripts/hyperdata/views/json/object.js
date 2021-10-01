@@ -7,6 +7,27 @@ hyper.views.json.object.STATE = {
   curLine:1
 };
 
+hyper.views.json.object.getBlocksAtLineNum = function(line_num) {
+  --line_num;
+  let line_blocks = hyper.views.json.object.STATE.line_blocks;
+  return line_blocks[line_num];  
+};
+
+hyper.views.json.object.matchBlockStringAtLineNum = function(params={}) {
+  let {num, string} = params;
+  --num;
+  let retVal = null;
+  let line = hyper.views.json.object.getBlocksAtLineNum(num);  
+  if(line) {
+    line.forEach(function(block) {
+      if (block.string == string) {
+        retVal = block;
+      }
+    });
+  }
+  return retVal;
+};
+
 
 hyper.views.json.object.setLine = function (params = {}) {
   let { obj, elem } = params;
@@ -64,26 +85,35 @@ hyper.views.json.object.setLine = function (params = {}) {
   }
 };
 
-hyper.views.json.object.setMatchingBraces = function (params = {}) {
-  let { obj, elem } = params;
-  let arr = hyper.views.json.object.STATE.blocks;
-  if (elem == "}") {
-    target_line = obj.line;
-    for (let i = target_line - 1; i > 0; --i) {
-      //look at the block at the line
-      // console.log(target_line, i);
-      //get the block at the search_line
-
-
+hyper.views.json.object.findAndSetMatch = function(params={}) {
+  let {elem, obj, string} = params;
+  let stop = false;  
+  let curLine = obj.line;    
+  for (let i = curLine; i > 0 && !stop; --i) {
+    let match = false;
+    match = hyper.views.json.object.matchBlockStringAtLineNum({ num: i, string });    
+    // console.log('match: ', i, string);
+    // console.log(match);
+    if (match) {
+      if (!obj.open_match && !match.close_match) {
+        
+        stop = true;
+        match.close_match = obj.id;
+        obj.open_match = match.id;        
+        obj.match_line = match.line;
+        match.match_line = obj.line;
+      }      
     }
-    //find matching { by looping through X that doesn't already have a match set
-    //start with current line and subtract by 1 until find a match
-    // obj.match = "unknown";
   }
-  else if (elem == "]") {
-    //find first matching [
-    obj.match = "unknown";
+};
 
+hyper.views.json.object.setMatchingBraces = function (params = {}) {
+  let { obj, elem } = params;  
+  if (elem == "}") {    
+    hyper.views.json.object.findAndSetMatch({obj, elem, string:"{"});
+  }
+  else if (elem == "]") {    
+    hyper.views.json.object.findAndSetMatch({ obj, elem, string: "["});
   }
 };
 
@@ -197,12 +227,7 @@ hyper.views.json.object.generate = function() {
     let obj = hyper.views.json.object.configureBlock(elem);
     blocks.push(obj);
   });
-  let line_blocks = hyper.views.json.object.STATE.line_blocks;
-  line_blocks.forEach(function(lb, index) {
-    lb.forEach(function(l) {
-      console.log(index, l.string);
-    });
-  });
+  
   
 };
 
