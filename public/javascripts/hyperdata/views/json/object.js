@@ -17,9 +17,8 @@ hyper.views.json.object.getFieldsNumsAtLineNum = function() {
   console.log('hyper.views.json.object.getFieldsNumsAtLineNum');
   let line_blocks = hyper.views.json.object.STATE.line_blocks;
   line_blocks.forEach(function(line) {
-    line.forEach(function(block, index) {
-      block.field_num = index;
-      
+    line.forEach(function(block, index) {      
+      block.field_num = index;      
     });
   }); 
 };
@@ -60,7 +59,8 @@ hyper.views.json.object.setLine = function (params = {}) {
           
     
   }
-  else if (elem == "}" || elem == "]") {
+  else if (elem == "}" || elem == "]" || elem ==",") {
+    
     obj.line = ++hyper.views.json.object.STATE.lines;
     // console.log(curLine);
     let blocks = line_blocks[obj.line - 1];
@@ -155,7 +155,7 @@ hyper.views.json.object.setDirection = function(params = {}) {
 
 
 hyper.views.json.object.setString = function(params = {}) {
-  let { obj, elem } = params;
+  let { obj, elem } = params;    
   obj.string = elem;
 };
 
@@ -232,6 +232,7 @@ hyper.views.json.object.resetBlocks = function() {
 hyper.views.json.object.generate = function() {
   let array_meta = hyper.views.json.array.getMeta();
   let array = JSON.parse(array_meta);
+  
   hyper.views.json.object.resetBlocks();
   let blocks = hyper.views.json.object.STATE.blocks;
   array.forEach(function (elem) {

@@ -1,7 +1,7 @@
 hyper.views.json.editor.STATE = {
   inFocus: true,
   curLine: 1,
-  lastLine: 24,
+  lastLine: 14,
   curField: 0
 };
 
@@ -70,11 +70,41 @@ hyper.views.json.editor.goToNextLine = function () {
   console.log(hyper.views.json.editor.STATE.curLine);
   if (hyper.views.json.editor.STATE.curLine < hyper.views.json.editor.STATE.lastLine) {
     let line_num = ++hyper.views.json.editor.STATE.curLine;
+    
     let line_elem = hyper.views.json.editor.setSelectedLine({ line_num });
     hyper.views.json.editor.setSelectedField({ line_elem });
   }
 
 };
+
+
+hyper.views.json.editor.goToPrevLine = function (params = {}) {
+
+
+  let { field_num } = params;
+  if (hyper.views.json.editor.STATE.curLine > 0) {
+    let line_elem = hyper.views.json.editor.getPrevLine();
+
+    if (!field_num) {
+
+      hyper.views.json.editor.setSelectedField({ line_elem });
+    }
+    else {
+
+      let field = hyper.views.json.editor.getLastFieldOfLine({ curLine });
+      let field_num = field.getAttribute('data-field_num');
+      hyper.views.json.editor.setSelectedField({ curLine, field_num });
+
+    }
+  }
+};
+
+hyper.views.json.editor.getPrevLine = function () {
+  let line_num = --hyper.views.json.editor.STATE.curLine;
+  let curLine = hyper.views.json.editor.setSelectedLine({ line_num });
+  return curLine;
+};
+
 
 hyper.views.json.editor.initLinePointer = function (editor) {
   window.addEventListener('keydown', function (event) {
@@ -84,7 +114,7 @@ hyper.views.json.editor.initLinePointer = function (editor) {
       hyper.views.json.editor.goToNextLine();
     }
     else if (key == "ArrowUp") {
-      // hyper.views.json.editor.goToPrevLine();
+      hyper.views.json.editor.goToPrevLine();
       console.log('up');
       
     }
@@ -181,9 +211,7 @@ hyper.views.json.editor.getField = function(params={}) {
   elem.setAttribute('data-id', block.id);
   elem.setAttribute('data-match', block.match);
   
-  if (!block.string) {
-    block.string = "null";
-  }
+  
   hyper.views.json.editor.addParenthesis({elem, block});
   return elem;
 };

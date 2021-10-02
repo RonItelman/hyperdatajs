@@ -272,9 +272,9 @@ body {
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap; }
-        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="key"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="string"][data-focused="true"] {
           background-color: #ffffcd; }
-        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="value"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="null"][data-focused="true"] {
           background-color: #cdf9ff; }
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="true"] {
           color: #077887;

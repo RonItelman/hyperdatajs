@@ -29,7 +29,7 @@ hyper.views.json.array.convertJSON = function (params = {}) {
         res.push(parsed, ',');
       }
       res.splice(-1);
-      res = [...res, ']', ','];
+      res = [...res, ']'];
     }
     else if (obj && typeof obj === 'object') {
       obj = Object.entries(obj);

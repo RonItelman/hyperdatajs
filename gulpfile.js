@@ -40,6 +40,7 @@ gulp.task('watch',  function () {
     console.log('watch');
     gulp.watch('./sass/*.scss').on('change', gulp.series('sass', browserSync.reload));        
     gulp.watch('./public/javascripts/hyperdata/*.js').on('change', gulp.series(browserSync.reload));        
+    gulp.watch('./public/javascripts/hyperdata/**/*.js').on('change', gulp.series(browserSync.reload));        
     gulp.watch('./public/javascripts/hyperdata/**/**/*.js').on('change', gulp.series(browserSync.reload));        
     gulp.watch('./routes/*.js').on('change', gulp.series(browserSync.reload));
     gulp.watch('./views/*.pug').on('change', gulp.series(browserSync.reload));
