@@ -98,7 +98,7 @@
         // position:absolute;
         // left:-30px;
         // border:1px solid red;
-        font-family: monospace;
+        // font-family: monospace;
         height:100%;
         color:#ccc;
         display:flex;
@@ -118,7 +118,7 @@
       .line {
         z-index:100000;
         position:relative;
-        padding-left:5px;
+        margin-left:5px;
         padding-right:15px;
         height:100%;
         width:auto;
@@ -143,10 +143,10 @@
         .field[data-type="colon"][data-focused="true"] {
           background-color:rgb(245, 205, 255);                      
         }
-        .field[data-type="object"][data-focused="true"] {
+        .field[data-type="curly brackets"][data-focused="true"] {
           background-color:rgb(205, 255, 213);                      
         }   
-        .field[data-type="array"][data-focused="true"] {
+        .field[data-type="square brackets"][data-focused="true"] {
           background-color:rgb(238, 205, 255);                      
         }   
         .field[data-type="comma"][data-focused="true"] {
@@ -157,7 +157,7 @@
         }
         .field {
           transition:0.35s;
-          font-size:14px;
+          font-size:16px;
           word-break:break-all;
           font-family: monospace;
           color:white;

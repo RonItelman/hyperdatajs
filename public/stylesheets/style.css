@@ -248,7 +248,6 @@ body {
         display: flex;
         align-items: center; }
       .rightPaneW .rightPaneC .jsonEditor .lineIndex {
-        font-family: monospace;
         height: 100%;
         color: #ccc;
         display: flex;
@@ -265,7 +264,7 @@ body {
       .rightPaneW .rightPaneC .jsonEditor .line {
         z-index: 100000;
         position: relative;
-        padding-left: 5px;
+        margin-left: 5px;
         padding-right: 15px;
         height: 100%;
         width: auto;
@@ -284,9 +283,9 @@ body {
           color: #cdf9ff; }
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="colon"][data-focused="true"] {
           background-color: #f5cdff; }
-        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="object"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="curly brackets"][data-focused="true"] {
           background-color: #cdffd5; }
-        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="array"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="square brackets"][data-focused="true"] {
           background-color: #eecdff; }
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comma"][data-focused="true"] {
           background-color: #cdd3ff; }
@@ -294,7 +293,7 @@ body {
           color: black; }
         .rightPaneW .rightPaneC .jsonEditor .line .field {
           transition: 0.35s;
-          font-size: 14px;
+          font-size: 16px;
           word-break: break-all;
           font-family: monospace;
           color: white;
