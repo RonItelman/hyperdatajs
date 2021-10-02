@@ -58,8 +58,20 @@ hyper.views.json.editor.getField = function(block) {
   if (!block.string) {
     block.string = "null";
   }
-  elem.textContent = block.string;
+  hyper.views.json.editor.addParenthesis({elem, block});
   return elem;
+};
+
+hyper.views.json.editor.addParenthesis = function(params={}) {
+  let { elem, block } = params;
+  let string = null;
+  if (block.string != "{" && block.string != ":" && block.string != "," && block.string != "}" && block.string != "[" && block.string != "]") {
+    string = JSON.stringify(block.string, null, 4);
+  }
+  else {
+    string = block.string;
+  }
+  elem.textContent = string;
 };
 
 hyper.views.json.editor.addLineToPane = function(params = {}) {
