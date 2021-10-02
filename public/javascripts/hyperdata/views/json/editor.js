@@ -148,10 +148,8 @@ hyper.views.json.editor.getLineW = function(params = {}) {
   lineW.appendChild(lineIndex);
   let line = hyper.views.json.editor.getLine(block.indent);
   lineW.appendChild(line);
-  console.log('fix me');
-  //needs position of block on line
-  let field_num = 0;
-  let field = hyper.views.json.editor.getField({block, field_num});
+  
+  let field = hyper.views.json.editor.getField({block});
   line.appendChild(field);
   return lineW;
 };
@@ -172,13 +170,14 @@ hyper.views.json.editor.getLine = function(indent) {
 };
 
 hyper.views.json.editor.getField = function(params={}) {
-  let {block, field_num} = params;
+  let {block} = params;
   let elem = document.createElement('div');
   elem.classList.add('field');
   elem.setAttribute('contenteditable', 'true');
   elem.setAttribute('data-type', block.type);
-  elem.setAttribute('data-focused', false);
-  elem.setAttribute('data-field_num', field_num);
+  elem.setAttribute('data-focused', 'false');
+  elem.setAttribute('data-field_num', block.field_num);
+  
   elem.setAttribute('data-id', block.id);
   elem.setAttribute('data-match', block.match);
   
@@ -218,11 +217,8 @@ hyper.views.json.editor.getBlockElem = function(params={}) {
   else {
     //append to current line
     let curLine = document.querySelector(`#jsonView .jsonEditor .lineW[data-line_num="${hyper.views.json.editor.STATE.curLine}"]`);
-    if(curLine) {
-      console.log('fixc me');
-      let field_num = 0;
-      //needs position of block on line
-      let field = hyper.views.json.editor.getField({block, field_num});       
+    if(curLine) {          
+      let field = hyper.views.json.editor.getField({block});       
       let line = curLine.querySelector('.line');
       line.appendChild(field);
     }

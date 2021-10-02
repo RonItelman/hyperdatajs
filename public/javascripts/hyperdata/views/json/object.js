@@ -13,6 +13,17 @@ hyper.views.json.object.getBlocksAtLineNum = function(line_num) {
   return line_blocks[line_num];  
 };
 
+hyper.views.json.object.getFieldsNumsAtLineNum = function() { 
+  console.log('hyper.views.json.object.getFieldsNumsAtLineNum');
+  let line_blocks = hyper.views.json.object.STATE.line_blocks;
+  line_blocks.forEach(function(line) {
+    line.forEach(function(block, index) {
+      block.field_num = index;
+      
+    });
+  }); 
+};
+
 hyper.views.json.object.matchBlockStringAtLineNum = function(params={}) {
   let {num, string} = params;
   --num;
@@ -227,6 +238,7 @@ hyper.views.json.object.generate = function() {
     let obj = hyper.views.json.object.configureBlock(elem);
     blocks.push(obj);
   });
+  hyper.views.json.object.getFieldsNumsAtLineNum();
   
   
 };
