@@ -180,29 +180,45 @@ hyper.views.json.editor.getPrevFieldNum = function () {
   }
 };
 
+hyper.views.json.editor.scrollToBlock = function() {
+  //get selected field
+
+  //get block id
+
+  //find in inspector
+
+  //scroll
+};
+
 hyper.views.json.editor.initLinePointer = function (editor) {
   window.addEventListener('keydown', function (event) {
+    event.preventDefault();
     let key = event.key;
 
     if (key == "ArrowDown") {      
       hyper.views.json.editor.goToNextLine();
+      hyper.views.json.editor.scrollToBlock();
     }
     else if (key == "ArrowUp") {
       hyper.views.json.editor.goToPrevLine();
+      hyper.views.json.editor.scrollToBlock();
       
       
     }
     else if (key == "ArrowRight") {
       let field_num = hyper.views.json.editor.getNextFieldNum();
       if (field_num) {        
-                    
-          hyper.views.json.editor.setSelectedField({ field_num });
-        }
-        else {
-            hyper.views.json.editor.goToNextLine();
-          }
-        }
-        else if (key == "ArrowLeft") {
+        
+        hyper.views.json.editor.setSelectedField({ field_num });
+        hyper.views.json.editor.scrollToBlock();
+      }
+      else {
+        hyper.views.json.editor.goToNextLine();
+        hyper.views.json.editor.scrollToBlock();
+      }
+    }
+    else if (key == "ArrowLeft") {
+      hyper.views.json.editor.scrollToBlock();
       
       let field_num = hyper.views.json.editor.getPrevFieldNum();
       hyper.views.json.editor.setSelectedField({ field_num });
