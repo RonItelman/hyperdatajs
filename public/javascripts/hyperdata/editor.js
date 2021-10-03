@@ -1,7 +1,7 @@
 hyper.editor.STATES = {
   inFocus: true,
   curLine: 1,
-  lastLine: 28,
+  lastLine: 13,
   curField: 0
 };
 

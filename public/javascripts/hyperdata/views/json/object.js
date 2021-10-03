@@ -14,7 +14,7 @@ hyper.views.json.object.getBlocksAtLineNum = function(line_num) {
 };
 
 hyper.views.json.object.getFieldsNumsAtLineNum = function() { 
-  console.log('hyper.views.json.object.getFieldsNumsAtLineNum');
+  
   let line_blocks = hyper.views.json.object.STATE.line_blocks;
   line_blocks.forEach(function(line) {
     line.forEach(function(block, index) {      
@@ -97,17 +97,14 @@ hyper.views.json.object.setLine = function (params = {}) {
 };
 
 hyper.views.json.object.findAndSetMatch = function(params={}) {
-  let {elem, obj, string} = params;
+  let {obj, string} = params;
   let stop = false;  
   let curLine = obj.line;    
   for (let i = curLine; i > 0 && !stop; --i) {
     let match = false;
-    match = hyper.views.json.object.matchBlockStringAtLineNum({ num: i, string });    
-    // console.log('match: ', i, string);
-    // console.log(match);
+    match = hyper.views.json.object.matchBlockStringAtLineNum({ num: i, string });        
     if (match) {
-      if (!obj.open_match && !match.close_match) {
-        
+      if (!obj.open_match && !match.close_match) {        
         stop = true;
         match.close_match = obj.id;
         obj.open_match = match.id;        
