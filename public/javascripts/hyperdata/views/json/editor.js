@@ -8,18 +8,19 @@ hyper.views.json.editor.STATE = {
 
 
 hyper.views.json.editor.update = function (blocks) {
+  
+  let pane = hyper.views.json.elems.GET.editor.pane;
   blocks.forEach(function (block, index) {
     // console.log(block);
-    let pane = hyper.views.json.elems.GET.editor.pane;
     let elem = hyper.views.json.editor.getBlockElem({ block, index });
     pane.appendChild(elem);
   });
   //select first field
-  let editor = hyper.views.json.elems.GET.editor.pane;
-  console.log(editor);
-  let focused = editor.querySelector(`.field[data-id="${hyper.views.json.editor.STATE.curBlock}"]`);
-  console.log(focused);
+  
+  let focused = pane.querySelector(`.field[data-id="1"]`);
+  
   hyper.views.json.editor.setSelectedBlock(focused);
+  // hyper.views.json.inspector.setSelectedBlock(1);
   
   
 };
@@ -40,8 +41,7 @@ hyper.views.json.editor.addFieldListeners = function(params={}) {
 };
 
 hyper.views.json.editor.setSelectedBlock = function (field) {
-  console.log('hyper.views.json.editor.setSelectedBlock');
-  console.log(field);
+  
   let id = parseInt(field.getAttribute('data-id'));
   hyper.views.json.editor.STATE.curBlock = id;
   hyper.views.json.editor.clearFocusedField();
@@ -152,17 +152,21 @@ hyper.views.json.editor.selectLastFieldInPrevLine = function () {
 };
 
 
+hyper.views.json.editor.clearSelectedLine = function() {
+  let editor = hyper.views.json.elems.GET.editor.pane;
+  let selected = editor.querySelector(`.lineW[data-selected="true"]`);
+  if (selected) {
+    selected.setAttribute('data-selected', 'false');
+  }
+};
 
 hyper.views.json.editor.setSelectedLine = function (params) {
   let { line_num } = params;
   let editor = hyper.views.json.elems.GET.editor.pane;
+  hyper.views.json.editor.clearSelectedLine();
   let line_elem = editor.querySelector(`.lineW[data-line_num="${line_num}"]`);
-  let selected = editor.querySelector(`.lineW[data-selected="true"]`);
-  if (selected) {
-    selected.setAttribute('data-selected', 'false');
-    line_elem.setAttribute('data-selected', 'true');
-    hyper.views.json.editor.STATE.curLine = line_num;
-  }
+  line_elem.setAttribute('data-selected', 'true');
+  hyper.views.json.editor.STATE.curLine = line_num;
   return line_elem;
 };
 
@@ -414,6 +418,7 @@ hyper.views.json.editor.getBlockElem = function(params={}) {
 hyper.views.json.editor.init = function() {
   let blocks = hyper.views.json.object.STATE.blocks;
   hyper.views.json.editor.update(blocks);
+  hyper.views.json.editor.setSelectedLine({ line_num:1 });
   hyper.views.json.editor.initLinePointer();
   hyper.views.json.editor.addFieldListeners();
 };

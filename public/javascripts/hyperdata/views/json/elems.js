@@ -96,7 +96,6 @@ hyper.views.json.elems.initArray = function() {
   hyper.views.json.elems.GET.editor.wrapper = document.querySelector('#jsonView .jsonEditor');
   hyper.views.json.elems.GET.inspector.wrapper = document.querySelector("#jsonView .inspectorW .inspector");
   hyper.views.json.elems.GET.input.header = document.querySelector('#jsonInput .header');
-  hyper.views.json.elems.GET.editor.pane = document.querySelector('#jsonView .jsonEditor .paneW .pane');
-  console.log(hyper.views.json.elems.GET.editor.pane);
-  hyper.views.json.elems.GET.editor.inspector = document.querySelector('#jsonView #jsonContentW #jsonInspector .inspectorW .inspector');
+  hyper.views.json.elems.GET.editor.pane = document.querySelector('#jsonView .jsonEditor .paneW .pane');  
+  hyper.views.json.elems.GET.editor.inspector = document.querySelector('#jsonView #jsonContentW .jsonInspector .inspectorW .inspector');
 };

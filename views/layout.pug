@@ -6,6 +6,8 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/fa_all.css')     
     script(src="/javascripts/gsap/gsap.min.js")    
+    script(src="/javascripts/gsap/ScrollToPlugin.min.js")  
+    
     script.
       let hyperdata = {
         views: {
@@ -40,6 +42,7 @@ html
   //- script(src="/javascripts/hyperdata/views/json/editor.js")
   //- script(src="/javascripts/hyperdata/table.js")
   script.
+    gsap.registerPlugin(ScrollToPlugin);
     hyper.views.json.init();
     //- hyper.editor.initEditor(".jsonEditor");
     //- hyper.table.initTable({parent_elem_id: "#tableView #tableW"});
