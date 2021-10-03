@@ -1,18 +1,38 @@
 .inspectorW {
   margin-top:30px;
+  width:calc(100vw - 850px);
+  margin-left:30px;
+}
+
+.blockW[data-focused="true"] {
+  background-color: rgba(100,150,255, 0.15);
+  .header {
+    background-color: rgba(100,150,255, 0.85);
+    color:white;
+  }
+}
+
+.blockW[data-focused="false"] {
+  background-color: white;
+  .header {
+    background-color:#f5f5f5;
+    color:#333;
+  }
 }
 
 .blockW {
-  width:calc(100vw - 780px);
+  width:100%;
   display:flex;
   justify-content: center;
   margin-bottom:50px;
+  transition:0.35s;
   .block {
-    width:calc(100% - 100px);
+    width:100%;
     .header {
+      transition:0.35s;
       font-size:24px;
       font-weight:300;
-      background-color:#f5f5f5;
+      
       width:100%;
       padding-top:5px;
       padding-bottom:5px;

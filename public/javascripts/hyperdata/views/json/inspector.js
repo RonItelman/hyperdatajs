@@ -1,9 +1,29 @@
+hyper.views.json.inspector.clearSelectedBlock = function() {
+  let pane = hyper.views.json.elems.GET.editor.inspector;
+  let block = pane.querySelector(`.blockW[data-focused="true"]`);
+  if(block) {
+    block.setAttribute('data-focused', 'false');
+
+  }
+
+};
+
+hyper.views.json.inspector.setSelectedBlock = function(id) {
+  let pane = hyper.views.json.elems.GET.editor.inspector;
+  console.log(id);
+  let block = pane.querySelector(`.blockW[data-id="${id}"]`);
+  hyper.views.json.inspector.clearSelectedBlock();
+  block.setAttribute('data-focused', 'true');
+};
+
 hyper.views.json.inspector.init = function() {
   let wrapper = hyper.views.json.elems.GET.inspector.wrapper;
   wrapper.innerHTML = '';
   let blocks = hyper.views.json.object.STATE.blocks;
   blocks.forEach(function (block) {    
     let elem = hyper.views.json.elems.getBlockW();
+    elem.setAttribute('data-id', block.id);
+    elem.setAttribute('data-focused', 'false');
     hyper.views.json.inspector.configureBlock({elem, block});    
     wrapper.appendChild(elem);
   });
