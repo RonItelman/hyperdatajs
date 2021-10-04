@@ -46,6 +46,24 @@ hyper.views.json.elems.getDetailRow = function(params ={}) {
   return wrapper;
 };
 
+hyper.views.json.elems.getDetailInputRow = function(params ={}) {
+  let {text, type} = params;
+  let wrapper = document.createElement('div');
+  wrapper.classList.add('elem_wrapper');
+  let label = document.createElement('div');
+  label.classList.add('elem_label');
+  label.textContent = text;
+  // let value = document.createElement('div');
+  // value.classList.add('elem_value');
+  // value.setAttribute('data-type', type);
+  let input = document.createElement('input');
+  input.classList.add('meta_input');
+  wrapper.appendChild(label);
+  wrapper.appendChild(input)
+  // wrapper.appendChild(value);
+  return wrapper;
+};
+
 hyper.views.json.elems.getLineWrapper = function(block) {
   let wrapper = hyper.views.json.elems.getDetailRow("Line: ");
   return wrapper;
@@ -80,10 +98,20 @@ hyper.views.json.elems.getBlockW = function() {
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Open Match: ", type:"open_match"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Match Line: ", type:"match_line"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Close Match: ", type:"close_match"}));
+  // hyper.views.json.elems.addMetaFields(details);  
   block.appendChild(header);
   block.appendChild(details);
   blockW.appendChild(block);
   return blockW;
+};
+
+hyper.views.json.elems.addMetaFields = function(details) {
+  details.appendChild(hyper.views.json.elems.getDetailInputRow({ text: "URL: ", type: "url" }));
+  details.appendChild(hyper.views.json.elems.getDetailInputRow({ text: "Description: ", type: "description" }));
+  details.appendChild(hyper.views.json.elems.getDetailInputRow({ text: "Type: ", type: "type" }));
+  details.appendChild(hyper.views.json.elems.getDetailInputRow({ text: "Categories: ", type: "categories" }));
+  details.appendChild(hyper.views.json.elems.getDetailInputRow({ text: "Combinators: ", type: "combinators" }));
+  details.appendChild(hyper.views.json.elems.getDetailInputRow({ text: "Observables: ", type: "observables" }));
 };
 
 hyper.views.json.elems.initArray = function() {

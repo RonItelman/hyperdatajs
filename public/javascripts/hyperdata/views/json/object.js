@@ -21,6 +21,8 @@ hyper.views.json.object.getFieldsNumsAtLineNum = function() {
       block.field_num = index;      
     });
   }); 
+  hyper.views.json.editor.setLastLine(line_blocks.length);
+  
 };
 
 hyper.views.json.object.matchBlockStringAtLineNum = function(params={}) {
@@ -176,10 +178,25 @@ hyper.views.json.object.setType = function(params = {}) {
   else if (elem == ",") {
       obj.type="comma";   
   }
-  else if (elem == null) {
+  else if (typeof elem == "null") {
       obj.type = "null";   
   }
-  else {
+  else if(typeof elem == "number") {
+    obj.type = "number";
+  }
+  else if(typeof elem == "undefined") {
+    obj.type = "undefined";
+  }
+  // else if(typeof elem == "function") {
+  //   obj.type = "function";
+  // }
+  // else if(typeof elem == "object") {
+  //   obj.type = "object";
+  // }
+  else if(typeof elem == "boolean") {
+    obj.type = "boolean";
+  }
+  else if(typeof elem == "string") {
     obj.type = "string";
   }
 };
@@ -237,6 +254,7 @@ hyper.views.json.object.generate = function() {
     blocks.push(obj);
   });
   hyper.views.json.object.getFieldsNumsAtLineNum();
+  
   
   
 };

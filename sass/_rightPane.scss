@@ -137,8 +137,8 @@
           color:rgb(7, 120, 135);            
           background-color: rgb(205, 249, 255);                      
         }
-        .field[data-type="comment"][data-focused="false"] {
-          color:rgb(205, 249, 255);                      
+        .field[data-type="number"][data-focused="true"] {
+          background-color:rgb(205, 249, 255);                      
         }
         .field[data-type="colon"][data-focused="true"] {
           background-color:rgb(245, 205, 255);                      

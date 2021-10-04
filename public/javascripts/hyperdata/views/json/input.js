@@ -101,11 +101,13 @@ hyper.views.json.input.addKeyListener = function(params={}) {
   
   input.addEventListener('keyup', function () {
     let meta_val = hyper.views.json.input.updateMetaVal({meta, input});
+    
     if (meta_val != "") {
       
       let valid = hyper.views.json.input.checkIfValidJson({input, val:meta.val});
       if(valid) {
-        hyper.views.json.array.convertJSON({meta});
+        
+        hyper.views.json.array.convertJSON({meta, log:false});
         hyper.views.json.input.update();
       }
       else {

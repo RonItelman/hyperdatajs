@@ -279,8 +279,8 @@ body {
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="true"] {
           color: #077887;
           background-color: #cdf9ff; }
-        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="false"] {
-          color: #cdf9ff; }
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="number"][data-focused="true"] {
+          background-color: #cdf9ff; }
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="colon"][data-focused="true"] {
           background-color: #f5cdff; }
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="curly brackets"][data-focused="true"] {
@@ -379,9 +379,9 @@ body {
 
 #jsonInput {
   width: 300px;
-  position: absolute;
-  right: 20px;
-  top: 0px;
+  position: fixed;
+  right: 505px;
+  top: 100px;
   height: calc(50vh);
   display: flex;
   flex-direction: column;
@@ -432,6 +432,21 @@ body {
   transition: 0.35s; }
   .blockW .block {
     width: 100%; }
+    .blockW .block .meta_input {
+      width: 60%;
+      border: 1px solid transparent;
+      outline: 0;
+      background-color: rgba(0, 0, 0, 0.05);
+      transition: 0.35s;
+      border-radius: 2px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-left: 3px;
+      padding-right: 3px;
+      font-size: 16px; }
+      .blockW .block .meta_input:focus {
+        background-color: rgba(100, 150, 250, 0.15);
+        border-color: rgba(100, 150, 250, 0.85); }
     .blockW .block .header {
       transition: 0.35s;
       font-size: 24px;
@@ -443,7 +458,8 @@ body {
       padding-right: 30px; }
     .blockW .block .details {
       padding-top: 10px;
-      padding-left: 30px; }
+      padding-left: 30px;
+      padding-bottom: 20px; }
       .blockW .block .details .elem_wrapper {
         padding-bottom: 5px;
         display: flex; }

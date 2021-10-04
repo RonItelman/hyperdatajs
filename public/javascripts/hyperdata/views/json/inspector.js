@@ -38,7 +38,25 @@ hyper.views.json.inspector.init = function() {
     hyper.views.json.inspector.configureBlock({elem, block});        
     wrapper.appendChild(elem);
   });
+  hyper.views.json.inspector.setBlockListeners(wrapper);
   hyper.views.json.inspector.setSelectedBlock(1);
+};
+
+hyper.views.json.inspector.addBlockListener = function(block) {
+  let id = block.getAttribute('data-id');
+  let selector = `#jsonView .jsonEditor .field[data-id="${id}"]`;
+  let target = document.querySelector(selector);
+  target.focus();
+  console.log(target);
+};
+
+hyper.views.json.inspector.setBlockListeners = function(wrapper) {
+  let blocks = wrapper.querySelectorAll('.blockW');
+  blocks.forEach(function (block) {
+    block.addEventListener('click', function () {
+      hyper.views.json.inspector.addBlockListener(block);
+    });
+  });
 };
 
 hyper.views.json.inspector.configureBlock = function(params={}) {
@@ -75,4 +93,13 @@ hyper.views.json.inspector.configureBlock = function(params={}) {
     gsap.set(match_line.closest(".elem_wrapper"), {display:"none"});
     
   }
+  // let url = elem.querySelector('.elem_value[data-type="url"]');
+  
+  // if (block.url == null && url) {
+  //   gsap.set(url.closest(".elem_wrapper"), {display:"none"});
+    
+  // }
+  // else if (url) {
+  //   url.textContent = block.url;
+  // }
 };
