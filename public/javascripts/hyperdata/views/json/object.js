@@ -243,10 +243,11 @@ hyper.views.json.object.resetBlocks = function() {
   hyper.views.json.object.STATE.indents = 0;
 };
 
-hyper.views.json.object.generate = function() {
-  let array_meta = hyper.views.json.array.getMeta();
-  let array = JSON.parse(array_meta);
-  
+hyper.views.json.object.generate = function(array) {
+  // let array_meta = hyper.views.json.array.getMeta();
+  // console.log(array_meta);
+  // let array = JSON.parse(array);
+  console.log(array);
   hyper.views.json.object.resetBlocks();
   let blocks = hyper.views.json.object.STATE.blocks;
   array.forEach(function (elem) {

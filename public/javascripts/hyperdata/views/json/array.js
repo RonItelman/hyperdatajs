@@ -1,11 +1,7 @@
-hyper.views.json.array.init = function() {
-  
-  
-};
-
 hyper.views.json.array.setMeta = function(array) {
   let elem = hyper.views.json.elems.GET.meta_array;
   elem.value = JSON.stringify(array, null, 4);  
+  hyper.views.json.meta.setArray({array});
 };
 
 hyper.views.json.array.getMeta = function() {
@@ -41,16 +37,14 @@ hyper.views.json.array.parse = function(obj) {
   return Array.isArray(res) ? res.flat() : res;
 };
 
-hyper.views.json.array.convertJSON = function (params = {}) {
-
-  
-  let { meta, log } = params;  
-  let json = meta.value;
+hyper.views.json.array.convertInput = function (params = {}) {
+  let { meta_elem, log } = params;  
+  let json = meta_elem.value;
   jsonObj = JSON.parse(json);  
   if (log) {
     console.log(json);
     console.log(JSON.stringify(jsonObj));
   }
-  let arr = hyper.views.json.array.parse(jsonObj);
-  hyper.views.json.array.setMeta(arr);  
+  let arr = hyper.views.json.array.parse(jsonObj);  
+  return arr;  
 };

@@ -27,6 +27,11 @@ hyper.views.json.inspector.setSelectedBlock = function(id) {
   hyper.views.json.inspector.scrollToBlock(id);
 };
 
+hyper.views.json.inspector.reset = function() {
+  let wrapper = hyper.views.json.elems.GET.inspector.wrapper;
+  wrapper.innerHTML = '';
+};
+
 hyper.views.json.inspector.init = function() {  
   let wrapper = hyper.views.json.elems.GET.inspector.wrapper;
   wrapper.innerHTML = '';

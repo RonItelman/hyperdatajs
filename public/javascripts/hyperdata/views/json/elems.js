@@ -18,19 +18,6 @@ hyper.views.json.elems.init = function() {
   hyper.views.json.elems.initArray();   
 };
 
-hyper.views.json.elems.getStringWrapper = function(block) {
-  // let string_wrapper = document.createElement('div');
-  // string_wrapper.classList.add('elem_wrapper');
-  // let string = document.createElement('div');
-  // string.classList.add('string');
-  // let string_label = document.createElement('div');
-  // string_label.classList.add('elem_label');
-  // string_label.textContent = "String:";
-  // string_wrapper.appendChild(string_label);
-  // string_wrapper.appendChild(string);  
-  // return string_wrapper;
-};
-
 hyper.views.json.elems.getDetailRow = function(params ={}) {
   let {text, type} = params;
   let wrapper = document.createElement('div');
