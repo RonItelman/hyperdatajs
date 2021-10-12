@@ -23,6 +23,7 @@ hyper.views.json.editor.update = function (blocks) {
   let focused = pane.querySelector(`.field[data-id="1"]`);
   
   hyper.views.json.editor.setSelectedBlock(focused);
+  hyper.views.json.editor.setLastLine(hyper.views.json.object.STATE.line_blocks.length);
   // hyper.views.json.inspector.setSelectedBlock(1);
   
   
@@ -333,10 +334,10 @@ hyper.views.json.editor.resetState = function() {
 //clears content in the editor
 //resets the editor block index
 hyper.views.json.editor.reset = function() {
-  console.error('hyper.views.json.editor.reset');
+  console.log('hyper.views.json.editor.reset');
   hyper.views.json.editor.clearContent();
   hyper.views.json.editor.resetState();
-  // hyper.views.json.editor.setLastLine(hyper.views.json.object.STATE.line_blocks.length);
+  
   // console.error('this is wrong, line_blocks is not updating, need to set last line');
   // console.log(hyper.views.json.object.STATE.line_blocks);
 };
@@ -443,6 +444,7 @@ hyper.views.json.editor.getBlockElem = function(params={}) {
 };
 
 hyper.views.json.editor.init = function() {
+  console.log('hyper.views.json.editor.init');
   let blocks = hyper.views.json.object.STATE.blocks;
   hyper.views.json.editor.update(blocks);
   hyper.views.json.editor.setSelectedLine({ line_num:1 });
