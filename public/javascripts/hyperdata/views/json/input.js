@@ -102,19 +102,19 @@ hyper.views.json.input.addKeyListener = function (params = {}) {
 
 //called whenever the input has been updated and validated
 hyper.views.json.input.update = function(params={}) {  
+  console.log('hyper.views.json.input.update');
   let {input_elem, meta_elem} = params;
-  hyper.views.json.input.updateMetaElemVal({ meta_elem, input_elem });
-  hyper.views.json.editor.reset();
+  hyper.views.json.input.updateMetaElemVal({ meta_elem, input_elem });  
   hyper.views.json.input.clearError();
   let array = hyper.views.json.array.convertInput({ meta_elem });
   hyper.views.json.object.generate(array);
   hyper.views.json.inspector.init();
   hyper.views.json.editor.init();
-
 };
 
 //adds listeners and runs update on json in textarea
 hyper.views.json.input.init = function () {  
+  console.log('hyper.views.json.input.init');
   let { input_elem, meta_elem } = hyper.views.json.input.getElems();
   hyper.views.json.addListeners({ meta_elem, input_elem });  
   hyper.views.json.input.update({meta_elem, input_elem});

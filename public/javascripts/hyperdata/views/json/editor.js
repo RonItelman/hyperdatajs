@@ -2,7 +2,8 @@ hyper.views.json.editor.STATE = {
   curLine: 1,
   lastLine: 13,
   curField: 0,
-  curBlock: 1
+  curBlock: 1,
+  line_blocks:[]
 };
 
 hyper.views.json.editor.setLastLine = function(num) {
@@ -317,16 +318,27 @@ hyper.views.json.editor.initLinePointer = function (editor) {
   });
 };
 
-
-hyper.views.json.editor.reset = function() {
+hyper.views.json.editor.clearContent = function() {
   let pane = hyper.views.json.elems.GET.editor.pane;
   pane.innerHTML = '';
+};
+
+hyper.views.json.editor.resetState = function() {
   hyper.views.json.editor.STATE.curLine = 1;
   hyper.views.json.editor.STATE.curField = 0;
   hyper.views.json.editor.STATE.curBlock = 1;
-  hyper.views.json.editor.setLastLine(hyper.views.json.object.STATE.line_blocks.length);
-  console.error('this is wrong, line_blocks is not updating');
-  console.log(hyper.views.json.object.STATE.line_blocks);
+  hyper.views.json.editor.STATE.line_blocks = [];
+};
+
+//clears content in the editor
+//resets the editor block index
+hyper.views.json.editor.reset = function() {
+  console.error('hyper.views.json.editor.reset');
+  hyper.views.json.editor.clearContent();
+  hyper.views.json.editor.resetState();
+  // hyper.views.json.editor.setLastLine(hyper.views.json.object.STATE.line_blocks.length);
+  // console.error('this is wrong, line_blocks is not updating, need to set last line');
+  // console.log(hyper.views.json.object.STATE.line_blocks);
 };
 
 
