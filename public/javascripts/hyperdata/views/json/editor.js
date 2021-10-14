@@ -156,10 +156,8 @@ hyper.views.json.editor.goToNextLine = function () {
 };
 
 
-hyper.views.json.editor.goToPrevLine = function (params = {}) {
-
-
-  let { field_num } = params;
+hyper.views.json.editor.goToPrevLine = function (params = {}) {    
+  let { field_num } = params;    
   if (hyper.views.json.editor.STATE.curLine > 1) {
     let line_elem = hyper.views.json.editor.getPrevLine();
 
@@ -224,50 +222,62 @@ hyper.views.json.editor.blurFocusedField = function() {
   document.activeElement.blur();
 };
 
-hyper.views.json.editor.scrollWithArrows = function(params={}) {
-  console.log('hyper.views.json.editor.scrollWithArrows');
+hyper.views.json.editor.arrowDown = function(event) {
+  console.log('hyper.views.json.editor.arrowDown');
+  event.preventDefault();
+  let { field_elem } = hyper.views.json.editor.goToNextLine();
+  if (field_elem) {
+    hyper.views.json.editor.setSelectedBlock(field_elem);
+  }
+};
+
+hyper.views.json.editor.arrowUp = function(event) {
+  event.preventDefault();
+  let { field_elem } = hyper.views.json.editor.goToPrevLine();  
+  if (field_elem) {
+    hyper.views.json.editor.setSelectedBlock(field_elem);
+  }
+};
+
+hyper.views.json.editor.arrowRight = function(event) {
+  event.preventDefault();
+  let field_num = hyper.views.json.editor.getNextFieldNum();
+  if (field_num) {
+
+    let { field_elem } = hyper.views.json.editor.setSelectedField({ field_num });
+    hyper.views.json.editor.setSelectedBlock(field_elem);
+  }
+  else {
+    let { field_elem } = hyper.views.json.editor.goToNextLine();
+    if (field_elem) {
+      hyper.views.json.editor.setSelectedBlock(field_elem);
+    }
+  }
+};
+
+hyper.views.json.editor.arrowLeft = function(event) {
+  event.preventDefault();
+
+  let field_num = hyper.views.json.editor.getPrevFieldNum();
+  let { field_elem } = hyper.views.json.editor.setSelectedField({ field_num });
+  if (field_elem) {
+    hyper.views.json.editor.setSelectedBlock(field_elem);
+  }
+};
+
+hyper.views.json.editor.scrollWithArrows = function(params={}) {  
   let {key, event} = params;
   if (key == "ArrowDown") {
-    
-    
-    let { field_elem } = hyper.views.json.editor.goToNextLine();
-    
-    if (field_elem) {
-      hyper.views.json.editor.setSelectedBlock(field_elem);
-    }
+    hyper.views.json.editor.arrowDown(event);
   }
   else if (key == "ArrowUp") {
-    event.preventDefault();
-    let { field_elem } = hyper.views.json.editor.goToPrevLine();
-    if (field_elem) {
-      hyper.views.json.editor.setSelectedBlock(field_elem);
-    }
-
-
+    hyper.views.json.editor.arrowUp(event);
   }
   else if (key == "ArrowRight") {
-    event.preventDefault();
-    let field_num = hyper.views.json.editor.getNextFieldNum();
-    if (field_num) {
-
-      let { field_elem } = hyper.views.json.editor.setSelectedField({ field_num });
-      hyper.views.json.editor.setSelectedBlock(field_elem);
-    }
-    else {
-      let { field_elem } = hyper.views.json.editor.goToNextLine();
-      if (field_elem) {
-        hyper.views.json.editor.setSelectedBlock(field_elem);
-      }
-    }
+    hyper.views.json.editor.arrowRight(event);
   }
   else if (key == "ArrowLeft") {
-    event.preventDefault();
-
-    let field_num = hyper.views.json.editor.getPrevFieldNum();
-    let { field_elem } = hyper.views.json.editor.setSelectedField({ field_num });
-    if (field_elem) {
-      hyper.views.json.editor.setSelectedBlock(field_elem);
-    }
+    hyper.views.json.editor.arrowLeft(event);
   }
   else if (key == "Escape") {
     console.log('escape');
@@ -427,8 +437,7 @@ hyper.views.json.editor.getLineElementAtLineNumber = function(line_num) {
 
 hyper.views.json.editor.selectFirstFieldInLine = function (params = {}) {
   let { line_elem } = params;  
-  field_num = 0;
-  console.log(line_elem);
+  field_num = 0;  
   let field_elem = line_elem.querySelector(`.field[data-field_num="${field_num}"]`);
   field_elem.setAttribute('data-focused', true);
   hyper.views.json.editor.STATE.curField = 0;
@@ -443,7 +452,7 @@ hyper.views.json.editor.selectFirstFieldInFirstLine = function() {
 };
 
 hyper.views.json.addBlocksToEditor = function(blocks) {
-  console.log(blocks);
+  // console.log(blocks);
   let pane = hyper.views.json.elems.GET.editor.pane;
   blocks.forEach(function (block, index) {
     let elem = hyper.views.json.editor.getBlockElem({ block, index });
@@ -453,11 +462,12 @@ hyper.views.json.addBlocksToEditor = function(blocks) {
 };
 
 hyper.views.json.editor.update = function (blocks) {
-  console.log('hyper.views.json.editor.update');
+  // console.log('hyper.views.json.editor.update');
   hyper.views.json.editor.reset();
   hyper.views.json.addBlocksToEditor(blocks);
   hyper.views.json.editor.selectFirstFieldInFirstLine();
   hyper.views.json.editor.setLastLine(hyper.views.json.object.STATE.line_blocks.length);  
+  hyper.views.json.editor.STATE.curLine = 1;
 };
 
 hyper.views.json.editor.render = function() {  
