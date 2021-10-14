@@ -7,22 +7,155 @@ hyper.views.json.object.STATE = {
   curLine:1
 };
 
-hyper.views.json.object.getBlocksAtLineNum = function(line_num) {
-  --line_num;
-  let line_blocks = hyper.views.json.object.STATE.line_blocks;
-  return line_blocks[line_num];  
+
+//returns an array of arrays of objects
+//each row in the array is the line number
+//each row is an array of objects
+//i.e. line 2: "hello":"world"
+// array[2] = psuedo code [{"hello"}, {":"}, {"world"}]
+hyper.views.json.object.getLineBlocks = function() {
+  return hyper.views.json.object.STATE.line_blocks;
 };
 
 hyper.views.json.object.getFieldsNumsAtLineNum = function() { 
-  
-  let line_blocks = hyper.views.json.object.STATE.line_blocks;
+  // console.log('hyper.views.json.object.getFieldsNumsAtLineNum');
+  let line_blocks = hyper.views.json.object.getLineBlocks();
+  console.log(line_blocks);
   line_blocks.forEach(function(line) {
-    line.forEach(function(block, index) {      
+    line.forEach(function(block, index) { 
+      // console.log(index);
       block.field_num = index;      
+      // console.log(block);
     });
   }); 
-  hyper.views.json.editor.setLastLine(line_blocks.length);
+  // hyper.views.json.editor.setLastLine(line_blocks.length);
   
+};
+
+/**
+ * 
+ * @param {*} array - the array of characters in the json
+ * @returns an array of the block objects of the json characters
+ */
+hyper.views.json.object.configureBlocksArray = function (array) {
+  let blocks_array = [];
+  for (let i = 0; i < array.length; ++i) {    
+    let obj = hyper.views.json.object.configureBlock(array[i]);
+    blocks_array.push(obj);
+    if (i == array.length - 1) {
+      return blocks_array;
+    }
+  }
+};
+
+
+hyper.views.json.object.generate = function (array) {  
+  hyper.views.json.object.resetBlocks();
+  let blocks_array = hyper.views.json.object.configureBlocksArray(array);  
+  hyper.views.json.object.STATE.blocks = blocks_array;
+  hyper.views.json.object.getFieldsNumsAtLineNum();
+};
+
+
+/**
+ * 
+ * @param {int} line_num the line_number to get the blocks from
+ * @returns the array of block objects in the line
+ */
+hyper.views.json.object.getBlocksAtLineNum = function (line_num) {
+  line_num = parseInt(line_num);
+  --line_num; //line starts at 0, reduce by one for array index
+  let line_blocks = hyper.views.json.object.STATE.line_blocks;
+  return line_blocks[line_num];
+};
+
+/**
+ * 
+ * @param {int} line_num the line_number to set the block objects
+ * @returns the array of block objects in the line
+ */
+hyper.views.json.object.setBlocksAtLineNum = function (params={}) {
+  // console.log('hyper.views.json.object.setBlocksAtLineNum');
+  let {line_num, blocks} = params;
+  line_num = parseInt(line_num);
+  --line_num; //line starts at 0, reduce by one for array index
+  // console.log(line_num);
+  // console.log(blocks);
+  let line_blocks = hyper.views.json.object.STATE.line_blocks;
+  line_blocks[line_num] = blocks;
+};
+
+
+hyper.views.json.object.openNewLine = function(params={}) {
+  // console.log('hyper.views.json.object.openNewLine');
+  let {obj} = params;  
+  let curLine = hyper.views.json.object.STATE.lines++;    
+  let blocks = hyper.views.json.object.getBlocksAtLineNum(curLine);
+  if (!blocks) {
+    blocks = [];
+  }
+  blocks.push(obj);
+  hyper.views.json.object.setBlocksAtLineNum({ line_num: curLine, blocks });
+  return curLine;
+};
+
+hyper.views.json.object.closeNewLine = function(params={}) {
+  // console.log('hyper.views.json.object.closeNewLine');
+  let {obj} = params;  
+  let curLine = ++hyper.views.json.object.STATE.lines;  
+  let blocks = hyper.views.json.object.getBlocksAtLineNum(curLine);
+  if (!blocks) {
+    blocks = [];
+  }
+  blocks.push(obj);
+  hyper.views.json.object.setBlocksAtLineNum({ line_num: curLine, blocks });
+  return curLine;
+};
+
+hyper.views.json.object.stayInLine = function(params={}) {
+  let {obj} = params;    
+  let curLine = hyper.views.json.object.STATE.lines;    
+  let blocks = hyper.views.json.object.getBlocksAtLineNum(curLine);
+  if (!blocks) {
+    blocks = [];    
+  }
+  blocks.push(obj);  
+  hyper.views.json.object.setBlocksAtLineNum({ line_num: curLine, blocks });
+  return curLine;
+};
+
+hyper.views.json.object.setLine = function(params = {}) {  
+  console.log('hyper.views.json.object.setLine');
+  let { obj, elem } = params;  
+  let line = null;
+  if (elem == "{" || elem == "[" || elem == ",") {
+    line = hyper.views.json.object.openNewLine({obj});    
+  }
+  else if (elem == "}" || elem == "]") {
+    line = hyper.views.json.object.closeNewLine({obj});    
+  }
+  else {
+    line = hyper.views.json.object.stayInLine({obj});    
+  }
+  obj.line = line;
+};
+
+/**
+ * 
+ * @param {String} elem - the characters in the json input
+ * @returns a block object with the character's meta information
+ */
+hyper.views.json.object.configureBlock = function (elem) {
+  let obj = hyper.views.json.object.create();  
+  hyper.views.json.object.setDirection({ obj, elem });
+  hyper.views.json.object.setLine({ obj, elem });  
+  hyper.views.json.object.setString({ obj, elem });
+  hyper.views.json.object.setId({ obj, elem });
+  hyper.views.json.object.setType({ obj, elem });
+  hyper.views.json.object.setIndents({ obj, elem });
+  hyper.views.json.object.setMatchingBraces({ obj, elem });
+
+  return obj;
 };
 
 hyper.views.json.object.matchBlockStringAtLineNum = function(params={}) {
@@ -41,62 +174,6 @@ hyper.views.json.object.matchBlockStringAtLineNum = function(params={}) {
 };
 
 
-hyper.views.json.object.setLine = function (params = {}) {
-  let { obj, elem } = params;
-  let line_blocks = hyper.views.json.object.STATE.line_blocks;
-  if (elem == "{" || elem == "[" || elem == ",") {
-    obj.line = hyper.views.json.object.STATE.lines++;
-    curLine = obj.line;
-    // console.log(curLine);
-    let blocks = line_blocks[obj.line-1];
-    if(!blocks) {
-      blocks = [];
-      blocks.push(obj);
-      line_blocks[obj.line - 1] = blocks;
-    }
-    else {
-      blocks.push(obj);
-
-    }
-          
-    
-  }
-  else if (elem == "}" || elem == "]" || elem ==",") {
-    
-    obj.line = ++hyper.views.json.object.STATE.lines;
-    // console.log(curLine);
-    let blocks = line_blocks[obj.line - 1];
-    if (!blocks) {
-      blocks = [];
-      blocks.push(obj);
-      line_blocks[obj.line - 1] = blocks;
-    }
-    else {
-      blocks.push(obj);
-  
-    }
-          
-    
-    
-  }
-  else {
-    // console.log(obj);
-    obj.line = hyper.views.json.object.STATE.lines;
-    // console.log(curLine);
-    let blocks = line_blocks[obj.line - 1];
-    if (!blocks) {
-      blocks = [];
-      blocks.push(obj);
-      line_blocks[obj.line - 1] = blocks;
-    }
-    else {
-      blocks.push(obj);
-  
-    }
-          
-    
-  }
-};
 
 hyper.views.json.object.findAndSetMatch = function(params={}) {
   let {obj, string} = params;
@@ -127,14 +204,15 @@ hyper.views.json.object.setMatchingBraces = function (params = {}) {
   }
 };
 
-hyper.views.json.object.create = function() {
+hyper.views.json.object.create = function() {  
   return {
     line:null,
     type:null,
     direction:null,
     id:null,
     string:null,
-    indent:null
+    indent:null,
+    field_num:null
   };
 };
 
@@ -223,42 +301,18 @@ hyper.views.json.object.setIndents = function(params = {}) {
 };
 
 
-hyper.views.json.object.configureBlock = function(elem) {
-  let obj = hyper.views.json.object.create();  
-  hyper.views.json.object.setDirection({obj, elem});
-  hyper.views.json.object.setLine({obj, elem});  
-  hyper.views.json.object.setString({obj, elem});
-  hyper.views.json.object.setId({obj, elem});          
-  hyper.views.json.object.setType({obj, elem});          
-  hyper.views.json.object.setIndents({obj, elem});
-  hyper.views.json.object.setMatchingBraces({obj, elem});
-  
-  return obj;
-};
+
 
 hyper.views.json.object.resetBlocks = function() {
   hyper.views.json.object.STATE.blocks = [];
   hyper.views.json.object.STATE.ids = 1;
   hyper.views.json.object.STATE.lines = 1;
   hyper.views.json.object.STATE.indents = 0;
+  hyper.views.json.object.STATE.line_blocks = [];
 };
 
-hyper.views.json.object.generate = function(array) {
-  // let array_meta = hyper.views.json.array.getMeta();
-  // console.log(array_meta);
-  // let array = JSON.parse(array);
-  console.log(array);
-  hyper.views.json.object.resetBlocks();
-  let blocks = hyper.views.json.object.STATE.blocks;
-  array.forEach(function (elem) {
-    let obj = hyper.views.json.object.configureBlock(elem);
-    blocks.push(obj);
-  });
-  hyper.views.json.object.getFieldsNumsAtLineNum();
-  
-  
-  
-};
+
+
 
 hyper.views.json.object.init = function() {
   hyper.views.json.object.generate();  
