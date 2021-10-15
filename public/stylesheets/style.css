@@ -257,12 +257,12 @@ body {
         font-weight: bold;
         font-size: 14px;
         width: 30px;
+        min-width: 30px;
         top: 0px;
         padding-top: 5px; }
       .rightPaneW .rightPaneC .jsonEditor .lineW[data-selected="true"] {
         background-color: rgba(211, 212, 255, 0.3); }
       .rightPaneW .rightPaneC .jsonEditor .line {
-        z-index: 100000;
         position: relative;
         margin-left: 5px;
         padding-right: 15px;
@@ -314,8 +314,9 @@ body {
   #tableFunctionsW #tableFunctionsC {
     display: flex;
     padding-right: 30px;
-    justify-content: center;
-    width: 100%; }
+    justify-content: flex-start;
+    width: 100%;
+    padding-top: 2px; }
     #tableFunctionsW #tableFunctionsC .tableFunction[data-state="disabled"] {
       border-color: white; }
       #tableFunctionsW #tableFunctionsC .tableFunction[data-state="disabled"] i, #tableFunctionsW #tableFunctionsC .tableFunction[data-state="disabled"] span {

@@ -8,14 +8,29 @@
   #jsonInput 
     .header Convert JSON To JSON-HD
     textarea(placeholder="Input JSON")#jsonTextArea
-      |{ 
-      |     "hello":"world",
-      |     "\"foo\"":"bar",
-      |     "my_object":{
-      |         "my_array": [
-      |             1,
-      |             null,
-      |             {"my_key":"my_value"}
-      |         ]
-      |     }
-      | }
+
+  script.
+    window.JSON_IMPORT = {
+      "Customer": {
+        "Personal Details":{
+          "First Name":{
+            "type":"String",
+            "description":"The first name of the customer"
+          },
+          "Last Name":{
+            "type":"String",
+            "description":"The last name of the customer"
+          }
+        },
+        "Work Details":{
+          "Title":{
+            "type":"String",
+            "description":"The title of the customer at the time of an interaction"
+          },
+          "Role":{
+            "type":"Array",
+            "description":"types of roles a customer may have in an interaction"
+          }
+        }
+      }
+    }

@@ -13,8 +13,9 @@
       #tableFunctionsC {
         display:flex;
         padding-right:30px;
-        justify-content: center;
+        justify-content: flex-start;
         width:100%;
+        padding-top:2px;
         .tableFunction[data-state="disabled"] {
           border-color:white;
           i, span {
