@@ -15,10 +15,10 @@ hyper.views.json.editor.addFieldListeners = function(params={}) {
   let pane = hyper.views.json.elems.GET.editor.pane;
   let fields = pane.querySelectorAll(`.field`);
   fields.forEach(function(field) {
-    // field.addEventListener('click', function() {
-    //   let id = field.getAttribute('data-id');
-    //   hyper.views.json.editor.setSelectedBlock(field);      
-    // });
+    field.addEventListener('click', function() {
+      let id = field.getAttribute('data-id');
+      hyper.views.json.editor.setSelectedBlock(field);      
+    });
     field.addEventListener('focus', function() {
       let id = field.getAttribute('data-id');
       hyper.views.json.editor.setSelectedBlock(field);      
@@ -222,8 +222,7 @@ hyper.views.json.editor.blurFocusedField = function() {
   document.activeElement.blur();
 };
 
-hyper.views.json.editor.arrowDown = function(event) {
-  console.log('hyper.views.json.editor.arrowDown');
+hyper.views.json.editor.arrowDown = function(event) {  
   event.preventDefault();
   let { field_elem } = hyper.views.json.editor.goToNextLine();
   if (field_elem) {
@@ -281,7 +280,7 @@ hyper.views.json.editor.scrollWithArrows = function(params={}) {
   }
   else if (key == "Escape") {
     console.log('escape');
-    // hyper.views.json.editor.reset();
+    
   }
 };
 
@@ -289,14 +288,13 @@ hyper.views.json.editor.initLinePointer = function (editor) {
   // console.log('hyper.views.json.editor.initLinePointer');
   window.addEventListener('keydown', function (event) {
     let focused = document.activeElement;
-    if (focused.id != "jsonTextArea") {
-      event.preventDefault();
-      let key = event.key;      
-      hyper.views.json.editor.blurFocusedField();
+    let key = event.key;      
+    if (focused.id != "jsonTextArea") {      
       hyper.views.json.editor.scrollWithArrows({key, event});
     }
-    else {
-      //do nothing in json editor
+    else if (key == "Escape") {
+      hyper.views.json.editor.blurFocusedField();      
+
     }
     // let field_num = hyper.views.json.editor.STATE.curField;
     // let line_num = hyper.views.json.editor.STATE.curLine;
@@ -362,7 +360,7 @@ hyper.views.json.editor.getLine = function(indent) {
 
 hyper.views.json.editor.setField = function(params = {}) {
   let {block, elem} = params;
-  elem.setAttribute('contenteditable', 'true');
+  // elem.setAttribute('contenteditable', 'true');
   elem.setAttribute('data-type', block.type);
   elem.setAttribute('data-focused', 'false');
   elem.setAttribute('data-field_num', block.field_num);  

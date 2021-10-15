@@ -47,12 +47,13 @@ hyper.views.json.inspector.init = function() {
   hyper.views.json.inspector.setSelectedBlock(1);
 };
 
+
+
 hyper.views.json.inspector.addBlockListener = function(block) {
   let id = block.getAttribute('data-id');
   let selector = `#jsonView .jsonEditor .field[data-id="${id}"]`;
   let target = document.querySelector(selector);
-  target.focus();
-  console.log(target);
+  target.click();  
 };
 
 hyper.views.json.inspector.setBlockListeners = function(wrapper) {
