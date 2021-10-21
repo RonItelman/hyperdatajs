@@ -15,8 +15,7 @@ hyper.ui.top_nav.setSelected = function(opt) {
   opt.setAttribute('data-state', 'active');
 };
 
-hyper.ui.top_nav.setCurrentView = function(selector) {
-  console.log('selector', selector);
+hyper.ui.top_nav.setCurrentView = function(selector) {  
   let view = document.querySelector(`${selector}`);
   view.setAttribute('data-state', 'selected');
 };
@@ -36,6 +35,10 @@ hyper.ui.top_nav.addListener = function(opt) {
     let nav = document.querySelector('#tableFunctionsW');
     if(view == "#tableView") {
       gsap.set(nav, {width:"100%"});
+      let input = document.querySelector('#queryInputW input');
+      setTimeout(function() {
+        input.focus();
+      }, 500);
     }
     else if (view == "#jsonView") {
       gsap.set(nav, {width:"100vw - 720px"});

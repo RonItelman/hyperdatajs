@@ -92,6 +92,9 @@ body {
       #buttonsW #buttonsC .button:hover {
         cursor: pointer; }
 
+#transductionW {
+  margin-left: 30px; }
+
 #queryW {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -102,14 +105,19 @@ body {
 #queryInputW {
   padding-left: 20px; }
   #queryInputW input {
+    outline: 0;
     border: 1px solid #555;
     font-size: 20px;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 80%;
-    border-radius: 3px; }
+    width: calc(100% - 30px);
+    border-radius: 3px;
+    transition: 0.35s; }
+    #queryInputW input:focus {
+      background-color: rgba(218, 233, 255, 0.5);
+      border-color: #2a8eda; }
 
 #labelsW {
   display: flex;
@@ -120,14 +128,15 @@ body {
   #labelsW .tooltip {
     display: inline-block;
     position: relative;
-    text-align: left; }
+    text-align: left;
+    height: 100%; }
   #labelsW .tooltip h3 {
     margin: 12px 0; }
   #labelsW .tooltip .bottom {
     min-width: 300px;
     /*max-width:400px;*/
     top: 40px;
-    left: 78%;
+    left: 70%;
     transform: translate(-50%, 0);
     padding: 20px;
     color: #666666;
@@ -158,7 +167,7 @@ body {
     position: absolute;
     bottom: 100%;
     left: 50%;
-    margin-left: -12px;
+    margin-left: -40%;
     width: 24px;
     height: 12px;
     overflow: hidden; }
@@ -175,25 +184,54 @@ body {
   #labelsW .labelW {
     margin-right: 20px;
     position: relative;
-    margin-left: 20px; }
+    margin-left: 20px;
+    background-color: white;
+    opacity: 0;
+    filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.3)); }
     #labelsW .labelW .label {
-      background-color: #ffffac;
-      border: 1px solid #8f7f21;
+      background-color: rgba(255, 255, 172, 0.5);
+      border: 1px solid #3c3c3c;
       border-radius: 3px;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 15px;
+      padding-right: 60px;
       padding-top: 8px;
       padding-bottom: 8px; }
       #labelsW .labelW .label:hover {
         cursor: pointer; }
-    #labelsW .labelW .labelClose {
+    #labelsW .labelW .labelFeedback {
+      background-color: white;
       position: absolute;
-      top: 4px;
-      right: 5px; }
+      top: 0px;
+      right: 0px;
+      width: 50px;
+      display: flex;
+      height: 100%; }
+      #labelsW .labelW .labelFeedback .labelFBButton.good i {
+        color: #1b8d58; }
+      #labelsW .labelW .labelFeedback .labelFBButton.bad i {
+        color: #d02323; }
+      #labelsW .labelW .labelFeedback .labelFBButton.bad {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px; }
+      #labelsW .labelW .labelFeedback .labelFBButton.good {
+        border-left: 1px solid #3c3c3c; }
+      #labelsW .labelW .labelFeedback .labelFBButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        border-top: 1px solid #3c3c3c;
+        border-bottom: 1px solid #3c3c3c;
+        border-right: 1px solid #3c3c3c; }
+        #labelsW .labelW .labelFeedback .labelFBButton:hover {
+          cursor: pointer; }
+        #labelsW .labelW .labelFeedback .labelFBButton i {
+          color: white; }
 
 #tableW {
   height: 100%;
-  width: calc(100% - 450px);
+  width: 100%;
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 30px;
@@ -337,7 +375,9 @@ body {
       background-color: #353535;
       color: white;
       height: 100%;
-      width: 100%; }
+      width: 100%;
+      overflow-y: overlay;
+      padding-right: 10px; }
       .rightPaneW .rightPaneC .jsonEditor .lineW {
         width: 100%;
         height: 100%;
