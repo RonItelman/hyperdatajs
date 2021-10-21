@@ -10,7 +10,8 @@
     .query 
       span What is the patient's health problem? (Query to human)
   #queryInputW
-    input(placeholder="Type to see labels (Query to augmented intelligence system)" autocomplete="no")
+    input(placeholder="Type to see labels (Query to augmented intelligence system)" autocomplete="no" data-schema_id="13")
+    .submit SUBMIT
   #labelsW(contenteditable="true")  
     .labelW(data-schema_id="135")       
       .tooltip
@@ -28,6 +29,7 @@
             a(href="#") Health 
             span > 
             a(href="#") Medical
+          p.bold.black SCHEMA ID 135
           p Whether or not a person believes the planet is going to hit by a giant asteroid imminently and are so terrified they are trying to go to Mars with Elon Musk
           i
     .labelW(data-schema_id="147")          
@@ -46,6 +48,7 @@
             a(href="#") Health 
             span > 
             a(href="#") Medical
+          p.bold.black SCHEMA ID 147
           p Whether a person starts believing social media conspiracies after being on Facebook for too long during Covid quarantine
           i
     .labelW(data-schema_id="159")          
