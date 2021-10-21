@@ -5,15 +5,44 @@
 //-         input(placeholder="Table name (ex: Pets)" value="Pets")
 //-       .description 
 //-         input(placeholder="Table name (ex: Animals adopted by humans)" value="Animals adopted by humans")
-#labelsW  
+#queryW 
+  .query 
+    span What is the patient's health problem?
+#queryInputW
+  input(placeholder="Type to see labels")
+#labelsW(contenteditable="true")  
+  .labelW       
+    .tooltip
+      .label Planetphobia
+        .labelClose 
+          i.fal.fa-times-circle
+      .bottom        
+        h3 Planetphobia
+        p.bold.blue 
+          a(href="#") Problems 
+          span > 
+          a(href="#") Health 
+          span > 
+          a(href="#") Medical
+        p Whether or not a person believes the planet is going to hit by a giant asteroid imminently and are so terrified they are trying to go to Mars with Elon Musk
+        i
   .labelW   
-    .label Planetphobia
-    .labelClose 
-      i.fal.fa-times-circle
-  .labelW   
-    .label Social Media Madness
-    .labelClose 
-      i.fal.fa-times-circle
+    .tooltip
+      .label Social Media Madness
+        .labelClose 
+          i.fal.fa-times-circle
+      .bottom        
+        h3 Planetphobia
+        p.bold.blue 
+          a(href="#") Problems 
+          span > 
+          a(href="#") Health 
+          span > 
+          a(href="#") Medical
+        p Whether a person starts believing social media conspiracies after being on Facebook for too long during Covid quarantine
+        i
+    
+      
 #tableW
   #tableC 
     #table
@@ -28,7 +57,13 @@
         tbody 
           tr 
             td(data-focused="false" data-line_num="7", data-field_num="0" data-type="object").rowNum 1
-            td(data-focused="false" data-line_num="11", data-field_num="2" data-type="value") Dog
-            td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") true                        
+            td(data-focused="false" data-line_num="11", data-field_num="2" data-type="value") True
+            td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") False
+            td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Undefined                  
+          tr 
+            td(data-focused="false" data-line_num="7", data-field_num="0" data-type="object").rowNum 1
+            td(data-focused="false" data-line_num="11", data-field_num="2" data-type="value") Undefined
+            td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Undefined                   
+            td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Null                   
 
           

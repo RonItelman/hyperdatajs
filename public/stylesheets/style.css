@@ -92,9 +92,86 @@ body {
       #buttonsW #buttonsC .button:hover {
         cursor: pointer; }
 
+#queryW {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px; }
+  #queryW span {
+    font-size: 24px; }
+
+#queryInputW {
+  padding-left: 20px; }
+  #queryInputW input {
+    border: 1px solid #555;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 80%;
+    border-radius: 3px; }
+
 #labelsW {
   display: flex;
-  padding-top: 30px; }
+  margin-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding: 10px; }
+  #labelsW .tooltip {
+    display: inline-block;
+    position: relative;
+    text-align: left; }
+  #labelsW .tooltip h3 {
+    margin: 12px 0; }
+  #labelsW .tooltip .bottom {
+    min-width: 300px;
+    /*max-width:400px;*/
+    top: 40px;
+    left: 78%;
+    transform: translate(-50%, 0);
+    padding: 20px;
+    color: #666666;
+    background-color: #EEEEEE;
+    font-weight: normal;
+    font-size: 13px;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 99999999;
+    box-sizing: border-box;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0; }
+  #labelsW .tooltip:hover .bottom {
+    display: block;
+    opacity: 1;
+    transition: 0.35s; }
+  #labelsW .tooltip .bottom img {
+    width: 400px; }
+  #labelsW .tooltip p.blue {
+    color: #2955ce; }
+    #labelsW .tooltip p.blue a {
+      border-bottom: 1px solid transparent;
+      text-decoration: none; }
+      #labelsW .tooltip p.blue a:hover {
+        border-color: #2955ce; }
+  #labelsW .tooltip .bottom i {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -12px;
+    width: 24px;
+    height: 12px;
+    overflow: hidden; }
+  #labelsW .tooltip .bottom i::after {
+    content: '';
+    position: absolute;
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+    background-color: #EEEEEE;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); }
   #labelsW .labelW {
     margin-right: 20px;
     position: relative;

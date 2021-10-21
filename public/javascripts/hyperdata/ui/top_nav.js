@@ -31,6 +31,16 @@ hyper.ui.top_nav.addListener = function(opt) {
     hyper.ui.top_nav.clearSelector();
     hyper.ui.top_nav.setSelected(opt);
     hyper.ui.top_nav.hideCurrentView();
-    hyper.ui.top_nav.setCurrentView(opt.getAttribute('data-view'));
+    let view = opt.getAttribute('data-view');
+    hyper.ui.top_nav.setCurrentView(view);
+    let nav = document.querySelector('#tableFunctionsW');
+    if(view == "#tableView") {
+      gsap.set(nav, {width:"100%"});
+    }
+    else if (view == "#jsonView") {
+      gsap.set(nav, {width:"100vw - 720px"});
+
+    }
+    
   });
 };
