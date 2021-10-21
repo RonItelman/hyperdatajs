@@ -11,25 +11,49 @@
 
   script.
     window.JSON_IMPORT = {
-      "Customer": {
-        "Personal Details":{
-          "First Name":{
-            "type":"String",
-            "description":"The first name of the customer"
+      "Problems": {
+        "@type":"Object",
+        "@description":"Problems at any given moment of a person",
+        "Health":{
+          "@type":"Object",
+          "@description":"Relating to physical health of a person",
+          "Condition":{
+            "@type":"Range",            
+            "@description":"How in shape a person is on a scale of 1-5",
+            "@range":{
+              "1":{
+                "@type":"Boolean",
+                "@description":"Very bad"
+              },
+              "2":{
+                "@type":"Boolean",
+                "@description":"Bad"
+              },
+              "3":{
+                "@type":"Boolean",
+                "@description":"Okay"
+              },
+              "4":{
+                "@type":"Boolean",
+                "@description":"Good"
+              },
+              "5":{
+                "@type":"Boolean",
+                "@description":"Very Good"
+              }
+            }
           },
-          "Last Name":{
-            "type":"String",
-            "description":"The last name of the customer"
-          }
-        },
-        "Work Details":{
-          "Title":{
-            "type":"String",
-            "description":"The title of the customer at the time of an interaction"
-          },
-          "Role":{
-            "type":"Array",
-            "description":"types of roles a customer may have in an interaction"
+          "Medical Issues":{
+            "@type":"Object",
+            "@description":"Any medical issues",
+            "Planetphobia": {
+              "@type":"Boolean",
+              "@description":"Whether or not a person believes the planet is going to hit by a giant asteroid imminently and are so terrified they are trying to go to Mars with Elon Musk"
+            },
+            "Social Media Madness": {
+              "@type":"Boolean",
+              "@description":"Whether a person starts believing social media conspiracies after being on Facebook for too long during Covid quarantine"
+            }
           }
         }
       }

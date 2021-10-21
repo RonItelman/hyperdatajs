@@ -1,7 +1,7 @@
 .paneContentW {
   display:flex;
   position:relative;
-  width:calc(100% - 480px);
+  width:calc(100% - 720px);
   height:calc(100vh - 90px);
   
   overflow:overlay;
@@ -14,7 +14,7 @@
   top:100px;
   height:calc(50vh);
   // border-left:1px solid #ccc;
-  display:flex;
+  display:none;
   flex-direction: column;
   align-items: center;
   .header {

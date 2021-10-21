@@ -5,7 +5,7 @@
 
 
 .rightPaneW {
-  width:480px;
+  width:720px;
   height:calc(100vh - 50px);
   position: fixed;
   right:0px;
@@ -163,6 +163,7 @@
           color:black;
         }
         .field {
+          user-select:none;
           transition:0.35s;
           font-size:16px;
           word-break:break-all;
@@ -173,6 +174,9 @@
           border-radius:2px;
           &:focus {
             outline:0;            
+          }
+          &:hover {
+            cursor:pointer;
           }
         }                
       }      

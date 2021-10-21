@@ -178,7 +178,7 @@ body {
   display: none; }
 
 .rightPaneW {
-  width: 480px;
+  width: 720px;
   height: calc(100vh - 50px);
   position: fixed;
   right: 0px;
@@ -292,6 +292,7 @@ body {
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-focused="true"] {
           color: black; }
         .rightPaneW .rightPaneC .jsonEditor .line .field {
+          user-select: none;
           transition: 0.35s;
           font-size: 16px;
           word-break: break-all;
@@ -302,9 +303,11 @@ body {
           border-radius: 2px; }
           .rightPaneW .rightPaneC .jsonEditor .line .field:focus {
             outline: 0; }
+          .rightPaneW .rightPaneC .jsonEditor .line .field:hover {
+            cursor: pointer; }
 
 #tableFunctionsW {
-  width: calc(100vw - 480px);
+  width: calc(100vw - 720px);
   display: flex;
   justify-content: flex-end;
   height: 40px;
@@ -374,7 +377,7 @@ body {
 .paneContentW {
   display: flex;
   position: relative;
-  width: calc(100% - 480px);
+  width: calc(100% - 720px);
   height: calc(100vh - 90px);
   overflow: overlay; }
 
@@ -384,7 +387,7 @@ body {
   right: 505px;
   top: 100px;
   height: calc(50vh);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center; }
   #jsonInput .header {
