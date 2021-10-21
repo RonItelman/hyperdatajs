@@ -1,3 +1,30 @@
+#labelsW {
+  display:flex;
+  padding-top:30px;
+  .labelW {
+    margin-right:20px;
+    position:relative;
+    margin-left:20px;
+    .label {
+      background-color:rgb(255, 255, 172);
+      border:1px solid rgb(143, 127, 33);
+      border-radius:3px;
+      padding-left:30px;
+      padding-right:30px;
+      padding-top:8px;
+      padding-bottom:8px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .labelClose {
+      position:absolute;
+      top:4px;
+      right:5px;
+    }
+  }
+}
+
 
 #tableW {
   

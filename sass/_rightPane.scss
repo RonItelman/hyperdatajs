@@ -134,8 +134,11 @@
         align-items: center;
         justify-content: flex-start;
         flex-wrap:wrap;
-        .field[data-type="string"][data-focused="true"] {
+        .field[data-type="string"][data-focused="true"][data-field_num="0"] {
           background-color:rgb(255, 255, 205);            
+        }        
+        .field[data-type="string"][data-focused="true"][data-field_num="2"] {
+          background-color:rgb(205, 255, 216);            
         }        
         .field[data-type="null"][data-focused="true"] {
           background-color:rgb(205, 249, 255);                      

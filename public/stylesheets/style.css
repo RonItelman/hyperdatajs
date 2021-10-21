@@ -92,6 +92,28 @@ body {
       #buttonsW #buttonsC .button:hover {
         cursor: pointer; }
 
+#labelsW {
+  display: flex;
+  padding-top: 30px; }
+  #labelsW .labelW {
+    margin-right: 20px;
+    position: relative;
+    margin-left: 20px; }
+    #labelsW .labelW .label {
+      background-color: #ffffac;
+      border: 1px solid #8f7f21;
+      border-radius: 3px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 8px;
+      padding-bottom: 8px; }
+      #labelsW .labelW .label:hover {
+        cursor: pointer; }
+    #labelsW .labelW .labelClose {
+      position: absolute;
+      top: 4px;
+      right: 5px; }
+
 #tableW {
   height: 100%;
   width: calc(100% - 450px);
@@ -272,8 +294,10 @@ body {
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap; }
-        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="string"][data-focused="true"] {
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="string"][data-focused="true"][data-field_num="0"] {
           background-color: #ffffcd; }
+        .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="string"][data-focused="true"][data-field_num="2"] {
+          background-color: #cdffd8; }
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="null"][data-focused="true"] {
           background-color: #cdf9ff; }
         .rightPaneW .rightPaneC .jsonEditor .line .field[data-type="comment"][data-focused="true"] {

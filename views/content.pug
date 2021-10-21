@@ -1,12 +1,15 @@
 #contentW
   #tableFunctionsW 
     #tableFunctionsC 
-      .tableFunction(data-state="active") 
+      .tableFunction(data-state="active" data-view="#jsonView") 
         i.fal.fa-brackets-curly
         span JSON-HD
-      .tableFunction(data-state="enabled")
+      .tableFunction(data-state="enabled" data-view="#schemaView")
         i.fal.fa-sitemap
         span Schema
+      .tableFunction(data-state="enabled" data-view="#tableView")
+        i.fal.fa-table
+        span Event Table
       //- .tableFunction(data-state="enabled")
       //-   i.fal.fa-table
       //-   span TABLE
@@ -31,7 +34,10 @@
   .viewW#jsonView(data-state="selected")
     include ./json/rightPane.pug
     include ./json/content.pug
-  .viewW#entitiesView(data-state="hidden")
+  .viewW#schemaView(data-state="hidden")
     include ./entities/rightPane.pug
     include ./entities/content.pug
+  .viewW#tableView(data-state="hidden")
+    //- include ./table/rightPane.pug
+    include ./table/content.pug
     
