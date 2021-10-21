@@ -5,8 +5,11 @@
         i.fal.fa-brackets-curly
         span JSON
       .tableFunction(data-state="enabled")
-        i.fal.fa-table
-        span TABLE
+        i.fal.fa-asterisk 
+        span ENTITIES
+      //- .tableFunction(data-state="enabled")
+      //-   i.fal.fa-table
+      //-   span TABLE
       //- .tableFunction(data-state="enabled")  
       //-   i.fal.fa-list-alt
       //-   span FORM
@@ -28,4 +31,7 @@
   .viewW#jsonView(data-state="selected")
     include ./json/rightPane.pug
     include ./json/content.pug
+  .viewW#entitiesView(data-state="hidden")
+    include ./entities/rightPane.pug
+    include ./entities/content.pug
     

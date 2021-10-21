@@ -62,7 +62,7 @@ hyper.views.json.editor.setSelectedField = function (params) {
     }
   }
   if(line_elem == undefined && field_num == null) {
-    console.log('null');
+    
     return {field_elem:null};
   }
 };

@@ -24,8 +24,9 @@ html
 
           }
         },
-        editor:{},        
-        table:{}
+        ui:{
+          top_nav:{}
+        }
       }
       window.hyperdata = hyperdata;
       let hyper = window.hyperdata;
@@ -42,11 +43,12 @@ html
   script(src="/javascripts/hyperdata/views/json/array.js")
   script(src="/javascripts/hyperdata/views/json/inspector.js")
   script(src="/javascripts/hyperdata/views/json/editor.js")
-  //- script(src="/javascripts/hyperdata/editor.js")
+  script(src="/javascripts/hyperdata/ui/top_nav.js")
   //- script(src="/javascripts/hyperdata/views/json/editor.js")
   //- script(src="/javascripts/hyperdata/table.js")
   script.
     gsap.registerPlugin(ScrollToPlugin);
     hyper.views.json.init();
+    hyper.ui.top_nav.init();
     //- hyper.editor.initEditor(".jsonEditor");
     //- hyper.table.initTable({parent_elem_id: "#tableView #tableW"});

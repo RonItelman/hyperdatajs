@@ -229,7 +229,7 @@ body {
     .rightPaneW .rightPaneC .lineNumBack {
       height: calc(100vh - 90px);
       position: absolute;
-      left: -30px;
+      left: 0px;
       background-color: #5a5a5a;
       width: 30px;
       top: 0px; }
@@ -241,12 +241,11 @@ body {
       width: 100%; }
       .rightPaneW .rightPaneC .jsonEditor .lineW {
         width: 100%;
-        min-height: 30px;
-        height: 30px;
+        height: 100%;
         position: relative;
         transition: 0.1s;
         display: flex;
-        align-items: center; }
+        align-items: flex-start; }
       .rightPaneW .rightPaneC .jsonEditor .lineIndex {
         height: 100%;
         color: #ccc;
@@ -263,11 +262,12 @@ body {
       .rightPaneW .rightPaneC .jsonEditor .lineW[data-selected="true"] {
         background-color: rgba(211, 212, 255, 0.3); }
       .rightPaneW .rightPaneC .jsonEditor .line {
+        overflow: hidden;
         position: relative;
         margin-left: 5px;
         padding-right: 15px;
         height: 100%;
-        width: auto;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -371,7 +371,7 @@ body {
   display: none;
   opacity: 0; }
 
-#jsonContentW {
+.paneContentW {
   display: flex;
   position: relative;
   width: calc(100% - 480px);
