@@ -14,11 +14,18 @@
       "Queries To Humans": {
         "@type":"Object",
         "@description":"Questions to users",
-        "What is the patient's problem?": {
+        "Mental Health": {
+          "Patient's problem?": {
           "@type":"Label",
-          "@description":"Asks what a patient's problem is",
-
-        }
+          "@description":"Asks what a patient's problem is in a mental health context",
+          }
+        },        
+        "Oral Health": {
+          "Patient's problem?": {
+          "@type":"Label",
+          "@description":"Asks what a patient's problem is in an oral health context",
+          }
+        }        
       },
       "Problems": {
         "@type":"Object",
@@ -68,6 +75,19 @@
               "@description":"When a person spontaneously and unexpectedly burts into flames"
             }
           }
+        },
+        "Influence": {
+          "@type":"Object",
+          "@description":"Influencing behavior",
+          "Eating":{
+            "@type":"Object",
+            "@description":"Influencing behavior related to eating",
+            "Fear":{
+              "@type":"Label",
+              "@description":"A fear based message to influence eating behavior"
+            }
+          }
         }
+        
       }
     }

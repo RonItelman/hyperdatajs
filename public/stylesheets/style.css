@@ -92,6 +92,78 @@ body {
       #buttonsW #buttonsC .button:hover {
         cursor: pointer; }
 
+.tooltip {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  height: 100%;
+  width: auto; }
+
+.tooltip h3 {
+  margin: 12px 0; }
+
+.tooltip .bottom {
+  min-width: 250px;
+  /*max-width:400px;*/
+  top: 40px;
+  left: 70%;
+  transform: translate(-50%, 0);
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #666666;
+  background-color: transparent;
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 99999;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  display: none;
+  transition: 0.4s;
+  opacity: 0; }
+
+.tooltip:hover .bottom {
+  transition: 0.4s;
+  z-index: 99999;
+  display: block;
+  opacity: 1;
+  background-color: #EEEEEE; }
+
+.tooltip .bottom img {
+  width: 400px; }
+
+.tooltip p.blue {
+  color: #2955ce; }
+  .tooltip p.blue a {
+    border-bottom: 1px solid transparent;
+    text-decoration: none; }
+    .tooltip p.blue a:hover {
+      border-color: #2955ce; }
+
+.tooltip p.black {
+  color: #1e1e1e; }
+
+.tooltip .bottom i {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10%;
+  width: 24px;
+  height: 12px;
+  overflow: hidden; }
+
+.tooltip .bottom i::after {
+  content: '';
+  position: absolute;
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+  background-color: #EEEEEE;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); }
+
 #transductionW {
   margin-left: 30px; }
 
@@ -141,64 +213,6 @@ body {
   margin-top: 0px;
   margin-bottom: 20px;
   padding: 10px; }
-  #labelsW .tooltip {
-    display: inline-block;
-    position: relative;
-    text-align: left;
-    height: 100%; }
-  #labelsW .tooltip h3 {
-    margin: 12px 0; }
-  #labelsW .tooltip .bottom {
-    min-width: 300px;
-    /*max-width:400px;*/
-    top: 40px;
-    left: 70%;
-    transform: translate(-50%, 0);
-    padding: 20px;
-    color: #666666;
-    background-color: #EEEEEE;
-    font-weight: normal;
-    font-size: 13px;
-    border-radius: 8px;
-    position: absolute;
-    z-index: 99999999;
-    box-sizing: border-box;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-    display: none;
-    opacity: 0; }
-  #labelsW .tooltip:hover .bottom {
-    display: block;
-    opacity: 1;
-    transition: 0.35s; }
-  #labelsW .tooltip .bottom img {
-    width: 400px; }
-  #labelsW .tooltip p.blue {
-    color: #2955ce; }
-    #labelsW .tooltip p.blue a {
-      border-bottom: 1px solid transparent;
-      text-decoration: none; }
-      #labelsW .tooltip p.blue a:hover {
-        border-color: #2955ce; }
-  #labelsW .tooltip p.black {
-    color: #1e1e1e; }
-  #labelsW .tooltip .bottom i {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -40%;
-    width: 24px;
-    height: 12px;
-    overflow: hidden; }
-  #labelsW .tooltip .bottom i::after {
-    content: '';
-    position: absolute;
-    opacity: 1;
-    width: 12px;
-    height: 12px;
-    left: 50%;
-    transform: translate(-50%, 50%) rotate(45deg);
-    background-color: #EEEEEE;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); }
   #labelsW .labelW {
     margin-right: 20px;
     position: relative;
@@ -249,6 +263,9 @@ body {
           color: white; }
 
 #tableW {
+  position: absolute;
+  top: 380px;
+  z-index: 10;
   height: 100%;
   width: 100%;
   padding-left: 50px;
@@ -271,6 +288,10 @@ body {
         border-collapse: collapse;
         border: 1px solid rgba(0, 0, 0, 0.15);
         padding: 10px; }
+      #tableW #tableC table th, #tableW #tableC table td {
+        min-width: 130px;
+        width: auto;
+        font-size: 13px; }
       #tableW #tableC table th, #tableW #tableC table td {
         transition: 0.35s; }
         #tableW #tableC table th:hover, #tableW #tableC table td:hover {
@@ -623,7 +644,8 @@ body {
     .blockW .block .details {
       padding-top: 10px;
       padding-left: 30px;
-      padding-bottom: 20px; }
+      padding-bottom: 20px;
+      padding-right: 20px; }
       .blockW .block .details .elem_wrapper {
         padding-bottom: 5px;
         display: flex; }
