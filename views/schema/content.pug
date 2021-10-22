@@ -1,0 +1,38 @@
+#contentW
+  #tableFunctionsW 
+    #tableFunctionsC 
+      .tableFunction(data-state="active" data-view="#jsonView") 
+        i.fal.fa-brackets-curly
+        span JSON-HD
+      .tableFunction(data-state="enabled" data-view="#schemaView")
+        i.fal.fa-sitemap
+        span Schema
+      .tableFunction(data-state="enabled" data-view="#tableView")
+        i.fal.fa-table
+        span Query Table      
+      //- .tableFunction(data-state="enabled")
+      //-   i.fal.fa-table
+      //-   span TABLE
+      //- .tableFunction(data-state="enabled")  
+      //-   i.fal.fa-list-alt
+      //-   span FORM
+      //- .tableFunction(data-state="enabled")  
+      //-   i.fal.fa-sparkles
+      //-   span OBSERVABLE
+      //- .tableFunction(data-state="enabled")  
+      //-   i.fal.fa-link
+      //-   span COMBINATOR
+      //- .tableFunction(data-state="enabled")  
+      //-   i.fal.fa-chart-bar
+      //-   span VISUALIZE
+      //- .tableFunction(data-state="enabled")  
+      //-   i.fal.fa-chart-bar
+      //-   span API
+  //- .viewW#tableView(data-state="hidden")
+  //-   include ./table/rightPane.pug                       
+  //-   include ./table/content.pug                         
+  .viewW#schemaView(data-state="hidden")
+    include ./rightPane.pug
+    include ./content.pug
+  
+    

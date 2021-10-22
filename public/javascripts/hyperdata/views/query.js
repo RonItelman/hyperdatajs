@@ -9,7 +9,7 @@ hyper.views.query.addInputListener = function() {
     let val = input.value;
     val.toLowerCase();
     
-    if (val == "pla" || val == "plan" || val == "plane" || val == "planet" || val == "cli" || val == "clim" || val == "clima" || val == "climat" || val == "climate") {
+    if (val == "pla" || val == "plan" || val == "plane" || val == "planet" || val == "cli" || val == "clim" || val == "clima" || val == "climat" || val == "climate" || val == "arm" || val == "arma" || val == "armag" || val == "armage" || val == "armaged" || val == "armagedd" || val == "armageddo" || val == "armageddon") {
       let elem = document.querySelector('#labelsW .labelW[data-schema_id="135"]');;
       // console.log('show planet', elem);
       gsap.set(elem, {display:"flex"});
@@ -23,6 +23,7 @@ hyper.views.query.addInputListener = function() {
       gsap.set(elem, {display:"none", delay:0.1});
       gsap.to(elem, {opacity:0, duration:0.1});
     }
+    
     if (val == "soc" || val == "soci" || val == "socia" || val == "social" || val == "consp") {
       let elem = document.querySelector('#labelsW .labelW[data-schema_id="147"]');;
       // console.log('show planet', elem);
@@ -61,6 +62,21 @@ hyper.views.query.addInputListener = function() {
     }
     else {
       let elem = document.querySelector('#labelsW .labelW[data-schema_id="215"]');
+      // console.log('show planet', elem);
+
+      gsap.set(elem, { display: "none", delay: 0.1 });
+      gsap.to(elem, { opacity: 0, duration: 0.1 });
+
+    }
+    if (val == "exe" || val == "exer" || val == "exerc" || val == "exerci" || val == "exercis" || val == "exercise") {
+      let elem = document.querySelector('#labelsW .labelW[data-schema_id="251"]');
+      // console.log('show planet', elem);
+
+      gsap.set(elem, { display: "flex" });
+      gsap.to(elem, { opacity: 1, duration: 0.1 });
+    }
+    else {
+      let elem = document.querySelector('#labelsW .labelW[data-schema_id="251"]');
       // console.log('show planet', elem);
 
       gsap.set(elem, { display: "none", delay: 0.1 });

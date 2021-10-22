@@ -15,13 +15,13 @@
         "@type":"Object",
         "@description":"Questions to users",
         "Mental Health": {
-          "Patient's problem?": {
+          "Patient's status": {
           "@type":"Label",
           "@description":"Asks what a patient's problem is in a mental health context",
           }
         },        
         "Oral Health": {
-          "Patient's problem?": {
+          "Patient's status": {
           "@type":"Label",
           "@description":"Asks what a patient's problem is in an oral health context",
           }
@@ -85,6 +85,18 @@
             "Threat Perception":{
               "@type":"Label",
               "@description":"A fear based message to influence eating behavior"
+            }
+          }
+        },
+        "Ouctomes": {
+          "@type":"Object",
+          "@description":"Outcomes in behavioral influence of patients",
+          "Behavior":{
+            "@type":"Object",
+            "@description":"Influencing behavior related to health",
+            "Exercise":{
+              "@type":"Label",
+              "@description":"Patient has made the desired behavioral change outcome"
             }
           }
         }

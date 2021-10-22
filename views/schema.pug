@@ -1,0 +1,14 @@
+extends layout
+
+block content  
+  #topnavW 
+    img(src="/images/favicon.png")
+    #logo 
+      span.header HyperData JS      
+    #buttonsW 
+      #buttonsC         
+        a(target="_blank" href="https://github.com/RonItelman/hyperdatajs").button#code 
+          i.fab.fa-github
+          span Apache 2.0
+  
+  include ./schema/content.pug

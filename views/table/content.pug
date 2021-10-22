@@ -8,11 +8,11 @@
 #transductionW
   #queryW 
     .query 
-      span What is the patient's health problem? (Query to human)
+      span What is the patient's status? (Query to human \ Env state change)
   #queryInputW
-    input(placeholder="Type to see labels (Query to augmented intelligence system)" autocomplete="no" data-schema_id="6")
+    input(placeholder="Type to see labels (Query / Interaction state change to augmented intelligence system)" autocomplete="no" data-schema_id="6")
     .submit SUBMIT
-  #labelsW(contenteditable="true")  
+  #labelsW  
     .labelW(data-schema_id="135")       
       .tooltip
         .label Planetphobia
@@ -28,7 +28,7 @@
             span > 
             a(href="#") Health 
             span > 
-            a(href="#") Medical
+            a(href="/problems/health/medical") Medical
           p.bold.black SCHEMA ID 135
           p Whether or not a person believes the planet is going to hit by a giant asteroid imminently and are so terrified they are trying to go to Mars with Elon Musk
           i
@@ -47,7 +47,7 @@
             span > 
             a(href="#") Health 
             span > 
-            a(href="#") Medical
+            a(href="/problems/health/medical") Medical
           p.bold.black SCHEMA ID 147
           p Whether a person starts believing social media conspiracies after being on Facebook for too long during Covid quarantine
           i
@@ -66,7 +66,7 @@
             span > 
             a(href="#") Health 
             span > 
-            a(href="#") Medical
+            a(href="/problems/health/medical") Medical
           p Whether a person starts believing social media conspiracies after being on Facebook for too long during Covid quarantine
           i
       
@@ -90,6 +90,26 @@
           p A fear based notification to influence healthier eating habits
           i
       
+    .labelW(data-schema_id="251")          
+      .tooltip      
+        .label Started Exercising
+          .labelFeedback
+            .labelFBButton.good
+              i.fas.fa-check-circle
+            .labelFBButton.bad 
+              i.fas.fa-times-circle        
+        .bottom        
+          h3 Started Exercising
+          p.bold.blue 
+            a(href="#") Influence 
+            span > 
+            a(href="#") Eating 
+            span > 
+            a(href="#") Notifications
+          p.bold.black SCHEMA ID 251
+          p Patient has made the desired behavioral change outcome
+          i
+      
       
 #tableW
   #tableC 
@@ -100,9 +120,9 @@
             th(data-line_num="6" data-field_num="0" data-focused="false" data-type="array" data-col_id="0")#allCells &nbsp; 
             th(data-line_num="10" data-field_num="1" data-focused="false" data-type="key" data-col_id="1").columnNum 
               .tooltip 
-                .header Patient's problem? 
+                .header Patient's status 
                 .bottom        
-                  h3 Patient's problem?
+                  h3 Patient's status
                   p.bold.blue                             
                     a(href="#") Queries to Humans 
                     span > 
@@ -112,9 +132,9 @@
                   i            
             th(data-line_num="10" data-field_num="1" data-focused="false" data-type="key" data-col_id="1").columnNum 
               .tooltip 
-                .header Patient's problem? 
+                .header Patient's status 
                 .bottom        
-                  h3 Patient's problem?
+                  h3 Patient's status
                   p.bold.blue                             
                     a(href="#") Queries to Humans 
                     span > 
@@ -132,7 +152,7 @@
                     span > 
                     a(href="#") Health 
                     span > 
-                    a(href="#") Medical
+                    a(href="/problems/health/medical") Medical
                   p.bold.black SCHEMA ID 135
                   p Whether a person starts believing social media conspiracies after being on Facebook for too long during Covid quarantine
                   i
@@ -147,7 +167,7 @@
                     span > 
                     a(href="#") Health 
                     span > 
-                    a(href="#") Medical
+                    a(href="/problems/health/medical") Medical
                   p.bold.black SCHEMA ID 147
                   p Whether or not a person believes the planet is going to hit by a giant asteroid imminently and are so terrified they are trying to go to Mars with Elon Musk
                   i
@@ -161,7 +181,7 @@
                     span > 
                     a(href="#") Health 
                     span > 
-                    a(href="#") Medical
+                    a(href="/problems/health/medical") Medical
                   p.bold.black SCHEMA ID 159
                   p When a person spontaneously and unexpectedly burts into flames
                   i
@@ -179,6 +199,20 @@
                   p.bold.black SCHEMA ID 215
                   p A fear based notification to influence healthier eating habits
                   i
+            th(data-line_num="18" data-field_num="2" data-focused="false" data-type="key" data-col_id="2").columnNum 
+              .tooltip
+                .header Started Exercising
+                .bottom        
+                  h3 Started Exercising
+                  p.bold.blue 
+                    a(href="#") Outcomes 
+                    span > 
+                    a(href="#") Behavior 
+                    span > 
+                    a(href="#") Exercise
+                  p.bold.black SCHEMA ID 251
+                  p Patient has made the change to start exercising to improve their health
+                  i
               
             
         tbody 
@@ -190,6 +224,7 @@
             td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") False
             td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Undefined                  
             td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Null
+            td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Null
           tr 
             td(data-focused="false" data-line_num="7", data-field_num="0" data-type="object").rowNum 2
             td(data-focused="false" data-line_num="11", data-field_num="2" data-type="value") True
@@ -197,6 +232,7 @@
             td(data-focused="false" data-line_num="11", data-field_num="2" data-type="value") Undefined
             td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Undefined                   
             td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Null                   
+            td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Null
             td(data-focused="false" data-line_num="19", data-field_num="2" data-type="value") Null
 
           

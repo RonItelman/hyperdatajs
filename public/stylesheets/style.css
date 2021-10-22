@@ -128,7 +128,8 @@ body {
   z-index: 99999;
   display: block;
   opacity: 1;
-  background-color: #EEEEEE; }
+  background-color: #EEEEEE;
+  cursor: pointer; }
 
 .tooltip .bottom img {
   width: 400px; }
