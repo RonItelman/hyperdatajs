@@ -8,9 +8,9 @@
 #transductionW
   #queryW 
     .query 
-      span What is the patient's status? (Query to human \ Env state change)
+      span Query properties for label
   #queryInputW
-    input(placeholder="Type to see labels (Query / Interaction state change to augmented intelligence system)" autocomplete="no" data-schema_id="6")
+    input(placeholder="Type to see properties to add to a label" autocomplete="no" data-schema_id="6")
     .submit SUBMIT
   #labelsW  
     .labelW(data-schema_id="135")       
@@ -110,8 +110,8 @@
           p Patient has made the desired behavioral change outcome
           i
       
-      
 #tableW
+  h4.labelProperties Label Properties
   #tableC 
     #table
       table 

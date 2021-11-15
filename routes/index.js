@@ -5,6 +5,9 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'HyperData JS' });
 });
+router.get('/labels/id/:id', function(req, res, next) {
+  res.render('index', { title: 'HyperData JS' });
+});
 
 router.get('/problems/health/medical', function(req, res, next) {
   res.render('schema', { title: 'HyperData JS' });
