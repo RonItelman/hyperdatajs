@@ -99,7 +99,7 @@ hyper.views.json.inspector.configureBlock = function(params={}) {
     gsap.set(match_line.closest(".elem_wrapper"), {display:"none"});
     
   }
-  // let url = elem.querySelector('.elem_value[data-type="url"]');
+  let url = elem.querySelector('.elem_value[data-type="url"]');
   
   // if (block.url == null && url) {
   //   gsap.set(url.closest(".elem_wrapper"), {display:"none"});

@@ -85,6 +85,7 @@ hyper.views.json.elems.getBlockW = function() {
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Open Match: ", type:"open_match"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Match Line: ", type:"match_line"}));
   details.appendChild(hyper.views.json.elems.getDetailRow({text:"Close Match: ", type:"close_match"}));
+  details.appendChild(hyper.views.json.elems.getDetailInputRow({text:"Label Url: ", type:"label_url"}));
   // hyper.views.json.elems.addMetaFields(details);  
   block.appendChild(header);
   block.appendChild(details);

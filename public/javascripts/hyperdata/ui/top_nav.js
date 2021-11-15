@@ -44,6 +44,14 @@ hyper.ui.top_nav.addListener = function(opt) {
       gsap.set(nav, {width:"100vw - 720px"});
 
     }
+    let url = opt.getAttribute('data-url');
+    if (url) {
+      window.history.pushState(url, url, '/labels/id/'+url);
+    }
+    else {
+      window.history.pushState('/', "HyperDataJS", '/');
+
+    }
     
   });
 };
